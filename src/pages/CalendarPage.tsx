@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getMonthDays, getLunarData } from '@/utils/lunarUtils';
+import { getMonthDays } from '@/utils/lunarUtils';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
@@ -9,17 +9,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Badge } from '@/components/ui/badge';
 import { motion } from 'framer-motion';
 
 const CalendarPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState<any>(null);
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
-  const days = getMonthDays(year, month);
+  const days = getMonthDays(year, month, i18n.language);
 
   const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
   const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));

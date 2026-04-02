@@ -4,6 +4,7 @@ import { findLuckyDates } from '@/utils/lunarUtils';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
 
@@ -14,21 +15,20 @@ const LuckyDatesPage = () => {
   const [results, setResults] = useState<Date[]>([]);
 
   const occasions = [
-    { id: 'wedding', label: t('lucky.occasions.wedding'), term: '嫁娶' },
-    { id: 'moving', label: t('lucky.occasions.moving'), term: '移徙' },
-    { id: 'opening', label: t('lucky.occasions.opening'), term: '开市' },
-    { id: 'business', label: t('lucky.occasions.business'), term: '开业' },
-    { id: 'travel', label: t('lucky.occasions.travel'), term: '出行' },
-    { id: 'birth', label: t('lucky.occasions.birth'), term: '求嗣' },
-    { id: 'renovation', label: t('lucky.occasions.renovation'), term: '修造' },
-    { id: 'vehicle', label: t('lucky.occasions.vehicle'), term: '置产' },
-    { id: 'contract', label: t('lucky.occasions.contract'), term: '订盟' },
+    { id: 'wedding', label: t('lucky.occasions.wedding') },
+    { id: 'moving', label: t('lucky.occasions.moving') },
+    { id: 'opening', label: t('lucky.occasions.opening') },
+    { id: 'business', label: t('lucky.occasions.business') },
+    { id: 'travel', label: t('lucky.occasions.travel') },
+    { id: 'birth', label: t('lucky.occasions.birth') },
+    { id: 'renovation', label: t('lucky.occasions.renovation') },
+    { id: 'vehicle', label: t('lucky.occasions.vehicle') },
+    { id: 'contract', label: t('lucky.occasions.contract') },
   ];
 
   const handleFind = () => {
     if (!occasion) return;
-    const selectedOccasion = occasions.find(o => o.id === occasion);
-    const lucky = findLuckyDates(selectedOccasion?.term || '', new Date().getFullYear(), parseInt(month));
+    const lucky = findLuckyDates(occasion, new Date().getFullYear(), parseInt(month));
     setResults(lucky);
   };
 

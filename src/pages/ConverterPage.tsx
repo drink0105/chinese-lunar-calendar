@@ -7,14 +7,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 
 const ConverterPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [dateStr, setDateStr] = useState(new Date().toISOString().split('T')[0]);
   const [result, setResult] = useState<any>(null);
 
   const handleConvert = () => {
     const date = new Date(dateStr);
     if (!isNaN(date.getTime())) {
-      setResult(getLunarData(date));
+      setResult(getLunarData(date, i18n.language));
     }
   };
 
@@ -62,7 +62,7 @@ const ConverterPage = () => {
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                   <span className="text-gray-500 text-sm">{t('dashboard.zodiac')}</span>
-                  <span className="font-bold text-[#F39C12]">{result.lunarYear}</span>
+                  <span className="font-bold text-[#F39C12]">{result.zodiac}</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                   <span className="text-gray-500 text-sm">{t('dashboard.solar_term')}</span>

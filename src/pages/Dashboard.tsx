@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { getLunarData, getZodiacEmoji } from '@/utils/lunarUtils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar as CalendarIcon, Info } from 'lucide-react';
+import { Calendar as CalendarIcon } from 'lucide-react';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
 
 const Dashboard = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const today = new Date();
-  const data = getLunarData(today);
+  const data = getLunarData(today, i18n.language);
 
   const formattedDate = today.toLocaleDateString(undefined, {
     weekday: 'long',
