@@ -1,0 +1,64 @@
+{
+  "app": {
+    "name": "LunarDays 農曆通",
+    "description": "中國農曆與黃曆吉日"
+  },
+  "nav": {
+    "today": "今日",
+    "calendar": "日曆",
+    "converter": "轉換",
+    "lucky": "吉日"
+  },
+  "dashboard": {
+    "lunar_date": "農曆日期",
+    "zodiac": "生肖年",
+    "solar_term": "節氣",
+    "auspicious": "宜",
+    "inauspicious": "忌",
+    "clash": "衝生肖",
+    "holiday": "節日",
+    "no_holiday": "無公休日"
+  },
+  "calendar": {
+    "prev": "上月",
+    "next": "下月",
+    "sun": "日",
+    "mon": "一",
+    "tue": "二",
+    "wed": "三",
+    "thu": "四",
+    "fri": "五",
+    "sat": "六"
+  },
+  "converter": {
+    "title": "日期轉換",
+    "select_date": "選擇公曆日期",
+    "convert": "轉換",
+    "result": "農曆結果"
+  },
+  "lucky": {
+    "title": "吉日查詢",
+    "select_occasion": "選擇事項",
+    "select_month": "選擇月份",
+    "find": "查詢吉日",
+    "occasions": {
+      "wedding": "嫁娶",
+      "moving": "移徙",
+      "opening": "開市",
+      "business": "開業",
+      "travel": "出行",
+      "birth": "求嗣",
+      "renovation": "修造",
+      "vehicle": "置產",
+      "contract": "訂盟"
+    }
+  },
+  "consent": {
+    "message": "本應用使用 Cookie 進行分析和廣告。繼續使用即表示您同意。",
+    "accept": "接受"
+  },
+  "common": {
+    "loading": "載入中...",
+    "close": "關閉"
+  }
+}

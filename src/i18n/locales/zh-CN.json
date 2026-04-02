@@ -1,0 +1,64 @@
+{
+  "app": {
+    "name": "LunarDays 农历通",
+    "description": "中国农历与黄历吉日"
+  },
+  "nav": {
+    "today": "今日",
+    "calendar": "日历",
+    "converter": "转换",
+    "lucky": "吉日"
+  },
+  "dashboard": {
+    "lunar_date": "农历日期",
+    "zodiac": "生肖年",
+    "solar_term": "节气",
+    "auspicious": "宜",
+    "inauspicious": "忌",
+    "clash": "冲生肖",
+    "holiday": "节日",
+    "no_holiday": "无公休日"
+  },
+  "calendar": {
+    "prev": "上月",
+    "next": "下月",
+    "sun": "日",
+    "mon": "一",
+    "tue": "二",
+    "wed": "三",
+    "thu": "四",
+    "fri": "五",
+    "sat": "六"
+  },
+  "converter": {
+    "title": "日期转换",
+    "select_date": "选择公历日期",
+    "convert": "转换",
+    "result": "农历结果"
+  },
+  "lucky": {
+    "title": "吉日查询",
+    "select_occasion": "选择事项",
+    "select_month": "选择月份",
+    "find": "查询吉日",
+    "occasions": {
+      "wedding": "嫁娶",
+      "moving": "移徙",
+      "opening": "开市",
+      "business": "开业",
+      "travel": "出行",
+      "birth": "求嗣",
+      "renovation": "修造",
+      "vehicle": "置产",
+      "contract": "订盟"
+    }
+  },
+  "consent": {
+    "message": "本应用使用 Cookie 进行分析和广告。继续使用即表示您同意。",
+    "accept": "接受"
+  },
+  "common": {
+    "loading": "加载中...",
+    "close": "关闭"
+  }
+}

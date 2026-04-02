@@ -1,0 +1,64 @@
+{
+  "app": {
+    "name": "LunarDays",
+    "description": "Lịch Âm & Ngày Tốt"
+  },
+  "nav": {
+    "today": "Hôm nay",
+    "calendar": "Lịch",
+    "converter": "Chuyển đổi",
+    "lucky": "Ngày tốt"
+  },
+  "dashboard": {
+    "lunar_date": "Ngày âm lịch",
+    "zodiac": "Năm con giáp",
+    "solar_term": "Tiết khí",
+    "auspicious": "Nên làm (Nghi)",
+    "inauspicious": "Kiêng kỵ (Kỵ)",
+    "clash": "Xung khắc",
+    "holiday": "Ngày lễ",
+    "no_holiday": "Không có ngày lễ"
+  },
+  "calendar": {
+    "prev": "Tháng trước",
+    "next": "Tháng sau",
+    "sun": "CN",
+    "mon": "T2",
+    "tue": "T3",
+    "wed": "T4",
+    "thu": "T5",
+    "fri": "T6",
+    "sat": "T7"
+  },
+  "converter": {
+    "title": "Chuyển đổi ngày",
+    "select_date": "Chọn ngày dương lịch",
+    "convert": "Chuyển đổi",
+    "result": "Kết quả âm lịch"
+  },
+  "lucky": {
+    "title": "Tìm ngày tốt",
+    "select_occasion": "Chọn dịp",
+    "select_month": "Chọn tháng",
+    "find": "Tìm ngày tốt",
+    "occasions": {
+      "wedding": "Cưới hỏi",
+      "moving": "Chuyển nhà",
+      "opening": "Khai trương",
+      "business": "Mở cửa hàng",
+      "travel": "Xuất hành",
+      "birth": "Cầu tự",
+      "renovation": "Sửa chữa",
+      "vehicle": "Mua xe",
+      "contract": "Ký hợp đồng"
+    }
+  },
+  "consent": {
+    "message": "Ứng dụng này sử dụng cookie để phân tích và quảng cáo. Bằng cách tiếp tục, bạn đồng ý.",
+    "accept": "Chấp nhận"
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "close": "Đóng"
+  }
+}

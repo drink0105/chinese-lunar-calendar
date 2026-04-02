@@ -1,0 +1,64 @@
+{
+  "app": {
+    "name": "LunarDays",
+    "description": "Chinese Lunar Calendar & Auspicious Dates"
+  },
+  "nav": {
+    "today": "Today",
+    "calendar": "Calendar",
+    "converter": "Converter",
+    "lucky": "Lucky Dates"
+  },
+  "dashboard": {
+    "lunar_date": "Lunar Date",
+    "zodiac": "Zodiac Year",
+    "solar_term": "Solar Term",
+    "auspicious": "Auspicious (Yi)",
+    "inauspicious": "Inauspicious (Ji)",
+    "clash": "Clash Zodiac",
+    "holiday": "Holiday",
+    "no_holiday": "No Public Holiday"
+  },
+  "calendar": {
+    "prev": "Prev",
+    "next": "Next",
+    "sun": "Sun",
+    "mon": "Mon",
+    "tue": "Tue",
+    "wed": "Wed",
+    "thu": "Thu",
+    "fri": "Fri",
+    "sat": "Sat"
+  },
+  "converter": {
+    "title": "Date Converter",
+    "select_date": "Select Gregorian Date",
+    "convert": "Convert",
+    "result": "Lunar Result"
+  },
+  "lucky": {
+    "title": "Lucky Date Finder",
+    "select_occasion": "Select Occasion",
+    "select_month": "Select Month",
+    "find": "Find Lucky Dates",
+    "occasions": {
+      "wedding": "Wedding",
+      "moving": "Moving House",
+      "opening": "Grand Opening",
+      "business": "Business Start",
+      "travel": "Travel",
+      "birth": "Child Birth",
+      "renovation": "House Renovation",
+      "vehicle": "Vehicle Purchase",
+      "contract": "Sign Contract"
+    }
+  },
+  "consent": {
+    "message": "This app uses cookies for analytics and advertising. By continuing you agree.",
+    "accept": "Accept"
+  },
+  "common": {
+    "loading": "Loading...",
+    "close": "Close"
+  }
+}

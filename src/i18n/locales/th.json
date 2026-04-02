@@ -1,0 +1,64 @@
+{
+  "app": {
+    "name": "LunarDays",
+    "description": "ปฏิทินจันทรคติจีนและวันมงคล"
+  },
+  "nav": {
+    "today": "วันนี้",
+    "calendar": "ปฏิทิน",
+    "converter": "แปลงวันที่",
+    "lucky": "วันมงคล"
+  },
+  "dashboard": {
+    "lunar_date": "วันที่จันทรคติ",
+    "zodiac": "ปีนักษัตร",
+    "solar_term": "ฤดูกาล",
+    "auspicious": "ควรทำ (อี้)",
+    "inauspicious": "ไม่ควรทำ (จี้)",
+    "clash": "ปีชง",
+    "holiday": "วันหยุด",
+    "no_holiday": "ไม่มีวันหยุดราชการ"
+  },
+  "calendar": {
+    "prev": "ก่อนหน้า",
+    "next": "ถัดไป",
+    "sun": "อา.",
+    "mon": "จ.",
+    "tue": "อ.",
+    "wed": "พ.",
+    "thu": "พฤ.",
+    "fri": "ศ.",
+    "sat": "ส."
+  },
+  "converter": {
+    "title": "แปลงวันที่",
+    "select_date": "เลือกวันที่สากล",
+    "convert": "แปลง",
+    "result": "ผลลัพธ์จันทรคติ"
+  },
+  "lucky": {
+    "title": "ค้นหาวันมงคล",
+    "select_occasion": "เลือกโอกาส",
+    "select_month": "เลือกเดือน",
+    "find": "ค้นหาวันมงคล",
+    "occasions": {
+      "wedding": "แต่งงาน",
+      "moving": "ย้ายบ้าน",
+      "opening": "เปิดกิจการ",
+      "business": "เริ่มธุรกิจ",
+      "travel": "เดินทาง",
+      "birth": "คลอดบุตร",
+      "renovation": "ซ่อมแซมบ้าน",
+      "vehicle": "ซื้อรถ",
+      "contract": "เซ็นสัญญา"
+    }
+  },
+  "consent": {
+    "message": "แอปนี้ใช้คุกกี้เพื่อการวิเคราะห์และการโฆษณา การใช้งานต่อแสดงว่าคุณยอมรับ",
+    "accept": "ยอมรับ"
+  },
+  "common": {
+    "loading": "กำลังโหลด...",
+    "close": "ปิด"
+  }
+}
