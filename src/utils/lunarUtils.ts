@@ -12,8 +12,8 @@ export const getLunarData = (date: Date) => {
     lunarYear: `${lunar.getYearInGanZhi()}(${lunar.getYearShengXiao()})年`,
     zodiac: lunar.getYearShengXiao(),
     solarTerm: lunar.getJieQi() || null,
-    auspicious: lunar.getYi(),
-    inauspicious: lunar.getJi(),
+    auspicious: lunar.getDayYi(),
+    inauspicious: lunar.getDayJi(),
     clash: lunar.getDayChongDesc(),
     holiday: holiday ? holiday.getName() : null,
     isPublicHoliday: !!holiday && !holiday.isWork(),
@@ -61,10 +61,8 @@ export const findLuckyDates = (occasion: string, year: number, month: number) =>
   for (let i = 1; i <= lastDay; i++) {
     const date = new Date(year, month, i);
     const lunar = Lunar.fromDate(date);
-    const yi = lunar.getYi();
+    const yi = lunar.getDayYi();
     
-    // Simple matching logic for demonstration
-    // In a real app, we'd map the occasion keys to the Chinese terms in lunar-javascript
     if (yi.some(item => item.includes(occasion) || occasion.includes(item))) {
       luckyDates.push(date);
     }
