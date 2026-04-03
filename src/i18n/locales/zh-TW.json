@@ -17,7 +17,8 @@
     "inauspicious": "忌",
     "clash": "衝生肖",
     "holiday": "節日",
-    "no_holiday": "無公休日"
+    "no_holiday": "無公休日",
+    "noSolarTerm": "無"
   },
   "calendar": {
     "prev": "上月",

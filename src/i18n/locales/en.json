@@ -17,7 +17,8 @@
     "inauspicious": "Inauspicious (Ji)",
     "clash": "Clash Zodiac",
     "holiday": "Holiday",
-    "no_holiday": "No Public Holiday"
+    "no_holiday": "No Public Holiday",
+    "noSolarTerm": "None"
   },
   "calendar": {
     "prev": "Prev",

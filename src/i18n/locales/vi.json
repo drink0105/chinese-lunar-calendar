@@ -17,7 +17,8 @@
     "inauspicious": "Kiêng kỵ (Kỵ)",
     "clash": "Xung khắc",
     "holiday": "Ngày lễ",
-    "no_holiday": "Không có ngày lễ"
+    "no_holiday": "Không có ngày lễ",
+    "noSolarTerm": "Không có"
   },
   "calendar": {
     "prev": "Tháng trước",

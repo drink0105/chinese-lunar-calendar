@@ -17,7 +17,8 @@
     "inauspicious": "ไม่ควรทำ (จี้)",
     "clash": "ปีชง",
     "holiday": "วันหยุด",
-    "no_holiday": "ไม่มีวันหยุดราชการ"
+    "no_holiday": "ไม่มีวันหยุดราชการ",
+    "noSolarTerm": "ไม่มี"
   },
   "calendar": {
     "prev": "ก่อนหน้า",
