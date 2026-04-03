@@ -74,6 +74,21 @@ export const zodiac: Record<string, Record<string, string>> = {
   "猪": { en: "Pig", th: "หมู", vi: "Lợn", "zh-CN": "猪", "zh-TW": "豬" },
 };
 
+export const lunarMonthNames: Record<number, Record<string, string>> = {
+  1: { en: "1st", th: "เดือน 1", vi: "Tháng 1", "zh-CN": "正", "zh-TW": "正" },
+  2: { en: "2nd", th: "เดือน 2", vi: "Tháng 2", "zh-CN": "二", "zh-TW": "二" },
+  3: { en: "3rd", th: "เดือน 3", vi: "Tháng 3", "zh-CN": "三", "zh-TW": "三" },
+  4: { en: "4th", th: "เดือน 4", vi: "Tháng 4", "zh-CN": "四", "zh-TW": "四" },
+  5: { en: "5th", th: "เดือน 5", vi: "Tháng 5", "zh-CN": "五", "zh-TW": "五" },
+  6: { en: "6th", th: "เดือน 6", vi: "Tháng 6", "zh-CN": "六", "zh-TW": "六" },
+  7: { en: "7th", th: "เดือน 7", vi: "Tháng 7", "zh-CN": "七", "zh-TW": "七" },
+  8: { en: "8th", th: "เดือน 8", vi: "Tháng 8", "zh-CN": "八", "zh-TW": "八" },
+  9: { en: "9th", th: "เดือน 9", vi: "Tháng 9", "zh-CN": "九", "zh-TW": "九" },
+  10: { en: "10th", th: "เดือน 10", vi: "Tháng 10", "zh-CN": "十", "zh-TW": "十" },
+  11: { en: "11th", th: "เดือน 11", vi: "Tháng 11", "zh-CN": "十一", "zh-TW": "十一" },
+  12: { en: "12th", th: "เดือน 12", vi: "Tháng 12", "zh-CN": "腊", "zh-TW": "臘" },
+};
+
 export const jieqiMap: Record<string, Record<string, string>> = {
   "小寒": { en: "Minor Cold", th: "ลมหนาวเล็กน้อย", vi: "Tiểu Hàn", "zh-CN": "小寒", "zh-TW": "小寒" },
   "大寒": { en: "Major Cold", th: "ลมหนาวรุนแรง", vi: "Đại Hàn", "zh-CN": "大寒", "zh-TW": "大寒" },

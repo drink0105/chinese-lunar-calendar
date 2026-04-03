@@ -1,22 +1,55 @@
 import { Solar, Lunar, HolidayUtil } from 'lunar-javascript';
-import { translateLunarTerm } from './lunarTranslations';
+import { translateLunarTerm, lunarMonthNames, zodiac } from './lunarTranslations';
 import i18n from 'i18next';
 
-function parseAndTranslateChong(chongDesc: string, lang: string): string {
-  if (!chongDesc) return '';
-  // getDayChongDesc() returns format like "冲牛(辛丑)煞北"
-  const match = chongDesc.match(/冲(.+?)[（(]/);
-  if (!match) return chongDesc;
-  
-  const chineseAnimal = match[1];
-  const translatedAnimal = translateLunarTerm(chineseAnimal, lang);
-  
+const getTranslatedLunarDate = (lunar: any, lang: string) => {
+  const month = lunar.getMonth(); // negative for leap
+  const isLeap = month < 0;
+  const absMonth = Math.abs(month);
+
+  if (lang === 'zh-CN' || lang === 'zh-TW') {
+    return `${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`;
+  }
+
+  let monthStr = lunarMonthNames[absMonth]?.[lang] || `${absMonth}`;
+  if (isLeap) {
+    monthStr = (lang === 'vi' ? 'Nhuận ' : lang === 'th' ? 'อธิกมาส ' : 'Leap ') + monthStr;
+  }
+
+  const day = lunar.getDay();
+  let dayStr = `${day}`;
+  if (lang === 'en') {
+    const suffix = ["th", "st", "nd", "rd"][(day % 10 > 3 || Math.floor(day % 100 / 10) === 1) ? 0 : day % 10];
+    dayStr = `${day}${suffix}`;
+  }
+
+  if (lang === 'vi') return `Ngày ${dayStr}, Tháng ${monthStr}`;
+  if (lang === 'th') return `วันที่ ${dayStr} เดือน ${monthStr}`;
+  return `${monthStr} Month, ${dayStr} Day`;
+};
+
+const getTranslatedZodiac = (shengxiao: string, lang: string) => {
+  return zodiac[shengxiao]?.[lang] || shengxiao;
+};
+
+const getTranslatedClash = (chongDesc: string, lang: string) => {
   if (lang === 'zh-CN' || lang === 'zh-TW') return chongDesc;
   
-  const ganZhiMatch = chongDesc.match(/[（(](.+?)[）)]/);
-  const ganZhi = ganZhiMatch ? ganZhiMatch[1] : '';
-  return `${translatedAnimal} (${ganZhi})`;
-}
+  // e.g. "冲牛(辛丑)煞北"
+  const animalMatch = chongDesc.match(/冲([鼠牛虎兔龙蛇马羊猴鸡狗猪])/);
+  if (animalMatch) {
+    const animal = animalMatch[1];
+    const translatedAnimal = zodiac[animal]?.[lang] || animal;
+    
+    const ganZhiMatch = chongDesc.match(/[（(](.+?)[）)]/);
+    const ganZhi = ganZhiMatch ? ganZhiMatch[1] : '';
+    
+    if (lang === 'en') return `Clash ${translatedAnimal} (${ganZhi})`;
+    if (lang === 'vi') return `Xung ${translatedAnimal} (${ganZhi})`;
+    if (lang === 'th') return `ชง ${translatedAnimal} (${ganZhi})`;
+  }
+  return chongDesc;
+};
 
 export const getLunarData = (date: Date, lang: string = 'en') => {
   const solar = Solar.fromYmd(date.getFullYear(), date.getMonth() + 1, date.getDate());
@@ -30,47 +63,20 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
   const rawInauspicious = lunar.getDayJi();
   const rawFestivals = lunar.getFestivals();
 
-  // Fix 1: Lunar date display
-  let lunarDateStr = '';
-  if (lang === 'zh-CN' || lang === 'zh-TW') {
-    lunarDateStr = `${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`;
-  } else {
-    const m = lunar.getMonth();
-    const d = lunar.getDay();
-    if (lang === 'th') {
-      lunarDateStr = `เดือน ${m} วันที่ ${d}`;
-    } else if (lang === 'vi') {
-      lunarDateStr = `Tháng ${m}, Ngày ${d}`;
-    } else {
-      lunarDateStr = `Month ${m}, Day ${d}`;
-    }
-  }
-
-  // Fix 2: Year display
-  let lunarYearStr = '';
-  const translatedZodiac = translateLunarTerm(rawZodiac, lang);
-  if (lang === 'zh-CN' || lang === 'zh-TW') {
-    lunarYearStr = `${lunar.getYearInGanZhi()}(${rawZodiac})年`;
-  } else if (lang === 'en') {
-    lunarYearStr = `${lunar.getYearInGanZhi()} — Year of the ${translatedZodiac}`;
-  } else {
-    lunarYearStr = translatedZodiac;
-  }
-
-  // Fix 3: Solar Term fallback
+  const translatedZodiac = getTranslatedZodiac(rawZodiac, lang);
   const solarTermStr = rawSolarTerm 
     ? translateLunarTerm(rawSolarTerm, lang) 
     : i18n.t('dashboard.noSolarTerm', { lng: lang });
 
   return {
     solarDate: solar.toFullString(),
-    lunarDate: lunarDateStr,
-    lunarYear: lunarYearStr,
+    lunarDate: getTranslatedLunarDate(lunar, lang),
+    lunarYear: `${lunar.getYearInGanZhi()} (${translatedZodiac})`,
     zodiac: translatedZodiac,
     solarTerm: solarTermStr,
     auspicious: rawAuspicious.map(item => translateLunarTerm(item, lang)),
     inauspicious: rawInauspicious.map(item => translateLunarTerm(item, lang)),
-    clash: parseAndTranslateChong(lunar.getDayChongDesc(), lang),
+    clash: getTranslatedClash(lunar.getDayChongDesc(), lang),
     holiday: holiday ? holiday.getName() : (rawFestivals.length > 0 ? translateLunarTerm(rawFestivals[0], lang) : null),
     isPublicHoliday: !!holiday && !holiday.isWork(),
     lunarMonth: lunar.getMonthInChinese(),
@@ -78,6 +84,7 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
     ganZhiYear: lunar.getYearInGanZhi(),
     ganZhiMonth: lunar.getMonthInGanZhi(),
     ganZhiDay: lunar.getDayInGanZhi(),
+    rawZodiac: rawZodiac
   };
 };
 

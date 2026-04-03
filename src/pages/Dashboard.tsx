@@ -40,14 +40,14 @@ const Dashboard = () => {
                   {t('dashboard.lunar_date')}
                 </p>
                 <h2 className="text-2xl font-bold text-gray-800">
-                  {data.lunarMonth}月{data.lunarDay}
+                  {data.lunarDate}
                 </h2>
                 <p className="text-sm text-[#F39C12] font-medium">
                   {data.ganZhiYear} {data.lunarYear}
                 </p>
               </div>
               <div className="text-4xl bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
-                {getZodiacEmoji(data.zodiac)}
+                {getZodiacEmoji(data.rawZodiac)}
               </div>
             </div>
 
