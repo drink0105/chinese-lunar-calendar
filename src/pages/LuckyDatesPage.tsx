@@ -4,7 +4,7 @@ import { findLuckyDates } from '@/utils/lunarUtils';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import Badge from '@/components/Badge';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
 
@@ -101,7 +101,7 @@ const LuckyDatesPage = () => {
                     {date.toLocaleDateString(undefined, { weekday: 'long' })}
                   </p>
                 </div>
-                <Badge className="bg-[#F39C12] text-white border-none">
+                <Badge variant="warning">
                   {t('lucky.occasions.' + occasion)}
                 </Badge>
               </motion.div>
