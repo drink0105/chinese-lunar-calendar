@@ -16,6 +16,7 @@
     "auspicious": "宜",
     "inauspicious": "忌",
     "clash": "冲生肖",
+    "clashZodiac": "冲生肖",
     "holiday": "节日",
     "no_holiday": "无公休日",
     "noSolarTerm": "无"

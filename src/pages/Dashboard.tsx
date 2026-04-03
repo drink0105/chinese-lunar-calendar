@@ -57,7 +57,7 @@ const Dashboard = () => {
                 <p className="font-bold text-[#C0392B]">{data.solarTerm || '-'}</p>
               </div>
               <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
-                <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('dashboard.clash')}</p>
+                <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('dashboard.clashZodiac')}</p>
                 <p className="font-bold text-gray-700">{data.clash}</p>
               </div>
             </div>

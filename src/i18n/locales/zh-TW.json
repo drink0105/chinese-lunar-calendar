@@ -16,6 +16,7 @@
     "auspicious": "宜",
     "inauspicious": "忌",
     "clash": "衝生肖",
+    "clashZodiac": "衝生肖",
     "holiday": "節日",
     "no_holiday": "無公休日",
     "noSolarTerm": "無"
@@ -39,7 +40,7 @@
   },
   "lucky": {
     "title": "吉日查詢",
-    "select_occasion": "選擇事項",
+    "select_事項": "選擇事項",
     "select_month": "選擇月份",
     "find": "查詢吉日",
     "occasions": {

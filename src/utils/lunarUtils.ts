@@ -32,23 +32,22 @@ const getTranslatedZodiac = (shengxiao: string, lang: string) => {
   return zodiac[shengxiao]?.[lang] || shengxiao;
 };
 
-const getTranslatedClash = (chongDesc: string, lang: string) => {
+const getTranslatedClash = (chongDesc: string, lang: string): string => {
+  if (!chongDesc) return '';
   if (lang === 'zh-CN' || lang === 'zh-TW') return chongDesc;
-  
-  // e.g. "冲牛(辛丑)煞北"
-  const animalMatch = chongDesc.match(/冲([鼠牛虎兔龙蛇马羊猴鸡狗猪])/);
-  if (animalMatch) {
+
+  // Extract the animal part (the last Chinese character)
+  const animalMatch = chongDesc.match(/([鼠牛虎兔龙蛇马羊猴鸡狗猪])/);
+  if (animalMatch && animalMatch[1]) {
     const animal = animalMatch[1];
     const translatedAnimal = zodiac[animal]?.[lang] || animal;
-    
-    const ganZhiMatch = chongDesc.match(/[（(](.+?)[）)]/);
-    const ganZhi = ganZhiMatch ? ganZhiMatch[1] : '';
-    
-    if (lang === 'en') return `Clash ${translatedAnimal} (${ganZhi})`;
-    if (lang === 'vi') return `Xung ${translatedAnimal} (${ganZhi})`;
-    if (lang === 'th') return `ชง ${translatedAnimal} (${ganZhi})`;
+
+    // Replace only the animal part, keep the (GanZhi) prefix as-is
+    return chongDesc.replace(animal, translatedAnimal);
   }
-  return chongDesc;
+
+  // Fallback: try to translate the whole thing if it's just an animal
+  return zodiac[chongDesc]?.[lang] || chongDesc;
 };
 
 export const getLunarData = (date: Date, lang: string = 'en') => {
