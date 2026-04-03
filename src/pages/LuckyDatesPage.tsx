@@ -9,10 +9,10 @@ import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
 
 const LuckyDatesPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [occasion, setOccasion] = useState('');
   const [month, setMonth] = useState(new Date().getMonth().toString());
-  const [results, setResults] = useState<Date[]>([]);
+  const [results, setResults] = useState<{date: Date, terms: string[]}[]>([]);
 
   const occasions = [
     { id: 'wedding', label: t('lucky.occasions.wedding') },
@@ -28,7 +28,7 @@ const LuckyDatesPage = () => {
 
   const handleFind = () => {
     if (!occasion) return;
-    const lucky = findLuckyDates(occasion, new Date().getFullYear(), parseInt(month));
+    const lucky = findLuckyDates(occasion, new Date().getFullYear(), parseInt(month), i18n.language);
     setResults(lucky);
   };
 
@@ -85,7 +85,7 @@ const LuckyDatesPage = () => {
 
         {results.length > 0 && (
           <div className="grid grid-cols-1 gap-3">
-            {results.map((date, i) => (
+            {results.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -10 }}
@@ -95,11 +95,18 @@ const LuckyDatesPage = () => {
               >
                 <div>
                   <p className="font-bold text-gray-800">
-                    {date.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
+                    {item.date.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
                   </p>
                   <p className="text-xs text-gray-400">
-                    {date.toLocaleDateString(undefined, { weekday: 'long' })}
+                    {item.date.toLocaleDateString(undefined, { weekday: 'long' })}
                   </p>
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    {item.terms.map((term, idx) => (
+                      <span key={idx} className="text-[10px] text-green-600 bg-green-50 px-1 rounded">
+                        {term}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 <Badge variant="warning">
                   {t('lucky.occasions.' + occasion)}

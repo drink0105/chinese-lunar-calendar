@@ -18,7 +18,7 @@ function parseAndTranslateChong(chongDesc: string, lang: string): string {
   return `${translatedAnimal} (${ganZhi})`;
 }
 
-export const getLunarData = (date: Date, lang: string) => {
+export const getLunarData = (date: Date, lang: string = 'en') => {
   const solar = Solar.fromYmd(date.getFullYear(), date.getMonth() + 1, date.getDate());
   const lunar = solar.getLunar();
   
@@ -111,20 +111,19 @@ export const getMonthDays = (year: number, month: number, lang: string) => {
   return days;
 };
 
-// Fix 6: Expanded occasion mapping
 const occasionToYiTerms: Record<string, string[]> = {
   wedding: ["嫁娶", "纳采", "问名", "纳婿"],
   moving: ["移徙", "入宅", "安床"],
-  grandOpening: ["开市", "开光", "挂匾"],
+  opening: ["开市", "开光", "挂匾"],
   business: ["交易", "立券", "订盟", "开市", "求财"],
   travel: ["出行", "乘船", "渡水"],
-  childBirth: ["祈福", "祭祀", "祈嗣"],
+  birth: ["祈福", "祭祀", "祈嗣"],
   renovation: ["修造", "动土", "上梁", "起基", "定磉", "竖柱"],
-  vehiclePurchase: ["交易", "纳畜", "安机械"],
-  signContract: ["订盟", "立券", "交易", "纳采"],
+  vehicle: ["交易", "纳畜", "安机械"],
+  contract: ["订盟", "立券", "交易", "纳采"],
 };
 
-export const findLuckyDates = (occasionKey: string, year: number, month: number) => {
+export const findLuckyDates = (occasionKey: string, year: number, month: number, lang: string = 'en') => {
   const luckyDates = [];
   const lastDay = new Date(year, month + 1, 0).getDate();
   const targetTerms = occasionToYiTerms[occasionKey] || [];
@@ -134,9 +133,15 @@ export const findLuckyDates = (occasionKey: string, year: number, month: number)
     const lunar = Lunar.fromDate(date);
     const yi = lunar.getDayYi();
     
-    // Matching logic using raw Chinese strings
     if (yi.some(item => targetTerms.includes(item))) {
-      luckyDates.push(date);
+      const translatedYi = yi
+        .filter(item => targetTerms.includes(item))
+        .map(item => translateLunarTerm(item, lang));
+        
+      luckyDates.push({
+        date,
+        terms: translatedYi
+      });
     }
   }
   
