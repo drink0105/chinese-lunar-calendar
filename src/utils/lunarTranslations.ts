@@ -5,12 +5,12 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "开市": { en: "Grand Opening", th: "เปิดกิจการ", vi: "Khai trương", "zh-CN": "开市", "zh-TW": "开市" },
   "出行": { en: "Travel", th: "เดินทาง", vi: "Du lịch", "zh-CN": "出行", "zh-TW": "出行" },
   "祭祀": { en: "Worship", th: "บูชา", vi: "Cúng tế", "zh-CN": "祭祀", "zh-TW": "祭祀" },
-  "祈福": { en: "Pray for Blessings", th: "อธิษฐาน", vi: "Cầu phúc", "zh-CN": "祈福", "zh-TW": "祈福" },
+  "祈福": { en: "Pray for Blessings", th: "อธิษฐานขอพร", vi: "Cầu phúc", "zh-CN": "祈福", "zh-TW": "祈福" },
   "动土": { en: "Break Ground", th: "ฝังรากฐาน", vi: "Khởi công", "zh-CN": "动土", "zh-TW": "动土" },
   "安床": { en: "Install Bed", th: "ติดตั้งเตียง", vi: "Đặt giường", "zh-CN": "安床", "zh-TW": "安床" },
   "纳采": { en: "Engagement", th: "หมั้น", vi: "Đính hôn", "zh-CN": "纳采", "zh-TW": "纳采" },
   "入宅": { en: "Move Into New Home", th: "เข้าบ้านใหม่", vi: "Vào nhà mới", "zh-CN": "入宅", "zh-TW": "入宅" },
-  "安葬": { en: "Burial", th: "ฝังศพ", vi: "Chôn cất", "zh-CN": "安葬", "zh-TW": "安葬" },
+  "安葬": { en: "Burial", th: "ฝังศพ", vi: "An táng", "zh-CN": "安葬", "zh-TW": "安葬" },
   "修造": { en: "Renovation", th: "ปรับปรุงบ้าน", vi: "Sửa chữa", "zh-CN": "修造", "zh-TW": "修造" },
   "破土": { en: "Break Ground for Tomb", th: "ขุดดิน", vi: "Đào đất", "zh-CN": "破土", "zh-TW": "破土" },
   "栽种": { en: "Planting", th: "ปลูกต้นไม้", vi: "Trồng cây", "zh-CN": "栽种", "zh-TW": "栽种" },
@@ -57,6 +57,12 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "纳婿": { en: "Welcome Son-in-law", th: "ต้อนรับลูกเขย", vi: "Đón rể", "zh-CN": "纳婿", "zh-TW": "纳婿" },
   "归宁": { en: "Visit Parents After Marriage", th: "เยี่ยมพ่อแม่หลังแต่งงาน", vi: "Thăm nhà mẹ", "zh-CN": "归宁", "zh-TW": "归宁" },
   "问名": { en: "Inquire Name (Betrothal)", th: "สอบถามชื่อ", vi: "Hỏi tên", "zh-CN": "问名", "zh-TW": "问名" },
+  "塞穴": { en: "Seal Hole/Cavity", th: "อุดรู", vi: "Bịt lỗ", "zh-CN": "塞穴", "zh-TW": "塞穴" },
+  "畋猎": { en: "Hunting", th: "ล่าสัตว์", vi: "Săn bắn", "zh-CN": "畋猎", "zh-TW": "畋獵" },
+  "结网": { en: "Weave Net", th: "ทอแห", vi: "Kết lưới", "zh-CN": "结网", "zh-TW": "結網" },
+  "取渔": { en: "Fishing", th: "จับปลา", vi: "Đánh bắt cá", "zh-CN": "取渔", "zh-TW": "取漁" },
+  "扫舍": { en: "House Cleaning", th: "ทำความสะอาดบ้าน", vi: "Quét nhà", "zh-CN": "扫舍", "zh-TW": "掃舍" },
+  "馀事勿取": { en: "Avoid Other Matters", th: "งดเว้นกิจอื่น", vi: "Tránh việc khác", "zh-CN": "馀事勿取", "zh-TW": "餘事勿取" },
 };
 
 export const zodiac: Record<string, Record<string, string>> = {
@@ -128,6 +134,7 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "除夕": { en: "Chinese New Year's Eve", th: "คืนส่งท้ายปีจีน", vi: "Giao Thừa", "zh-CN": "除夕", "zh-TW": "除夕" },
   "腊八节": { en: "Laba Festival", th: "เทศกาลลาปา", vi: "Lễ Lạp Bát", "zh-CN": "腊八节", "zh-TW": "腊八节" },
   "小年": { en: "Minor New Year", th: "ปีใหม่เล็ก", vi: "Tết Táo Quân", "zh-CN": "小年", "zh-TW": "小年" },
+  "上巳节": { en: "Shangsi Festival", th: "เทศกาลซ่างซื่อ", vi: "Thượng Tự Tiết", "zh-CN": "上巳节", "zh-TW": "上巳節" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
