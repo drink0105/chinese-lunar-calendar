@@ -185,6 +185,7 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "五一": { en: "May Day", th: "วันเมย์เดย์", vi: "Ngày 1/5", "zh-CN": "五一", "zh-TW": "五一" },
   "母亲节": { en: "Mother's Day", th: "วันแม่", vi: "Ngày của Mẹ", "zh-CN": "母亲节", "zh-TW": "母親節" },
   "全国助残日": { en: "National Disability Day", th: "วันแห่งคนพิการแห่งชาติ", vi: "Ngày Quốc gia Người khuyết tật", "zh-CN": "全国助残日", "zh-TW": "全國助殘日" },
+  "儿童节": { en: "Children's Day", th: "วันเด็ก", vi: "Ngày Thiếu nhi", "zh-CN": "儿童节", "zh-TW": "兒童節" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
@@ -195,7 +196,7 @@ export const translateLunarTerm = (term: string, lang: string): string => {
     }
   }
   if (!lang.startsWith('zh')) {
-    console.warn('Unknown lunar term:', term);
+    console.warn(`Missing translation for lunar term: "${term}" in lang ${lang}`);
   }
   return term; // fallback to original Chinese
 };

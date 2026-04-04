@@ -39,11 +39,11 @@ const CalendarPage = () => {
       >
         <div className="bg-[#C0392B] p-4 flex justify-between items-center text-white">
           <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20">
-            <ChevronLeft size={20} />
+            <ChevronLeft size(20) />
           </Button>
           <h2 className="font-bold text-lg">{monthName}</h2>
           <Button variant="ghost" size="icon" onClick={nextMonth} className="text-white hover:bg-white/20">
-            <ChevronRight size={20} />
+            <ChevronRight size(20) />
           </Button>
         </div>
 
@@ -107,7 +107,7 @@ const CalendarPage = () => {
                 <div className="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
                   <div>
                     <p className="text-xs text-gray-400 font-bold uppercase">{t('dashboard.lunar_date')}</p>
-                    <p className="font-bold text-gray-800">{selectedDay.lunar.lunarMonth}月{selectedDay.lunar.lunarDay}</p>
+                    <p className="font-bold text-gray-800">{selectedDay.lunar.lunarDate}</p>
                   </div>
                   <div className="text-right">
                     <p className="text-xs text-gray-400 font-bold uppercase">{t('dashboard.zodiac')}</p>
@@ -118,11 +118,23 @@ const CalendarPage = () => {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3 border border-green-100 bg-green-50 rounded-xl">
                     <p className="text-[10px] text-green-600 font-bold uppercase mb-1">{t('dashboard.auspicious')}</p>
-                    <p className="text-xs text-green-800 leading-relaxed">{selectedDay.lunar.auspicious.join(', ')}</p>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedDay.lunar.auspicious.map((item: string, i: number) => (
+                        <span key={i} className="text-[10px] bg-green-100 text-green-800 px-1.5 py-0.5 rounded">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                   <div className="p-3 border border-red-100 bg-red-50 rounded-xl">
                     <p className="text-[10px] text-red-600 font-bold uppercase mb-1">{t('dashboard.inauspicious')}</p>
-                    <p className="text-xs text-red-800 leading-relaxed">{selectedDay.lunar.inauspicious.join(', ')}</p>
+                    <div className="flex flex-wrap gap-1">
+                      {selectedDay.lunar.inauspicious.map((item: string, i: number) => (
+                        <span key={i} className="text-[10px] bg-red-100 text-red-800 px-1.5 py-0.5 rounded">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

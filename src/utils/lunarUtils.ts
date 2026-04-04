@@ -5,25 +5,18 @@ import i18n from 'i18next';
 const getTranslatedLunarDate = (lunar: any, lang: string): string => {
   const monthNum = Math.abs(lunar.getMonth());
   const isLeap = lunar.getMonth() < 0;
-  const dayNum = lunar.getDay(); // numeric day 1-30
+  const dayNum = lunar.getDay();
 
   if (lang === 'zh-CN' || lang === 'zh-TW') {
     const leapStr = isLeap ? '闰' : '';
     return `${leapStr}${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`;
   }
 
-  // Automatic readable format for en/th/vi
+  // Automatic for en/th/vi
   let monthStr = lunarMonthNames[monthNum]?.[lang] || `${monthNum}th Month`;
-  if (isLeap) {
-    monthStr = (lang === 'vi' ? 'Nhuận ' : lang === 'th' ? 'อธิกมาส ' : 'Leap ') + monthStr;
-  }
+  if (isLeap) monthStr = `Leap ${monthStr}`;
 
-  // Simple ordinal day
-  const ordinal = (n: number) => {
-    const s = ['th', 'st', 'nd', 'rd'];
-    const v = n % 100;
-    return n + (s[(v - 20) % 10] || s[v] || s[0]);
-  };
+  const ordinal = (n: number) => n + (['th','st','nd','rd'][((n%100)-20)%10] || ['th','st','nd','rd'][n%10] || 'th');
   const dayStr = lang === 'en' ? ordinal(dayNum) : (lunarDayNames[dayNum]?.[lang] || `${dayNum}`);
 
   if (lang === 'vi') return `${dayStr}, ${monthStr}`;
