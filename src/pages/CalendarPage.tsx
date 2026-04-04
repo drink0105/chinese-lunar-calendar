@@ -23,7 +23,10 @@ const CalendarPage = () => {
   const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
   const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
 
-  const monthName = currentDate.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+  const formattedHeader = currentDate.toLocaleDateString(i18n.language, { 
+    year: 'numeric', 
+    month: 'long' 
+  });
 
   const weekDays = [
     t('calendar.sun'), t('calendar.mon'), t('calendar.tue'), 
@@ -41,7 +44,7 @@ const CalendarPage = () => {
           <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20">
             <ChevronLeft size={20} />
           </Button>
-          <h2 className="font-bold text-lg">{monthName}</h2>
+          <h2 className="font-bold text-lg">{formattedHeader}</h2>
           <Button variant="ghost" size="icon" onClick={nextMonth} className="text-white hover:bg-white/20">
             <ChevronRight size={20} />
           </Button>
@@ -93,7 +96,7 @@ const CalendarPage = () => {
             <>
               <DialogHeader>
                 <DialogTitle className="text-[#C0392B] text-xl">
-                  {selectedDay.date.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
+                  {selectedDay.date.toLocaleDateString(i18n.language, { month: 'long', day: 'numeric', year: 'numeric' })}
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-4 mt-4">

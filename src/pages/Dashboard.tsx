@@ -12,7 +12,7 @@ const Dashboard = () => {
   const today = new Date();
   const data = getLunarData(today, i18n.language);
 
-  const formattedDate = today.toLocaleDateString(undefined, {
+  const formattedDate = today.toLocaleDateString(i18n.language, {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
