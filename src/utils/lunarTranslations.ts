@@ -34,7 +34,7 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "诸事不宜": { en: "Avoid All Activities", th: "ไม่เป็นมงคล", vi: "Tránh mọi việc", "zh-CN": "诸事不宜", "zh-TW": "诸事不宜" },
   "上梁": { en: "Roof Installation", th: "ติดตั้งหลังคา", vi: "Đặt đòn nóc", "zh-CN": "上梁", "zh-TW": "上梁" },
   "开光": { en: "Consecration", th: "พิธีเปิด", vi: "Khai quang", "zh-CN": "开光", "zh-TW": "开光" },
-  "造车器": { en: "Make Vehicles/Tools", th: "ทำยานพาหนะ", vi: "Chế tạo xe cộ", "zh-CN": "造车器", "zh-TW": "造车器" },
+  "造车器": { en: "Make Vehicles/Tools", th: "ทำยานพาหนะเครื่องมือ", vi: "Chế tạo xe cộ dụng cụ", "zh-CN": "造车器", "zh-TW": "造車器" },
   "理发": { en: "Haircut", th: "ตัดผม", vi: "Cắt tóc", "zh-CN": "理发", "zh-TW": "理发" },
   "合寿木": { en: "Make Coffin", th: "ทำโลงศพ", vi: "Làm áo quan", "zh-CN": "合寿木", "zh-TW": "合寿木" },
   "破屋": { en: "Demolish House", th: "รื้อถอนบ้าน", vi: "Phá nhà", "zh-CN": "破屋", "zh-TW": "破屋" },
@@ -83,6 +83,14 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "移柩": { en: "Move Coffin", th: "ย้ายโลงศพ", vi: "Di cữu", "zh-CN": "移柩", "zh-TW": "移柩" },
   "立碑": { en: "Erect Tombstone", th: "ตั้งเสาเอก", vi: "Lập bia", "zh-CN": "立碑", "zh-TW": "立碑" },
   "补垣": { en: "Repair Wall", th: "ซ่อมกำแพง", vi: "Bổ tường", "zh-CN": "补垣", "zh-TW": "補垣" },
+  "盖屋": { en: "Build House", th: "สร้างบ้าน", vi: "Xây nhà", "zh-CN": "盖屋", "zh-TW": "蓋屋" },
+  "教牛马": { en: "Train Oxen & Horses", th: "ฝึกวัวและม้า", vi: "Huấn luyện trâu ngựa", "zh-CN": "教牛马", "zh-TW": "教牛馬" },
+  "造畜稠": { en: "Build Livestock Pen", th: "สร้างคอกสัตว์", vi: "Xây chuồng gia súc", "zh-CN": "造畜稠", "zh-TW": "造畜稠" },
+  "割蜜": { en: "Harvest Honey", th: "เก็บน้ำผึ้ง", vi: "Thu hoạch mật", "zh-CN": "割蜜", "zh-TW": "割蜜" },
+  "捕捉": { en: "Capture/Hunting", th: "จับสัตว์", vi: "Bắt", "zh-CN": "捕捉", "zh-TW": "捕捉" },
+  "斋醮": { en: "Taoist Ritual/Fasting", th: "พิธี斋醮", vi: "Trai giới", "zh-CN": "斋醮", "zh-TW": "齋醮" },
+  "合脊": { en: "Join Roof Ridge", th: "ต่อสันหลังคา", vi: "Hợp cốt", "zh-CN": "合脊", "zh-TW": "合脊" },
+  "立柱": { en: "Erect Pillars", th: "ตั้งเสา", vi: "Lập trụ", "zh-CN": "立柱", "zh-TW": "立柱" },
   "无": { en: "None", th: "ไม่มี", vi: "Không có", "zh-CN": "无", "zh-TW": "無" },
 };
 
@@ -199,6 +207,9 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "分龙节": { en: "Fenlong Festival", th: "เทศกาลเฟินหลง", vi: "Phân Long Tiết", "zh-CN": "分龙节", "zh-TW": "分龍節" },
   "会龙节": { en: "Huilong Festival", th: "เทศกาลหุ่ยหลง", vi: "Hội Long Tiết", "zh-CN": "会龙节", "zh-TW": "會龍節" },
   "天贶节": { en: "Tiankuang Festival", th: "เทศกาลเทียนควาง", vi: "Thiên Khoáng Tiết", "zh-CN": "天贶节", "zh-TW": "天貺節" },
+  "建军节": { en: "Army Day", th: "วันกองทัพ", vi: "Ngày Quân đội", "zh-CN": "建军节", "zh-TW": "建軍節" },
+  "观莲节": { en: "Lotus Viewing Festival", th: "เทศกาลชมบัว", vi: "Quan Liên Tiết", "zh-CN": "观莲节", "zh-TW": "觀蓮節" },
+  "五谷母节": { en: "Five Grains Mother Festival", th: "เทศกาลแม่ธัญพืชห้า", vi: "Ngũ Cốc Mẫu Tiết", "zh-CN": "五谷母节", "zh-TW": "五穀母節" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {

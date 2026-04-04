@@ -97,7 +97,7 @@ const CalendarPage = () => {
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-4 mt-4">
-                {selectedDay.lunar.isHoliday && (
+                {selectedDay.lunar.isHoliday && selectedDay.lunar.holidayNames.length > 0 && (
                   <div className="p-3 bg-red-50 rounded-xl border border-red-100">
                     <p className="text-[10px] text-red-400 font-bold uppercase mb-1">{t('dashboard.holiday')}</p>
                     <p className="font-bold text-[#C0392B]">{selectedDay.lunar.holidayNames.join(', ')}</p>
