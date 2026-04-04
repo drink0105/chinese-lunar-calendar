@@ -63,6 +63,18 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "取渔": { en: "Fishing", th: "จับปลา", vi: "Đánh bắt cá", "zh-CN": "取渔", "zh-TW": "取漁" },
   "扫舍": { en: "House Cleaning", th: "ทำความสะอาดบ้าน", vi: "Quét nhà", "zh-CN": "扫舍", "zh-TW": "掃舍" },
   "馀事勿取": { en: "Avoid Other Matters", th: "งดเว้นกิจอื่น", vi: "Tránh việc khác", "zh-CN": "馀事勿取", "zh-TW": "餘事勿取" },
+  "进人口": { en: "Increase Household", th: "เพิ่มสมาชิกบ้าน", vi: "Tăng nhân khẩu", "zh-CN": "进人口", "zh-TW": "進人口" },
+  "会亲友": { en: "Meet Relatives & Friends", th: "พบปะญาติพี่น้อง", vi: "Gặp họ hàng bạn bè", "zh-CN": "会亲友", "zh-TW": "會親友" },
+  "平治道涂": { en: "Repair Roads", th: "ซ่อมถนน", vi: "Sửa đường sá", "zh-CN": "平治道涂", "zh-TW": "平治道塗" },
+  "入殓": { en: "Encoffining", th: "ใส่โลงศพ", vi: "Nhập liệm", "zh-CN": "入殓", "zh-TW": "入殮" },
+  "除服": { en: "Remove Mourning", th: "ถอดชุดไว้ทุกข์", vi: "Tháo tang phục", "zh-CN": "除服", "zh-TW": "除服" },
+  "成服": { en: "Wear Mourning", th: "สวมชุดไว้ทุกข์", vi: "Thành phục", "zh-CN": "成服", "zh-TW": "成服" },
+  "作梁": { en: "Install Beam", th: "ทำคานหลังคา", vi: "Làm xà", "zh-CN": "作梁", "zh-TW": "作樑" },
+  "求嗣": { en: "Pray for Heir", th: "ขอทายาท", vi: "Cầu tự", "zh-CN": "求嗣", "zh-TW": "求嗣" },
+  "造仓": { en: "Build Warehouse", th: "สร้างคลังสินค้า", vi: "Xây kho", "zh-CN": "造仓", "zh-TW": "造倉" },
+  "置产": { en: "Acquire Property", th: "ซื้อทรัพย์สิน", vi: "Mua tài sản", "zh-CN": "置产", "zh-TW": "置產" },
+  "启钻": { en: "Start Drilling", th: "เริ่มเจาะ", vi: "Khởi khoan", "zh-CN": "启钻", "zh-TW": "啟鑽" },
+  "修坟": { en: "Repair Tomb", th: "ซ่อมหลุมศพ", vi: "Sửa mộ", "zh-CN": "修坟", "zh-TW": "修墳" },
 };
 
 export const zodiac: Record<string, Record<string, string>> = {
@@ -171,6 +183,8 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "劳动节": { en: "Labor Day", th: "วันแรงงาน", vi: "Ngày Lao động", "zh-CN": "劳动节", "zh-TW": "勞動節" },
   "国际劳动节": { en: "International Labor Day", th: "วันแรงงานสากล", vi: "Ngày Lao động Quốc tế", "zh-CN": "国际劳动节", "zh-TW": "國際勞動節" },
   "五一": { en: "May Day", th: "วันเมย์เดย์", vi: "Ngày 1/5", "zh-CN": "五一", "zh-TW": "五一" },
+  "母亲节": { en: "Mother's Day", th: "วันแม่", vi: "Ngày của Mẹ", "zh-CN": "母亲节", "zh-TW": "母親節" },
+  "全国助残日": { en: "National Disability Day", th: "วันแห่งคนพิการแห่งชาติ", vi: "Ngày Quốc gia Người khuyết tật", "zh-CN": "全国助残日", "zh-TW": "全國助殘日" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
@@ -179,6 +193,9 @@ export const translateLunarTerm = (term: string, lang: string): string => {
     if (map[term]) {
       return map[term][lang] || map[term]['en'] || term;
     }
+  }
+  if (!lang.startsWith('zh')) {
+    console.warn('Unknown lunar term:', term);
   }
   return term; // fallback to original Chinese
 };
