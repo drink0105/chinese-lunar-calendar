@@ -47,19 +47,44 @@ const getTranslatedClash = (chongDesc: string, lang: string): string => {
 };
 
 export const getLunarData = (date: Date, lang: string = 'en') => {
-  const solar = Solar.fromYmd(date.getFullYear(), date.getMonth() + 1, date.getDate());
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  const solar = Solar.fromYmd(year, month, day);
   const lunar = solar.getLunar();
   
-  const holiday = HolidayUtil.getHoliday(date.getFullYear(), date.getMonth() + 1, date.getDate());
-  const solarFestivals = solar.getFestivals();
-  const lunarFestivals = lunar.getFestivals();
-  const otherFestivals = lunar.getOtherFestivals();
+  const holiday = HolidayUtil.getHoliday(year, month, day);
   
-  const holidayNames = [];
+  let holidayNames: string[] = [
+    ...(solar.getFestivals() || []),
+    ...(lunar.getFestivals() || []),
+    ...(lunar.getOtherFestivals() || [])
+  ];
+  
   if (holiday) holidayNames.push(holiday.getName());
-  solarFestivals.forEach(f => holidayNames.push(f));
-  lunarFestivals.forEach(f => holidayNames.push(f));
-  otherFestivals.forEach(f => holidayNames.push(f));
+
+  // === ENHANCED DETECTION FOR MAJOR HOLIDAYS ===
+  // 1. Explicit solar term check (fixes Qingming and similar)
+  const jieqi = lunar.getJieQi();
+  if (jieqi === "清明") holidayNames.push("清明节");
+
+  // 2. Major holiday override map (safety net for future years)
+  const majorHolidaysOverride: Record<string, string> = {
+    "0101": "元旦节",     // New Year's Day
+    "0501": "劳动节",     // Labor Day
+    "1001": "国庆节",     // National Day
+    "0308": "妇女节",     // Women's Day
+    "0504": "青年节",     // Youth Day
+    "0601": "儿童节",     // Children's Day
+    "1225": "圣诞节",     // Christmas
+    "1224": "平安夜",     // Christmas Eve
+  };
+
+  const dateKey = `${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`;
+  if (majorHolidaysOverride[dateKey]) {
+    holidayNames.push(majorHolidaysOverride[dateKey]);
+  }
 
   // Unique and translate
   const translatedHolidays = Array.from(new Set(holidayNames))
