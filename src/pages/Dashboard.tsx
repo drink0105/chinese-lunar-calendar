@@ -81,12 +81,10 @@ const Dashboard = () => {
                     {t('dashboard.auspicious')}
                   </Badge>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {data.auspicious.map((item, i) => (
-                    <span key={i} className="text-sm bg-green-50 text-green-700 px-2 py-1 rounded-md border border-green-100">
-                      {item}
-                    </span>
-                  ))}
+                <div className="bg-green-50/50 p-3 rounded-xl border border-green-100">
+                  <p className="text-sm text-green-800 leading-relaxed">
+                    {data.auspicious.join(', ')}
+                  </p>
                 </div>
               </div>
 
@@ -96,12 +94,10 @@ const Dashboard = () => {
                     {t('dashboard.inauspicious')}
                   </Badge>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {data.inauspicious.map((item, i) => (
-                    <span key={i} className="text-sm bg-red-50 text-red-700 px-2 py-1 rounded-md border border-red-100">
-                      {item}
-                    </span>
-                  ))}
+                <div className="bg-red-50/50 p-3 rounded-xl border border-red-100">
+                  <p className="text-sm text-red-800 leading-relaxed">
+                    {data.inauspicious.join(', ')}
+                  </p>
                 </div>
               </div>
             </div>

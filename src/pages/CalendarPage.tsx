@@ -115,26 +115,18 @@ const CalendarPage = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 border border-green-100 bg-green-50 rounded-xl">
+                <div className="space-y-3">
+                  <div className="p-3 border border-green-100 bg-green-50/50 rounded-xl">
                     <p className="text-[10px] text-green-600 font-bold uppercase mb-1">{t('dashboard.auspicious')}</p>
-                    <div className="flex flex-wrap gap-1">
-                      {selectedDay.lunar.auspicious.map((item: string, i: number) => (
-                        <span key={i} className="text-[10px] bg-green-100 text-green-800 px-1.5 py-0.5 rounded">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="text-sm text-green-800 leading-relaxed">
+                      {selectedDay.lunar.auspicious.join(', ')}
+                    </p>
                   </div>
-                  <div className="p-3 border border-red-100 bg-red-50 rounded-xl">
+                  <div className="p-3 border border-red-100 bg-red-50/50 rounded-xl">
                     <p className="text-[10px] text-red-600 font-bold uppercase mb-1">{t('dashboard.inauspicious')}</p>
-                    <div className="flex flex-wrap gap-1">
-                      {selectedDay.lunar.inauspicious.map((item: string, i: number) => (
-                        <span key={i} className="text-[10px] bg-red-100 text-red-800 px-1.5 py-0.5 rounded">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="text-sm text-red-800 leading-relaxed">
+                      {selectedDay.lunar.inauspicious.join(', ')}
+                    </p>
                   </div>
                 </div>
               </div>

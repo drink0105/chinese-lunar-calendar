@@ -75,6 +75,15 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "置产": { en: "Acquire Property", th: "ซื้อทรัพย์สิน", vi: "Mua tài sản", "zh-CN": "置产", "zh-TW": "置產" },
   "启钻": { en: "Start Drilling", th: "เริ่มเจาะ", vi: "Khởi khoan", "zh-CN": "启钻", "zh-TW": "啟鑽" },
   "修坟": { en: "Repair Tomb", th: "ซ่อมหลุมศพ", vi: "Sửa mộ", "zh-CN": "修坟", "zh-TW": "修墳" },
+  "作灶": { en: "Make Stove", th: "ทำเตา", vi: "Làm bếp", "zh-CN": "作灶", "zh-TW": "作灶" },
+  "掘井": { en: "Dig Well", th: "ขุดบ่อน้ำ", vi: "Đào giếng", "zh-CN": "掘井", "zh-TW": "掘井" },
+  "出火": { en: "Start Fire", th: "จุดไฟ", vi: "Xuất hỏa", "zh-CN": "出火", "zh-TW": "出火" },
+  "拆卸": { en: "Demolition", th: "รื้อถอน", vi: "Phá dỡ", "zh-CN": "拆卸", "zh-TW": "拆卸" },
+  "挂匾": { en: "Hang Plaque", th: "แขวนป้าย", vi: "Treo biển", "zh-CN": "挂匾", "zh-TW": "掛匾" },
+  "移柩": { en: "Move Coffin", th: "ย้ายโลงศพ", vi: "Di cữu", "zh-CN": "移柩", "zh-TW": "移柩" },
+  "立碑": { en: "Erect Tombstone", th: "ตั้งเสาเอก", vi: "Lập bia", "zh-CN": "立碑", "zh-TW": "立碑" },
+  "补垣": { en: "Repair Wall", th: "ซ่อมกำแพง", vi: "Bổ tường", "zh-CN": "补垣", "zh-TW": "補垣" },
+  "无": { en: "None", th: "ไม่มี", vi: "Không có", "zh-CN": "无", "zh-TW": "無" },
 };
 
 export const zodiac: Record<string, Record<string, string>> = {
@@ -186,17 +195,22 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "母亲节": { en: "Mother's Day", th: "วันแม่", vi: "Ngày của Mẹ", "zh-CN": "母亲节", "zh-TW": "母親節" },
   "全国助残日": { en: "National Disability Day", th: "วันแห่งคนพิการแห่งชาติ", vi: "Ngày Quốc gia Người khuyết tật", "zh-CN": "全国助残日", "zh-TW": "全國助殘日" },
   "儿童节": { en: "Children's Day", th: "วันเด็ก", vi: "Ngày Thiếu nhi", "zh-CN": "儿童节", "zh-TW": "兒童節" },
+  "建党节": { en: "Party Founding Day", th: "วันก่อตั้งพรรค", vi: "Ngày Thành lập Đảng", "zh-CN": "建党节", "zh-TW": "建黨節" },
+  "分龙节": { en: "Fenlong Festival", th: "เทศกาลเฟินหลง", vi: "Phân Long Tiết", "zh-CN": "分龙节", "zh-TW": "分龍節" },
+  "会龙节": { en: "Huilong Festival", th: "เทศกาลหุ่ยหลง", vi: "Hội Long Tiết", "zh-CN": "会龙节", "zh-TW": "會龍節" },
+  "天贶节": { en: "Tiankuang Festival", th: "เทศกาลเทียนควาง", vi: "Thiên Khoáng Tiết", "zh-CN": "天贶节", "zh-TW": "天貺節" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
   const allMaps = [lunarTerms, zodiac, jieqiMap, festivalsMap];
   for (const map of allMaps) {
     if (map[term]) {
-      return map[term][lang] || map[term]['en'] || term;
+      const translated = map[term][lang] || map[term]['en'];
+      if (translated) return translated;
     }
   }
   if (!lang.startsWith('zh')) {
-    console.warn(`Missing translation for lunar term: "${term}" in lang ${lang}`);
+    console.warn(`Missing lunar translation for: "${term}" in language ${lang}`);
   }
   return term; // fallback to original Chinese
 };
