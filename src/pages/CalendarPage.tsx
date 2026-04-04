@@ -39,11 +39,11 @@ const CalendarPage = () => {
       >
         <div className="bg-[#C0392B] p-4 flex justify-between items-center text-white">
           <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20">
-            <ChevronLeft size(20) />
+            <ChevronLeft size={20} />
           </Button>
           <h2 className="font-bold text-lg">{monthName}</h2>
           <Button variant="ghost" size="icon" onClick={nextMonth} className="text-white hover:bg-white/20">
-            <ChevronRight size(20) />
+            <ChevronRight size={20} />
           </Button>
         </div>
 
