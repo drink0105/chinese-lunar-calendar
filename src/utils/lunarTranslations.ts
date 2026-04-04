@@ -81,18 +81,51 @@ export const zodiac: Record<string, Record<string, string>> = {
 };
 
 export const lunarMonthNames: Record<number, Record<string, string>> = {
-  1: { en: "1st", th: "เดือน 1", vi: "Tháng 1", "zh-CN": "正", "zh-TW": "正" },
-  2: { en: "2nd", th: "เดือน 2", vi: "Tháng 2", "zh-CN": "二", "zh-TW": "二" },
-  3: { en: "3rd", th: "เดือน 3", vi: "Tháng 3", "zh-CN": "三", "zh-TW": "三" },
-  4: { en: "4th", th: "เดือน 4", vi: "Tháng 4", "zh-CN": "四", "zh-TW": "四" },
-  5: { en: "5th", th: "เดือน 5", vi: "Tháng 5", "zh-CN": "五", "zh-TW": "五" },
-  6: { en: "6th", th: "เดือน 6", vi: "Tháng 6", "zh-CN": "六", "zh-TW": "六" },
-  7: { en: "7th", th: "เดือน 7", vi: "Tháng 7", "zh-CN": "七", "zh-TW": "七" },
-  8: { en: "8th", th: "เดือน 8", vi: "Tháng 8", "zh-CN": "八", "zh-TW": "八" },
-  9: { en: "9th", th: "เดือน 9", vi: "Tháng 9", "zh-CN": "九", "zh-TW": "九" },
-  10: { en: "10th", th: "เดือน 10", vi: "Tháng 10", "zh-CN": "十", "zh-TW": "十" },
-  11: { en: "11th", th: "เดือน 11", vi: "Tháng 11", "zh-CN": "十一", "zh-TW": "十一" },
-  12: { en: "12th", th: "เดือน 12", vi: "Tháng 12", "zh-CN": "腊", "zh-TW": "腊" },
+  1: { en: "1st Month", th: "เดือน 1", vi: "Tháng 1", "zh-CN": "正", "zh-TW": "正" },
+  2: { en: "2nd Month", th: "เดือน 2", vi: "Tháng 2", "zh-CN": "二", "zh-TW": "二" },
+  3: { en: "3rd Month", th: "เดือน 3", vi: "Tháng 3", "zh-CN": "三", "zh-TW": "三" },
+  4: { en: "4th Month", th: "เดือน 4", vi: "Tháng 4", "zh-CN": "四", "zh-TW": "四" },
+  5: { en: "5th Month", th: "เดือน 5", vi: "Tháng 5", "zh-CN": "五", "zh-TW": "五" },
+  6: { en: "6th Month", th: "เดือน 6", vi: "Tháng 6", "zh-CN": "六", "zh-TW": "六" },
+  7: { en: "7th Month", th: "เดือน 7", vi: "Tháng 7", "zh-CN": "七", "zh-TW": "七" },
+  8: { en: "8th Month", th: "เดือน 8", vi: "Tháng 8", "zh-CN": "八", "zh-TW": "八" },
+  9: { en: "9th Month", th: "เดือน 9", vi: "Tháng 9", "zh-CN": "九", "zh-TW": "九" },
+  10: { en: "10th Month", th: "เดือน 10", vi: "Tháng 10", "zh-CN": "十", "zh-TW": "十" },
+  11: { en: "11th Month", th: "เดือน 11", vi: "Tháng 11", "zh-CN": "十一", "zh-TW": "十一" },
+  12: { en: "12th Month", th: "เดือน 12", vi: "Tháng 12", "zh-CN": "腊", "zh-TW": "腊" },
+};
+
+export const lunarDayNames: Record<number, Record<string, string>> = {
+  1: { en: "1st", th: "วันที่ 1", vi: "Ngày 1", "zh-CN": "初一", "zh-TW": "初一" },
+  2: { en: "2nd", th: "วันที่ 2", vi: "Ngày 2", "zh-CN": "初二", "zh-TW": "初二" },
+  3: { en: "3rd", th: "วันที่ 3", vi: "Ngày 3", "zh-CN": "初三", "zh-TW": "初三" },
+  4: { en: "4th", th: "วันที่ 4", vi: "Ngày 4", "zh-CN": "初四", "zh-TW": "初四" },
+  5: { en: "5th", th: "วันที่ 5", vi: "Ngày 5", "zh-CN": "初五", "zh-TW": "初五" },
+  6: { en: "6th", th: "วันที่ 6", vi: "Ngày 6", "zh-CN": "初六", "zh-TW": "初六" },
+  7: { en: "7th", th: "วันที่ 7", vi: "Ngày 7", "zh-CN": "初七", "zh-TW": "初七" },
+  8: { en: "8th", th: "วันที่ 8", vi: "Ngày 8", "zh-CN": "初八", "zh-TW": "初八" },
+  9: { en: "9th", th: "วันที่ 9", vi: "Ngày 9", "zh-CN": "初九", "zh-TW": "初九" },
+  10: { en: "10th", th: "วันที่ 10", vi: "Ngày 10", "zh-CN": "初十", "zh-TW": "初十" },
+  11: { en: "11th", th: "วันที่ 11", vi: "Ngày 11", "zh-CN": "十一", "zh-TW": "十一" },
+  12: { en: "12th", th: "วันที่ 12", vi: "Ngày 12", "zh-CN": "十二", "zh-TW": "十二" },
+  13: { en: "13th", th: "วันที่ 13", vi: "Ngày 13", "zh-CN": "十三", "zh-TW": "十三" },
+  14: { en: "14th", th: "วันที่ 14", vi: "Ngày 14", "zh-CN": "十四", "zh-TW": "十四" },
+  15: { en: "15th", th: "วันที่ 15", vi: "Ngày 15", "zh-CN": "十五", "zh-TW": "十五" },
+  16: { en: "16th", th: "วันที่ 16", vi: "Ngày 16", "zh-CN": "十六", "zh-TW": "十六" },
+  17: { en: "17th", th: "วันที่ 17", vi: "Ngày 17", "zh-CN": "十七", "zh-TW": "十七" },
+  18: { en: "18th", th: "วันที่ 18", vi: "Ngày 18", "zh-CN": "十八", "zh-TW": "十八" },
+  19: { en: "19th", th: "วันที่ 19", vi: "Ngày 19", "zh-CN": "十九", "zh-TW": "十九" },
+  20: { en: "20th", th: "วันที่ 20", vi: "Ngày 20", "zh-CN": "二十", "zh-TW": "二十" },
+  21: { en: "21st", th: "วันที่ 21", vi: "Ngày 21", "zh-CN": "廿一", "zh-TW": "廿一" },
+  22: { en: "22nd", th: "วันที่ 22", vi: "Ngày 22", "zh-CN": "廿二", "zh-TW": "廿二" },
+  23: { en: "23rd", th: "วันที่ 23", vi: "Ngày 23", "zh-CN": "廿三", "zh-TW": "廿三" },
+  24: { en: "24th", th: "วันที่ 24", vi: "Ngày 24", "zh-CN": "廿四", "zh-TW": "廿四" },
+  25: { en: "25th", th: "วันที่ 25", vi: "Ngày 25", "zh-CN": "廿五", "zh-TW": "廿五" },
+  26: { en: "26th", th: "วันที่ 26", vi: "Ngày 26", "zh-CN": "廿六", "zh-TW": "廿六" },
+  27: { en: "27th", th: "วันที่ 27", vi: "Ngày 27", "zh-CN": "廿七", "zh-TW": "廿七" },
+  28: { en: "28th", th: "วันที่ 28", vi: "Ngày 28", "zh-CN": "廿八", "zh-TW": "廿八" },
+  29: { en: "29th", th: "วันที่ 29", vi: "Ngày 29", "zh-CN": "廿九", "zh-TW": "廿九" },
+  30: { en: "30th", th: "วันที่ 30", vi: "Ngày 30", "zh-CN": "三十", "zh-TW": "三十" },
 };
 
 export const jieqiMap: Record<string, Record<string, string>> = {
@@ -135,6 +168,9 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "腊八节": { en: "Laba Festival", th: "เทศกาลลาปา", vi: "Lễ Lạp Bát", "zh-CN": "腊八节", "zh-TW": "腊八节" },
   "小年": { en: "Minor New Year", th: "ปีใหม่เล็ก", vi: "Tết Táo Quân", "zh-CN": "小年", "zh-TW": "小年" },
   "上巳节": { en: "Shangsi Festival", th: "เทศกาลซ่างซื่อ", vi: "Thượng Tự Tiết", "zh-CN": "上巳节", "zh-TW": "上巳節" },
+  "劳动节": { en: "Labor Day", th: "วันแรงงาน", vi: "Ngày Lao động", "zh-CN": "劳动节", "zh-TW": "勞動節" },
+  "国际劳动节": { en: "International Labor Day", th: "วันแรงงานสากล", vi: "Ngày Lao động Quốc tế", "zh-CN": "国际劳动节", "zh-TW": "國際勞動節" },
+  "五一": { en: "May Day", th: "วันเมย์เดย์", vi: "Ngày 1/5", "zh-CN": "五一", "zh-TW": "五一" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
