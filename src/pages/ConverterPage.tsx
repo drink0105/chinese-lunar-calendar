@@ -58,7 +58,7 @@ const ConverterPage = () => {
               <CardContent className="p-6 space-y-4">
                 <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                   <span className="text-gray-500 text-sm">{t('dashboard.lunar_date')}</span>
-                  <span className="font-bold text-gray-800">{result.lunarMonth}月{result.lunarDay}</span>
+                  <span className="font-bold text-gray-800">{result.lunarDate}</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-100 pb-3">
                   <span className="text-gray-500 text-sm">{t('dashboard.zodiac')}</span>

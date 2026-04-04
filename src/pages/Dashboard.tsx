@@ -3,9 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { getLunarData, getZodiacEmoji } from '@/utils/lunarUtils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar as CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon, Info } from 'lucide-react';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
@@ -18,6 +24,14 @@ const Dashboard = () => {
     month: 'long',
     day: 'numeric',
   });
+
+  // Extract animal from clash string to get emoji
+  const getClashEmoji = (clashStr: string) => {
+    const animals = ['鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', 
+                    'Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig'];
+    const found = animals.find(a => clashStr.includes(a));
+    return found ? getZodiacEmoji(found) : '';
+  };
 
   return (
     <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
@@ -56,9 +70,23 @@ const Dashboard = () => {
                 <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('dashboard.solar_term')}</p>
                 <p className="font-bold text-[#C0392B]">{data.solarTerm || '-'}</p>
               </div>
-              <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
-                <p className="text-[10px] text-gray-400 font-bold uppercase mb-1">{t('dashboard.clashZodiac')}</p>
-                <p className="font-bold text-gray-700">{data.clash}</p>
+              <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm relative group">
+                <div className="flex items-center gap-1 mb-1">
+                  <p className="text-[10px] text-gray-400 font-bold uppercase">{t('dashboard.clashZodiac')}</p>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info size={10} className="text-gray-300 cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent className="bg-gray-800 text-white text-[10px] max-w-[150px] p-2 rounded-lg border-none">
+                        {t('dashboard.clash_explanation')}
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <p className="font-bold text-gray-700 flex items-center gap-1">
+                  {data.clash} {getClashEmoji(data.clash)}
+                </p>
               </div>
             </div>
 

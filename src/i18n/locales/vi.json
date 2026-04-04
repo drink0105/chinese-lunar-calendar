@@ -17,6 +17,7 @@
     "inauspicious": "Kiêng kỵ (Kỵ)",
     "clash": "Xung khắc",
     "clashZodiac": "Xung Chiếu",
+    "clash_explanation": "Con giáp xung khắc với năng lượng của ngày hôm nay theo lịch vạn niên",
     "holiday": "Ngày lễ",
     "no_holiday": "Không có ngày lễ",
     "noSolarTerm": "Không có"
@@ -30,7 +31,9 @@
     "wed": "T4",
     "thu": "T5",
     "fri": "T6",
-    "sat": "T7"
+    "sat": "T7",
+    "select_month": "Chọn tháng",
+    "select_year": "Chọn năm"
   },
   "converter": {
     "title": "Chuyển đổi ngày",

@@ -17,6 +17,7 @@
     "inauspicious": "忌",
     "clash": "衝生肖",
     "clashZodiac": "衝生肖",
+    "clash_explanation": "傳統黃曆中與今日能量相衝的生肖",
     "holiday": "節日",
     "no_holiday": "無公休日",
     "noSolarTerm": "無"
@@ -30,7 +31,9 @@
     "wed": "三",
     "thu": "四",
     "fri": "五",
-    "sat": "六"
+    "sat": "六",
+    "select_month": "選擇月份",
+    "select_year": "選擇年份"
   },
   "converter": {
     "title": "日期轉換",

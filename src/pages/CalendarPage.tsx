@@ -9,6 +9,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { motion } from 'framer-motion';
 
 const CalendarPage = () => {
@@ -23,6 +30,14 @@ const CalendarPage = () => {
   const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
   const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
 
+  const handleMonthChange = (val: string) => {
+    setCurrentDate(new Date(year, parseInt(val), 1));
+  };
+
+  const handleYearChange = (val: string) => {
+    setCurrentDate(new Date(parseInt(val), month, 1));
+  };
+
   const formattedHeader = currentDate.toLocaleDateString(i18n.language, { 
     year: 'numeric', 
     month: 'long' 
@@ -33,6 +48,12 @@ const CalendarPage = () => {
     t('calendar.wed'), t('calendar.thu'), t('calendar.fri'), t('calendar.sat')
   ];
 
+  const years = Array.from({ length: 16 }, (_, i) => 2020 + i);
+  const months = Array.from({ length: 12 }, (_, i) => ({
+    value: i.toString(),
+    label: new Date(2024, i, 1).toLocaleDateString(i18n.language, { month: 'long' })
+  }));
+
   return (
     <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
       <motion.div
@@ -40,14 +61,40 @@ const CalendarPage = () => {
         animate={{ opacity: 1 }}
         className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
       >
-        <div className="bg-[#C0392B] p-4 flex justify-between items-center text-white">
-          <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20">
-            <ChevronLeft size={20} />
-          </Button>
-          <h2 className="font-bold text-lg">{formattedHeader}</h2>
-          <Button variant="ghost" size="icon" onClick={nextMonth} className="text-white hover:bg-white/20">
-            <ChevronRight size={20} />
-          </Button>
+        <div className="bg-[#C0392B] p-4 flex flex-col gap-4">
+          <div className="flex justify-between items-center text-white">
+            <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20">
+              <ChevronLeft size={20} />
+            </Button>
+            <h2 className="font-bold text-lg">{formattedHeader}</h2>
+            <Button variant="ghost" size="icon" onClick={nextMonth} className="text-white hover:bg-white/20">
+              <ChevronRight size={20} />
+            </Button>
+          </div>
+
+          <div className="flex gap-2">
+            <Select value={month.toString()} onValueChange={handleMonthChange}>
+              <SelectTrigger className="bg-white/10 border-white/20 text-white rounded-xl h-9 focus:ring-0">
+                <SelectValue placeholder={t('calendar.select_month')} />
+              </SelectTrigger>
+              <SelectContent className="bg-white">
+                {months.map((m) => (
+                  <SelectItem key={m.value} value={m.value}>{m.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select value={year.toString()} onValueChange={handleYearChange}>
+              <SelectTrigger className="bg-white/10 border-white/20 text-white rounded-xl h-9 focus:ring-0">
+                <SelectValue placeholder={t('calendar.select_year')} />
+              </SelectTrigger>
+              <SelectContent className="bg-white">
+                {years.map((y) => (
+                  <SelectItem key={y} value={y.toString()}>{y}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         <div className="grid grid-cols-7 text-center py-2 bg-gray-50 border-b border-gray-100">
