@@ -77,6 +77,8 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
     "0308": "妇女节",     // Women's Day
     "0504": "青年节",     // Youth Day
     "0601": "儿童节",     // Children's Day
+    "0619": "父亲节",     // Father's Day fallback
+    "0620": "父亲节",     // Father's Day fallback
     "1225": "圣诞节",     // Christmas
     "1224": "平安夜",     // Christmas Eve
   };

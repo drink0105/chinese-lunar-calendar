@@ -198,7 +198,7 @@ export const jieqiMap: Record<string, Record<string, string>> = {
   "霜降": { en: "Frost's Descent", th: "Frost's Descent", vi: "Sương Giáng", "zh-CN": "霜降", "zh-TW": "霜降" },
   "立冬": { en: "Start of Winter", th: "เริ่มต้นฤดูหนาว", vi: "Lập Đông", "zh-CN": "立冬", "zh-TW": "立冬" },
   "小雪": { en: "Minor Snow", th: "หิมะเล็กน้อย", vi: "Tiểu Tuyết", "zh-CN": "小雪", "zh-TW": "小雪" },
-  "大雪": { en: "Major Snow", th: "หิมะมาก", vi: "Đại Tuyết", "zh-CN": "大雪", "zh-TW": "大雪" },
+  "大雪": { en: "Major Snow", th: "หิมะมาก", vi: "Đại 雪", "zh-CN": "大雪", "zh-TW": "大雪" },
   "冬至": { en: "Winter Solstice", th: "อายันเหมา", vi: "Đông Chí", "zh-CN": "冬至", "zh-TW": "冬至" },
 };
 
@@ -259,7 +259,7 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "填仓节": { en: "Grain Filling Festival", th: "เทศกาลเติมคลังธัญพืช", vi: "Điền Thương Tiết", "zh-CN": "填仓节", "zh-TW": "填倉節" },
   "正月晦": { en: "Last Day of First Lunar Month", th: "วันสุดท้ายของเดือนจันทรคติแรก", vi: "Chính Nguyệt Hối", "zh-CN": "正月晦", "zh-TW": "正月晦" },
   "妇女节": { en: "International Women's Day", th: "วันสตรีสากล", vi: "Ngày Quốc tế Phụ nữ", "zh-CN": "妇女节", "zh-TW": "婦女節" },
-  "中和节": { en: "Zhonghe Festival", th: "เทศกาลจงเหอ", vi: "Trung Hòa Tiết", "zh-CN": "中和节", "zh-TW": "中和節" },
+  "中和节": { en: "Zhonghe Festival", th: "เทศกาลจงเห和", vi: "Trung Hòa Tiết", "zh-CN": "中和节", "zh-TW": "中和節" },
   "龙头节": { en: "Dragon Head Festival", th: "เทศกาลหัวมังกร", vi: "Long Đầu Tiết", "zh-CN": "龙头节", "zh-TW": "龍頭節" },
   "社日节": { en: "She Festival", th: "เทศกาลเซ่", vi: "Xã Nhật Tiết", "zh-CN": "社日节", "zh-TW": "社日節" },
   "植树节": { en: "Arbor Day", th: "วันปลูกต้นไม้", vi: "Ngày Trồng Cây", "zh-CN": "植树节", "zh-TW": "植樹節" },
@@ -269,6 +269,7 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "愚人节": { en: "April Fools' Day", th: "วันโกหกเมษายน", vi: "Ngày Cá Tháng Tư", "zh-CN": "愚人节", "zh-TW": "愚人節" },
   "寒食节": { en: "Cold Food Festival", th: "เทศกาลอาหารเย็น", vi: "Hàn Thực Tiết", "zh-CN": "寒食节", "zh-TW": "寒食節" },
   "青年节": { en: "Youth Day", th: "วันเยาวชน", vi: "Ngày Thanh niên", "zh-CN": "青年节", "zh-TW": "青年節" },
+  "父亲节": { en: "Father's Day", th: "วันพ่อ", vi: "Ngày của Cha", "zh-CN": "父亲节", "zh-TW": "父親節" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
