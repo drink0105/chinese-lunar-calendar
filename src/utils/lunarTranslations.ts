@@ -108,6 +108,7 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "雕刻": { en: "Carving / Engraving", th: "แกะสลัก", vi: "Điêu khắc", "zh-CN": "雕刻", "zh-TW": "雕刻" },
   "裁衣": { en: "Tailoring / Cutting Clothes", th: "ตัดเสื้อผ้า", vi: "Cắt may", "zh-CN": "裁衣", "zh-TW": "裁衣" },
   "针灸": { en: "Acupuncture", th: "ฝังเข็ม", vi: "Châm cứu", "zh-CN": "针灸", "zh-TW": "針灸" },
+  "赴任": { en: "Take Office / Assume Post", th: "เข้ารับตำแหน่ง", vi: "Phó nhiệm", "zh-CN": "赴任", "zh-TW": "赴任" },
   "无": { en: "None", th: "ไม่มี", vi: "Không có", "zh-CN": "无", "zh-TW": "無" },
 };
 
@@ -255,6 +256,16 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "天日": { en: "Heaven Day", th: "วันสวรรค์", vi: "Thiên Nhật", "zh-CN": "天日", "zh-TW": "天日" },
   "地日": { en: "Earth Day", th: "วันแผ่นดิน", vi: "Địa Nhật", "zh-CN": "地日", "zh-TW": "地日" },
   "天穿节": { en: "Tianchuan Festival", th: "เทศกาลฉลองฟ้า", vi: "Thiên Xuyên Tiết", "zh-CN": "天穿节", "zh-TW": "天穿節" },
+  "填仓节": { en: "Grain Filling Festival", th: "เทศกาลเติมคลังธัญพืช", vi: "Điền Thương Tiết", "zh-CN": "填仓节", "zh-TW": "填倉節" },
+  "正月晦": { en: "Last Day of First Lunar Month", th: "วันสุดท้ายของเดือนจันทรคติแรก", vi: "Chính Nguyệt Hối", "zh-CN": "正月晦", "zh-TW": "正月晦" },
+  "妇女节": { en: "International Women's Day", th: "วันสตรีสากล", vi: "Ngày Quốc tế Phụ nữ", "zh-CN": "妇女节", "zh-TW": "婦女節" },
+  "中和节": { en: "Zhonghe Festival", th: "เทศกาลจงเหอ", vi: "Trung Hòa Tiết", "zh-CN": "中和节", "zh-TW": "中和節" },
+  "龙头节": { en: "Dragon Head Festival", th: "เทศกาลหัวมังกร", vi: "Long Đầu Tiết", "zh-CN": "龙头节", "zh-TW": "龍頭節" },
+  "社日节": { en: "She Festival", th: "เทศกาลเซ่", vi: "Xã Nhật Tiết", "zh-CN": "社日节", "zh-TW": "社日節" },
+  "植树节": { en: "Arbor Day", th: "วันปลูกต้นไม้", vi: "Ngày Trồng Cây", "zh-CN": "植树节", "zh-TW": "植樹節" },
+  "消费者权益日": { en: "Consumer Rights Day", th: "วันสิทธิผู้บริโภค", vi: "Ngày Quyền lợi Người tiêu dùng", "zh-CN": "消费者权益日", "zh-TW": "消費者權益日" },
+  "春社": { en: "Spring She Festival", th: "เทศกาลเซ่ฤดูใบไม้ผลิ", vi: "Xuân Xã", "zh-CN": "春社", "zh-TW": "春社" },
+  "全国中小学生安全教育日": { en: "National Primary and Secondary School Students Safety Education Day", th: "วันการศึกษาความปลอดภัยนักเรียนประถมและมัธยมแห่งชาติ", vi: "Ngày Giáo dục An toàn Học sinh Tiểu học và Trung học Quốc gia", "zh-CN": "全国中小学生安全教育日", "zh-TW": "全國中小學生安全教育日" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
