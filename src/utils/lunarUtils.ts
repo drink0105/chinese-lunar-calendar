@@ -55,12 +55,23 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
   const lunar = solar.getLunar();
   
   const holiday = HolidayUtil.getHoliday(date.getFullYear(), date.getMonth() + 1, date.getDate());
+  const rawFestivals = lunar.getFestivals();
+  const otherFestivals = lunar.getOtherFestivals();
   
+  const holidayNames = [];
+  if (holiday) holidayNames.push(holiday.getName());
+  rawFestivals.forEach(f => holidayNames.push(f));
+  otherFestivals.forEach(f => holidayNames.push(f));
+
+  // Unique and translate
+  const translatedHolidays = Array.from(new Set(holidayNames))
+    .map(h => translateLunarTerm(h, lang))
+    .filter(Boolean);
+
   const rawZodiac = lunar.getYearShengXiao();
   const rawSolarTerm = lunar.getJieQi();
   const rawAuspicious = lunar.getDayYi();
   const rawInauspicious = lunar.getDayJi();
-  const rawFestivals = lunar.getFestivals();
 
   const translatedZodiac = getTranslatedZodiac(rawZodiac, lang);
   const solarTermStr = rawSolarTerm 
@@ -76,7 +87,8 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
     auspicious: rawAuspicious.map(item => translateLunarTerm(item, lang)),
     inauspicious: rawInauspicious.map(item => translateLunarTerm(item, lang)),
     clash: getTranslatedClash(lunar.getDayChongDesc(), lang),
-    holiday: holiday ? holiday.getName() : (rawFestivals.length > 0 ? translateLunarTerm(rawFestivals[0], lang) : null),
+    isHoliday: translatedHolidays.length > 0,
+    holidayNames: translatedHolidays,
     isPublicHoliday: !!holiday && !holiday.isWork(),
     lunarMonth: lunar.getMonthInChinese(),
     lunarDay: lunar.getDayInChinese(),

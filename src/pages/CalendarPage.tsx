@@ -62,11 +62,11 @@ const CalendarPage = () => {
               onClick={() => day && setSelectedDay(day)}
               className={`min-h-[70px] bg-white p-1 flex flex-col items-center justify-start cursor-pointer hover:bg-gray-50 transition-colors ${
                 !day ? 'bg-gray-50/50' : ''
-              }`}
+              } ${day?.lunar.isHoliday ? 'bg-red-50/50' : ''}`}
             >
               {day && (
                 <>
-                  <span className={`text-sm font-bold ${day.lunar.isPublicHoliday ? 'text-[#C0392B]' : 'text-gray-700'}`}>
+                  <span className={`text-sm font-bold ${day.lunar.isPublicHoliday || day.lunar.isHoliday ? 'text-[#C0392B]' : 'text-gray-700'}`}>
                     {day.date.getDate()}
                   </span>
                   <span className="text-[9px] text-gray-400 truncate w-full text-center">
@@ -77,8 +77,8 @@ const CalendarPage = () => {
                       {day.lunar.solarTerm}
                     </span>
                   )}
-                  {day.lunar.holiday && (
-                    <div className="w-1 h-1 bg-[#C0392B] rounded-full mt-1" />
+                  {day.lunar.isHoliday && (
+                    <div className="w-1.5 h-1.5 bg-[#C0392B] rounded-full mt-1" />
                   )}
                 </>
               )}
@@ -97,6 +97,13 @@ const CalendarPage = () => {
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-4 mt-4">
+                {selectedDay.lunar.isHoliday && (
+                  <div className="p-3 bg-red-50 rounded-xl border border-red-100">
+                    <p className="text-[10px] text-red-400 font-bold uppercase mb-1">{t('dashboard.holiday')}</p>
+                    <p className="font-bold text-[#C0392B]">{selectedDay.lunar.holidayNames.join(', ')}</p>
+                  </div>
+                )}
+
                 <div className="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
                   <div>
                     <p className="text-xs text-gray-400 font-bold uppercase">{t('dashboard.lunar_date')}</p>

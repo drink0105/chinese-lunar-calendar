@@ -62,14 +62,14 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {data.holiday && (
+            {data.isHoliday && (
               <div className="mb-6 p-3 bg-red-50 rounded-xl border border-red-100 flex items-center gap-3">
                 <div className="bg-[#C0392B] text-white p-2 rounded-lg">
                   <CalendarIcon size={16} />
                 </div>
                 <div>
                   <p className="text-[10px] text-red-400 font-bold uppercase">{t('dashboard.holiday')}</p>
-                  <p className="font-bold text-[#C0392B]">{data.holiday}</p>
+                  <p className="font-bold text-[#C0392B]">{data.holidayNames.join(', ')}</p>
                 </div>
               </div>
             )}
