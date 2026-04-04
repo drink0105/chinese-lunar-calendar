@@ -92,7 +92,7 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "合脊": { en: "Join Roof Ridge", th: "ต่อสันหลังคา", vi: "Hợp cốt", "zh-CN": "合脊", "zh-TW": "合脊" },
   "立柱": { en: "Erect Pillars", th: "ตั้งเสา", vi: "Lập trụ", "zh-CN": "立柱", "zh-TW": "立柱" },
   "普渡": { en: "Universal Salvation / Ghost Festival Offering", th: "พิธีไหว้พระ/อุลลัมบะ", vi: "Phổ Độ", "zh-CN": "普渡", "zh-TW": "普渡" },
-  "安香": { en: "Offer Incense", th: "จุดธูป", vi: "An Hương", "zh-CN": "安香", "zh-TW": "安香" },
+  "安香": { en: "Offer Incense", th: "จุดธูป", vi: "An Hương", "zh-CN": "An Hương", "zh-TW": "安香" },
   "探病": { en: "Visit the Sick", th: "เยี่ยมคนป่วย", vi: "Thăm bệnh", "zh-CN": "探病", "zh-TW": "探病" },
   "修饰垣墙": { en: "Repair Walls", th: "ซ่อมกำแพง", vi: "Sửa tường rào", "zh-CN": "修饰垣墙", "zh-TW": "修飾垣牆" },
   "牧养": { en: "Livestock Raising", th: "เลี้ยงสัตว์", vi: "Chăn nuôi", "zh-CN": "牧养", "zh-TW": "牧養" },
@@ -105,6 +105,8 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "纳财": { en: "Receive Wealth", th: "รับทรัพย์", vi: "Nạp tài", "zh-CN": "纳财", "zh-TW": "納財" },
   "入学": { en: "Start School / Enrollment", th: "เข้าเรียน", vi: "Nhập học", "zh-CN": "入学", "zh-TW": "入學" },
   "塑绘": { en: "Sculpting and Painting", th: "ปั้นและวาดภาพ", vi: "Tạc tượng vẽ tranh", "zh-CN": "塑绘", "zh-TW": "塑繪" },
+  "雕刻": { en: "Carving / Engraving", th: "แกะสลัก", vi: "Điêu khắc", "zh-CN": "雕刻", "zh-TW": "雕刻" },
+  "裁衣": { en: "Tailoring / Cutting Clothes", th: "ตัดเสื้อผ้า", vi: "Cắt may", "zh-CN": "裁衣", "zh-TW": "裁衣" },
   "无": { en: "None", th: "ไม่มี", vi: "Không có", "zh-CN": "无", "zh-TW": "無" },
 };
 
@@ -237,6 +239,12 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "十成节": { en: "Ten Percent Festival", th: "เทศกาลสิบส่วน", vi: "Thập Thành Tiết", "zh-CN": "十成节", "zh-TW": "十成節" },
   "下元节": { en: "Lower Prime Festival", th: "เทศกาลเซี่ยหยวน", vi: "Hạ Nguyên Tiết", "zh-CN": "下元节", "zh-TW": "下元節" },
   "感恩节": { en: "Thanksgiving", th: "วันขอบคุณพระเจ้า", vi: "Lễ Tạ Ơn", "zh-CN": "感恩节", "zh-TW": "感恩節" },
+  "平安夜": { en: "Christmas Eve", th: "คืนก่อนคริสต์มาส", vi: "Đêm Giáng Sinh", "zh-CN": "平安夜", "zh-TW": "平安夜" },
+  "圣诞节": { en: "Christmas", th: "คริสต์มาส", vi: "Giáng Sinh", "zh-CN": "圣诞节", "zh-TW": "聖誕節" },
+  "元旦节": { en: "New Year's Day", th: "วันปีใหม่", vi: "Ngày Đầu Năm", "zh-CN": "元旦节", "zh-TW": "元旦節" },
+  "驱傩日": { en: "Nuo Exorcism Day", th: "วันขับไล่ปีศาจ", vi: "Ngày Khu Trừ", "zh-CN": "驱傩日", "zh-TW": "驅儺日" },
+  "尾牙": { en: "Weiya / Year-End Tail Banquet", th: "เว่ยหยา (งานเลี้ยงท้ายปี)", vi: "Vĩ Nha", "zh-CN": "尾牙", "zh-TW": "尾牙" },
+  "祭灶日": { en: "Kitchen God Festival", th: "เทศกาลเซ่นไหว้เจ้าเตา", vi: "Tế Táo", "zh-CN": "祭灶日", "zh-TW": "祭灶日" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
