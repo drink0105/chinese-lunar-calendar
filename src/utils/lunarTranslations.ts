@@ -49,7 +49,7 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "放水": { en: "Release Water", th: "ปล่อยน้ำ", vi: "Xả nước", "zh-CN": "放水", "zh-TW": "放水" },
   "乘船": { en: "Boat Travel", th: "เดินทางทางเรือ", vi: "Đi thuyền", "zh-CN": "乘船", "zh-TW": "乘船" },
   "渡水": { en: "Cross Water", th: "ข้ามน้ำ", vi: "Vượt sông", "zh-CN": "渡水", "zh-TW": "渡水" },
-  "求医": { en: "Seek Medical Help", th: "ขอความช่วยเหลือทางการแพทย์", vi: "Khám bệnh", "zh-CN": "求医", "zh-TW": "求医" },
+  "求医": { en: "Seek Medical Help", th: "ขอความช่วยเหลือทางการแพทย์", vi: "Kh้าม bệnh", "zh-CN": "求医", "zh-TW": "求医" },
   "治病": { en: "Medical Treatment", th: "รักษาโรค", vi: "Điều trị bệnh", "zh-CN": "治病", "zh-TW": "治病" },
   "开渠": { en: "Dig Canal", th: "ขุดคลอง", vi: "Đào kênh", "zh-CN": "开渠", "zh-TW": "开渠" },
   "安门": { en: "Install Door", th: "ติดตั้งประตู", vi: "Lắp cửa", "zh-CN": "安门", "zh-TW": "安门" },
@@ -91,6 +91,16 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "斋醮": { en: "Taoist Ritual/Fasting", th: "พิธี斋醮", vi: "Trai giới", "zh-CN": "斋醮", "zh-TW": "齋醮" },
   "合脊": { en: "Join Roof Ridge", th: "ต่อสันหลังคา", vi: "Hợp cốt", "zh-CN": "合脊", "zh-TW": "合脊" },
   "立柱": { en: "Erect Pillars", th: "ตั้งเสา", vi: "Lập trụ", "zh-CN": "立柱", "zh-TW": "立柱" },
+  "普渡": { en: "Universal Salvation / Ghost Festival Offering", th: "พิธีไหว้พระ/อุลลัมบะ", vi: "Phổ Độ", "zh-CN": "普渡", "zh-TW": "普渡" },
+  "安香": { en: "Offer Incense", th: "จุดธูป", vi: "An Hương", "zh-CN": "安香", "zh-TW": "安香" },
+  "探病": { en: "Visit the Sick", th: "เยี่ยมคนป่วย", vi: "Thăm bệnh", "zh-CN": "探病", "zh-TW": "探病" },
+  "修饰垣墙": { en: "Repair Walls", th: "ซ่อมกำแพง", vi: "Sửa tường rào", "zh-CN": "修饰垣墙", "zh-TW": "修飾垣牆" },
+  "牧养": { en: "Livestock Raising", th: "เลี้ยงสัตว์", vi: "Chăn nuôi", "zh-CN": "牧养", "zh-TW": "牧養" },
+  "架马": { en: "Harness Horses", th: "ใส่เครื่องมือม้า", vi: "Thăng ngựa", "zh-CN": "架马", "zh-TW": "架馬" },
+  "整手足甲": { en: "Trim Nails / Manicure & Pedicure", th: "ตัดเล็บ", vi: "Cắt móng tay chân", "zh-CN": "整手足甲", "zh-TW": "整手足甲" },
+  "造庙": { en: "Build Temple", th: "สร้างวัด", vi: "Xây miếu", "zh-CN": "造庙", "zh-TW": "造廟" },
+  "造船": { en: "Build Boat", th: "ต่อเรือ", vi: "Đóng thuyền", "zh-CN": "造船", "zh-TW": "造船" },
+  "谢土": { en: "Thank the Earth / Ground Offering", th: "ขอบคุณแผ่นดิน", vi: "Tạ Thổ", "zh-CN": "谢土", "zh-TW": "謝土" },
   "无": { en: "None", th: "ไม่มี", vi: "Không có", "zh-CN": "无", "zh-TW": "無" },
 };
 
@@ -174,7 +184,7 @@ export const jieqiMap: Record<string, Record<string, string>> = {
   "大暑": { en: "Major Heat", th: "ร้อนมาก", vi: "Đại Thử", "zh-CN": "大暑", "zh-TW": "大暑" },
   "立秋": { en: "Start of Autumn", th: "เริ่มต้นฤดูใบไม้ร่วง", vi: "Lập Thu", "zh-CN": "立秋", "zh-TW": "立秋" },
   "处暑": { en: "End of Heat", th: "สิ้นสุดความร้อน", vi: "Xử Thử", "zh-CN": "处暑", "zh-TW": "处暑" },
-  "白露": { en: "White Dew", th: "น้ำค้างขาว", vi: "Bạch Lộ", "zh-CN": "白露", "zh-TW": "白露" },
+  "白露": { en: "White Dew", th: "น้ำค้างขาว", vi: "Bạch Lộ", "zh-CN": "Bạch Lộ", "zh-TW": "白露" },
   "秋分": { en: "Autumn Equinox", th: "วสันตวิษุวัตฤดูใบไม้ร่วง", vi: "Thu Phân", "zh-CN": "秋分", "zh-TW": "秋分" },
   "寒露": { en: "Cold Dew", th: "น้ำค้างเย็น", vi: "Hàn Lộ", "zh-CN": "寒露", "zh-TW": "寒露" },
   "霜降": { en: "Frost's Descent", th: "Frost's Descent", vi: "Sương Giáng", "zh-CN": "霜降", "zh-TW": "霜降" },
@@ -210,6 +220,13 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "建军节": { en: "Army Day", th: "วันกองทัพ", vi: "Ngày Quân đội", "zh-CN": "建军节", "zh-TW": "建軍節" },
   "观莲节": { en: "Lotus Viewing Festival", th: "เทศกาลชมบัว", vi: "Quan Liên Tiết", "zh-CN": "观莲节", "zh-TW": "觀蓮節" },
   "五谷母节": { en: "Five Grains Mother Festival", th: "เทศกาลแม่ธัญพืชห้า", vi: "Ngũ Cốc Mẫu Tiết", "zh-CN": "五谷母节", "zh-TW": "五穀母節" },
+  "财神节": { en: "God of Wealth Festival", th: "เทศกาลเจ้าแห่งโชคลาภ", vi: "Tết Thần Tài", "zh-CN": "财神节", "zh-TW": "財神節" },
+  "教师节": { en: "Teachers' Day", th: "วันครู", vi: "Ngày Nhà giáo", "zh-CN": "教师节", "zh-TW": "教師節" },
+  "地藏节": { en: "Ksitigarbha Festival", th: "เทศกาลพระธรณี", vi: "Tết Địa Tạng", "zh-CN": "地藏节", "zh-TW": "地藏節" },
+  "天灸日": { en: "Tianjiu Day", th: "วันเทียนจิ่ว", vi: "Ngày Thiên Cứu", "zh-CN": "天灸日", "zh-TW": "天灸日" },
+  "全民国防教育日": { en: "National Defense Education Day", th: "วันการศึกษาป้องกันประเทศแห่งชาติ", vi: "Ngày Giáo dục Quốc phòng Toàn dân", "zh-CN": "全民国防教育日", "zh-TW": "全民國防教育日" },
+  "国庆节": { en: "National Day", th: "วันชาติ", vi: "Quốc khánh", "zh-CN": "国庆节", "zh-TW": "國慶節" },
+  "秋社": { en: "Autumn Harvest Festival", th: "เทศกาลเก็บเกี่ยวฤดูใบไม้ร่วง", vi: "Thu Xã", "zh-CN": "秋社", "zh-TW": "秋社" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
