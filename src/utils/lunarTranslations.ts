@@ -266,6 +266,9 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "消费者权益日": { en: "Consumer Rights Day", th: "วันสิทธิผู้บริโภค", vi: "Ngày Quyền lợi Người tiêu dùng", "zh-CN": "消费者权益日", "zh-TW": "消費者權益日" },
   "春社": { en: "Spring She Festival", th: "เทศกาลเซ่ฤดูใบไม้ผลิ", vi: "Xuân Xã", "zh-CN": "春社", "zh-TW": "春社" },
   "全国中小学生安全教育日": { en: "National Primary and Secondary School Students Safety Education Day", th: "วันการศึกษาความปลอดภัยนักเรียนประถมและมัธยมแห่งชาติ", vi: "Ngày Giáo dục An toàn Học sinh Tiểu học và Trung học Quốc gia", "zh-CN": "全国中小学生安全教育日", "zh-TW": "全國中小學生安全教育日" },
+  "愚人节": { en: "April Fools' Day", th: "วันโกหกเมษายน", vi: "Ngày Cá Tháng Tư", "zh-CN": "愚人节", "zh-TW": "愚人節" },
+  "寒食节": { en: "Cold Food Festival", th: "เทศกาลอาหารเย็น", vi: "Hàn Thực Tiết", "zh-CN": "寒食节", "zh-TW": "寒食節" },
+  "青年节": { en: "Youth Day", th: "วันเยาวชน", vi: "Ngày Thanh niên", "zh-CN": "青年节", "zh-TW": "青年節" },
 };
 
 export const translateLunarTerm = (term: string, lang: string): string => {
