@@ -162,7 +162,7 @@ const occasionToYiTerms: Record<string, string[]> = {
   travel: ["出行", "乘船", "渡水"],
   birth: ["祈福", "祭祀", "祈嗣"],
   renovation: ["修造", "动土", "上梁", "起基", "定磉", "竖柱"],
-  vehicle: ["交易", "纳畜", "安機械"],
+  vehicle: ["出行", "安机械", "交易", "纳畜", "造车器", "安床"],
   contract: ["订盟", "立券", "交易", "纳采"],
 };
 

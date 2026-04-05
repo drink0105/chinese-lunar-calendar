@@ -87,6 +87,9 @@ const Dashboard = () => {
                 <p className="font-bold text-gray-700 flex items-center gap-1">
                   {data.clash} {getClashEmoji(data.clash)}
                 </p>
+                <p className="text-[8px] text-gray-400 mt-1 leading-tight italic">
+                  {t('dashboard.clash_explanation')}
+                </p>
               </div>
             </div>
 
