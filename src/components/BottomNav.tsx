@@ -21,26 +21,27 @@ const BottomNav = () => {
           key={item.to}
           to={item.to}
           className={({ isActive }) =>
-            `flex flex-col items-center justify-center w-full h-full transition-all duration-300 ${
+            `relative flex flex-col items-center justify-center w-full h-full transition-all duration-300 ${
               isActive 
                 ? 'text-[#C0392B] dark:text-red-500 scale-110' 
                 : 'text-gray-400 dark:text-zinc-500 hover:text-gray-600 dark:hover:text-zinc-300'
             }`
           }
         >
-          <item.icon size={20} strokeWidth={isActive ? 2.5 : 2} />
-          <span className={`text-[10px] mt-1 font-bold tracking-tight ${isActive ? 'opacity-100' : 'opacity-70'}`}>
-            {item.label}
-          </span>
-          {/* Active Indicator Glow */}
-          <NavLink
-            to={item.to}
-            className={({ isActive }) =>
-              `absolute bottom-1 w-1 h-1 rounded-full bg-[#C0392B] dark:bg-red-500 transition-all duration-300 ${
-                isActive ? 'opacity-100 shadow-[0_0_8px] shadow-red-500' : 'opacity-0'
-              }`
-            }
-          />
+          {({ isActive }) => (
+            <>
+              <item.icon size={20} strokeWidth={isActive ? 2.5 : 2} />
+              <span className={`text-[10px] mt-1 font-bold tracking-tight ${isActive ? 'opacity-100' : 'opacity-70'}`}>
+                {item.label}
+              </span>
+              {/* Active Indicator Glow */}
+              <div
+                className={`absolute bottom-1 w-1 h-1 rounded-full bg-[#C0392B] dark:bg-red-500 transition-all duration-300 ${
+                  isActive ? 'opacity-100 shadow-[0_0_8px] shadow-red-500' : 'opacity-0'
+                }`}
+              />
+            </>
+          )}
         </NavLink>
       ))}
     </nav>
