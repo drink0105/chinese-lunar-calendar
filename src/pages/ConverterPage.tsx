@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import { Utensils } from 'lucide-react';
 
 const ConverterPage = () => {
   const { t, i18n } = useTranslation();
@@ -68,6 +69,19 @@ const ConverterPage = () => {
                   <span className="text-gray-500 text-sm">{t('dashboard.solar_term')}</span>
                   <span className="font-bold text-[#C0392B]">{result.solarTerm || '-'}</span>
                 </div>
+
+                {result.foodSuggestion && (
+                  <div className="p-3 bg-amber-50 rounded-xl border border-amber-100 flex items-center gap-3">
+                    <div className="bg-[#F39C12] text-white p-2 rounded-lg">
+                      <Utensils size={16} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-amber-600 font-bold uppercase">{t('dashboard.food_tradition')}</p>
+                      <p className="text-sm font-medium text-gray-800 leading-tight">{result.foodSuggestion}</p>
+                    </div>
+                  </div>
+                )}
+
                 <div className="pt-2">
                   <p className="text-xs font-bold text-green-600 uppercase mb-1">{t('dashboard.auspicious')}</p>
                   <p className="text-sm text-gray-700">{result.auspicious.join(', ')}</p>

@@ -99,8 +99,19 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
     ? translateLunarTerm(rawSolarTerm, lang) 
     : i18n.t('dashboard.noSolarTerm', { lng: lang });
 
-  // Food Suggestion Logic
-  const foodSuggestion = translateLunarTermForFood(uniqueRawFestivals[0] || rawSolarTerm || "", lang);
+  // Food Suggestion Logic - Robust check
+  let foodSuggestion = '';
+  for (const f of uniqueRawFestivals) {
+    const suggestion = translateLunarTermForFood(f, lang);
+    if (suggestion) {
+      foodSuggestion = suggestion;
+      break;
+    }
+  }
+
+  if (!foodSuggestion && rawSolarTerm) {
+    foodSuggestion = translateLunarTermForFood(rawSolarTerm, lang);
+  }
 
   return {
     solarDate: solar.toFullString(),
@@ -173,17 +184,21 @@ export const findLuckyDates = (occasionKey: string, year: number, month: number,
   
   for (let i = 1; i <= lastDay; i++) {
     const date = new Date(year, month, i);
-    const lunar = Lunar.fromDate(date);
-    const yi = lunar.getDayYi();
+    const data = getLunarData(date, lang);
     
-    if (yi.some(item => targetTerms.includes(item))) {
-      const translatedYi = yi
-        .filter(item => targetTerms.includes(item))
-        .map(item => translateLunarTerm(item, lang));
-        
+    if (data.auspicious.some(item => {
+      // We need to check against translated terms or original terms
+      // Since data.auspicious is already translated, we check if any of the target terms (translated) match
+      const translatedTargets = targetTerms.map(t => translateLunarTerm(t, lang));
+      return translatedTargets.includes(item);
+    })) {
       luckyDates.push({
         date,
-        terms: translatedYi
+        terms: data.auspicious.filter(item => {
+          const translatedTargets = targetTerms.map(t => translateLunarTerm(t, lang));
+          return translatedTargets.includes(item);
+        }),
+        foodSuggestion: data.foodSuggestion
       });
     }
   }

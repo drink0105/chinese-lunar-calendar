@@ -21,7 +21,8 @@
     "holiday": "Holiday",
     "no_holiday": "No Public Holiday",
     "noSolarTerm": "None",
-    "recommendation": "Today's Recommendation"
+    "recommendation": "Today's Recommendation",
+    "food_tradition": "Food Tradition"
   },
   "calendar": {
     "prev": "Prev",

@@ -21,7 +21,8 @@
     "holiday": "วันหยุด",
     "no_holiday": "ไม่มีวันหยุดราชการ",
     "noSolarTerm": "ไม่มี",
-    "recommendation": "คำแนะนำวันนี้"
+    "recommendation": "คำแนะนำวันนี้",
+    "food_tradition": "ประเพณีอาหาร"
   },
   "calendar": {
     "prev": "ก่อนหน้า",

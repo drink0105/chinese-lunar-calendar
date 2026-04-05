@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getMonthDays } from '@/utils/lunarUtils';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Utensils } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -164,6 +164,18 @@ const CalendarPage = () => {
                     <p className="font-bold text-[#F39C12]">{selectedDay.lunar.lunarYear}</p>
                   </div>
                 </div>
+
+                {selectedDay.lunar.foodSuggestion && (
+                  <div className="p-3 bg-amber-50 rounded-xl border border-amber-100 flex items-center gap-3">
+                    <div className="bg-[#F39C12] text-white p-2 rounded-lg">
+                      <Utensils size={16} />
+                    </div>
+                    <div>
+                      <p className="text-[10px] text-amber-600 font-bold uppercase">{t('dashboard.food_tradition')}</p>
+                      <p className="text-sm font-medium text-gray-800 leading-tight">{selectedDay.lunar.foodSuggestion}</p>
+                    </div>
+                  </div>
+                )}
 
                 <div className="space-y-3">
                   <div className="p-3 border border-green-100 bg-green-50/50 rounded-xl">

@@ -7,12 +7,13 @@ import { Card, CardContent } from '@/components/ui/card';
 import Badge from '@/components/Badge';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
+import { Utensils } from 'lucide-react';
 
 const LuckyDatesPage = () => {
   const { t, i18n } = useTranslation();
   const [occasion, setOccasion] = useState('');
   const [month, setMonth] = useState(new Date().getMonth().toString());
-  const [results, setResults] = useState<{date: Date, terms: string[]}[]>([]);
+  const [results, setResults] = useState<{date: Date, terms: string[], foodSuggestion?: string}[]>([]);
 
   const occasions = [
     { id: 'wedding', label: t('lucky.occasions.wedding') },
@@ -91,26 +92,39 @@ const LuckyDatesPage = () => {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.05 }}
-                className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center"
+                className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-3"
               >
-                <div>
-                  <p className="font-bold text-gray-800">
-                    {item.date.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    {item.date.toLocaleDateString(undefined, { weekday: 'long' })}
-                  </p>
-                  <div className="flex flex-wrap gap-1 mt-1">
-                    {item.terms.map((term, idx) => (
-                      <span key={idx} className="text-[10px] text-green-600 bg-green-50 px-1 rounded">
-                        {term}
-                      </span>
-                    ))}
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="font-bold text-gray-800">
+                      {item.date.toLocaleDateString(undefined, { day: 'numeric', month: 'short' })}
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      {item.date.toLocaleDateString(undefined, { weekday: 'long' })}
+                    </p>
                   </div>
+                  <Badge variant="warning">
+                    {t('lucky.occasions.' + occasion)}
+                  </Badge>
                 </div>
-                <Badge variant="warning">
-                  {t('lucky.occasions.' + occasion)}
-                </Badge>
+
+                <div className="flex flex-wrap gap-1">
+                  {item.terms.map((term, idx) => (
+                    <span key={idx} className="text-[10px] text-green-600 bg-green-50 px-1 rounded">
+                      {term}
+                    </span>
+                  ))}
+                </div>
+
+                {item.foodSuggestion && (
+                  <div className="p-2 bg-amber-50 rounded-lg border border-amber-100 flex items-center gap-2">
+                    <Utensils size={12} className="text-[#F39C12]" />
+                    <p className="text-[10px] font-medium text-gray-700 leading-tight">
+                      <span className="font-bold text-amber-600 mr-1">{t('dashboard.food_tradition')}:</span>
+                      {item.foodSuggestion}
+                    </p>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
