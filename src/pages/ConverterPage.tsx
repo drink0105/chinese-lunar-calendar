@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getLunarData } from '@/utils/lunarUtils';
 import { Input } from '@/components/ui/input';
@@ -10,12 +10,20 @@ import { Utensils } from 'lucide-react';
 const ConverterPage = () => {
   const { t, i18n } = useTranslation();
   const [dateStr, setDateStr] = useState(new Date().toISOString().split('T')[0]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [result, setResult] = useState<any>(null);
+
+  // Automatically update result when language or selected date changes
+  useEffect(() => {
+    if (selectedDate) {
+      setResult(getLunarData(selectedDate, i18n.language));
+    }
+  }, [selectedDate, i18n.language]);
 
   const handleConvert = () => {
     const date = new Date(dateStr);
     if (!isNaN(date.getTime())) {
-      setResult(getLunarData(date, i18n.language));
+      setSelectedDate(date);
     }
   };
 
