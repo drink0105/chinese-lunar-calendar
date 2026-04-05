@@ -57,137 +57,138 @@ const CalendarPage = () => {
   return (
     <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+        initial={{ opacity: 0, scale: 0.98 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 dark:border-zinc-700/50"
       >
-        <div className="bg-[#C0392B] p-4 flex flex-col gap-4">
+        <div className="bg-gradient-to-br from-[#C0392B] to-[#A93226] p-6 flex flex-col gap-6 shadow-lg">
           <div className="flex justify-between items-center text-white">
-            <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20">
-              <ChevronLeft size={20} />
+            <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20 rounded-full">
+              <ChevronLeft size={24} />
             </Button>
-            <h2 className="font-bold text-lg">{formattedHeader}</h2>
-            <Button variant="ghost" size="icon" onClick={nextMonth} className="text-white hover:bg-white/20">
-              <ChevronRight size={20} />
+            <h2 className="font-black text-2xl tracking-tight">{formattedHeader}</h2>
+            <Button variant="ghost" size="icon" onClick={nextMonth} className="text-white hover:bg-white/20 rounded-full">
+              <ChevronRight size={24} />
             </Button>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             <Select value={month.toString()} onValueChange={handleMonthChange}>
-              <SelectTrigger className="bg-white/10 border-white/20 text-white rounded-xl h-9 focus:ring-0">
+              <SelectTrigger className="bg-white/10 border-white/20 text-white rounded-2xl h-11 focus:ring-0 backdrop-blur-md font-bold">
                 <SelectValue placeholder={t('calendar.select_month')} />
               </SelectTrigger>
-              <SelectContent className="bg-white">
+              <SelectContent className="bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-800 rounded-2xl">
                 {months.map((m) => (
-                  <SelectItem key={m.value} value={m.value}>{m.label}</SelectItem>
+                  <SelectItem key={m.value} value={m.value} className="font-medium">{m.label}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
 
             <Select value={year.toString()} onValueChange={handleYearChange}>
-              <SelectTrigger className="bg-white/10 border-white/20 text-white rounded-xl h-9 focus:ring-0">
+              <SelectTrigger className="bg-white/10 border-white/20 text-white rounded-2xl h-11 focus:ring-0 backdrop-blur-md font-bold">
                 <SelectValue placeholder={t('calendar.select_year')} />
               </SelectTrigger>
-              <SelectContent className="bg-white">
+              <SelectContent className="bg-white dark:bg-zinc-900 border-gray-200 dark:border-zinc-800 rounded-2xl">
                 {years.map((y) => (
-                  <SelectItem key={y} value={y.toString()}>{y}</SelectItem>
+                  <SelectItem key={y} value={y.toString()} className="font-medium">{y}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
         </div>
 
-        <div className="grid grid-cols-7 text-center py-2 bg-gray-50 border-b border-gray-100">
+        <div className="grid grid-cols-7 text-center py-4 bg-gray-50/50 dark:bg-zinc-800/30 border-b border-gray-100 dark:border-zinc-800">
           {weekDays.map((day, i) => (
-            <div key={i} className={`text-[10px] font-bold uppercase ${i === 0 || i === 6 ? 'text-[#C0392B]' : 'text-gray-400'}`}>
+            <div key={i} className={`text-[10px] font-black uppercase tracking-widest ${i === 0 || i === 6 ? 'text-[#C0392B] dark:text-red-500' : 'text-gray-400 dark:text-zinc-500'}`}>
               {day}
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-7 gap-px bg-gray-100">
+        <div className="grid grid-cols-7 gap-px bg-gray-100 dark:bg-zinc-800/50">
           {days.map((day, i) => (
-            <div
+            <motion.div
               key={i}
+              whileTap={day ? { scale: 0.95 } : {}}
               onClick={() => day && setSelectedDay(day)}
-              className={`min-h-[70px] bg-white p-1 flex flex-col items-center justify-start cursor-pointer hover:bg-gray-50 transition-colors ${
-                !day ? 'bg-gray-50/50' : ''
-              } ${day?.lunar.isHoliday ? 'bg-red-50/50' : ''}`}
+              className={`min-h-[80px] bg-white dark:bg-zinc-900 p-2 flex flex-col items-center justify-start cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all ${
+                !day ? 'bg-gray-50/50 dark:bg-zinc-900/50' : ''
+              } ${day?.lunar.isHoliday ? 'bg-red-50/30 dark:bg-red-900/5' : ''}`}
             >
               {day && (
                 <>
-                  <span className={`text-sm font-bold ${day.lunar.isPublicHoliday || day.lunar.isHoliday ? 'text-[#C0392B]' : 'text-gray-700'}`}>
+                  <span className={`text-base font-black ${day.lunar.isPublicHoliday || day.lunar.isHoliday ? 'text-[#C0392B] dark:text-red-500' : 'text-gray-700 dark:text-zinc-300'}`}>
                     {day.date.getDate()}
                   </span>
-                  <span className="text-[9px] text-gray-400 truncate w-full text-center">
+                  <span className="text-[9px] text-gray-400 dark:text-zinc-500 font-bold truncate w-full text-center mt-0.5">
                     {day.lunar.lunarDay}
                   </span>
                   {day.lunar.solarTerm && (
-                    <span className="text-[8px] bg-[#F39C12] text-white px-1 rounded mt-1">
+                    <span className="text-[8px] bg-[#F39C12] dark:bg-amber-600 text-white px-1.5 py-0.5 rounded-full mt-1.5 font-black shadow-sm">
                       {day.lunar.solarTerm}
                     </span>
                   )}
                   {day.lunar.isHoliday && (
-                    <div className="w-1.5 h-1.5 bg-[#C0392B] rounded-full mt-1" />
+                    <div className="w-1.5 h-1.5 bg-[#C0392B] dark:bg-red-500 rounded-full mt-1.5 shadow-[0_0_5px] shadow-red-500" />
                   )}
                 </>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>
 
       <Dialog open={!!selectedDay} onOpenChange={() => setSelectedDay(null)}>
-        <DialogContent className="bg-white max-w-[90vw] rounded-2xl">
+        <DialogContent className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-2xl max-w-[90vw] rounded-[2rem] border-white/20 dark:border-zinc-700/50 shadow-2xl">
           {selectedDay && (
             <>
               <DialogHeader>
-                <DialogTitle className="text-[#C0392B] text-xl">
+                <DialogTitle className="text-[#C0392B] dark:text-red-500 text-2xl font-black">
                   {selectedDay.date.toLocaleDateString(i18n.language, { month: 'long', day: 'numeric', year: 'numeric' })}
                 </DialogTitle>
               </DialogHeader>
-              <div className="space-y-4 mt-4">
+              <div className="space-y-6 mt-6">
                 {selectedDay.lunar.isHoliday && selectedDay.lunar.holidayNames.length > 0 && (
-                  <div className="p-3 bg-red-50 rounded-xl border border-red-100">
-                    <p className="text-[10px] text-red-400 font-bold uppercase mb-1">{t('dashboard.holiday')}</p>
-                    <p className="font-bold text-[#C0392B]">{selectedDay.lunar.holidayNames.join(', ')}</p>
+                  <div className="p-4 bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100/50 dark:border-red-900/30 shadow-sm">
+                    <p className="text-[10px] text-red-400 dark:text-red-400 font-black uppercase tracking-widest mb-1">{t('dashboard.holiday')}</p>
+                    <p className="font-black text-[#C0392B] dark:text-red-500 text-lg">{selectedDay.lunar.holidayNames.join(', ')}</p>
                   </div>
                 )}
 
-                <div className="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
-                  <div>
-                    <p className="text-xs text-gray-400 font-bold uppercase">{t('dashboard.lunar_date')}</p>
-                    <p className="font-bold text-gray-800">{selectedDay.lunar.lunarDate}</p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 bg-gray-50/50 dark:bg-zinc-800/50 rounded-2xl border border-gray-100 dark:border-zinc-700/30">
+                    <p className="text-[10px] text-gray-400 dark:text-zinc-500 font-black uppercase tracking-widest mb-1">{t('dashboard.lunar_date')}</p>
+                    <p className="font-black text-gray-800 dark:text-zinc-100">{selectedDay.lunar.lunarDate}</p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-xs text-gray-400 font-bold uppercase">{t('dashboard.zodiac')}</p>
-                    <p className="font-bold text-[#F39C12]">{selectedDay.lunar.lunarYear}</p>
+                  <div className="p-4 bg-gray-50/50 dark:bg-zinc-800/50 rounded-2xl border border-gray-100 dark:border-zinc-700/30">
+                    <p className="text-[10px] text-gray-400 dark:text-zinc-500 font-black uppercase tracking-widest mb-1">{t('dashboard.zodiac')}</p>
+                    <p className="font-black text-[#F39C12] dark:text-amber-500">{selectedDay.lunar.lunarYear}</p>
                   </div>
                 </div>
 
                 {selectedDay.lunar.foodSuggestion && (
-                  <div className="p-3 bg-amber-50 rounded-xl border border-amber-100 flex items-center gap-3">
-                    <div className="bg-[#F39C12] text-white p-2 rounded-lg">
-                      <Utensils size={16} />
+                  <div className="p-4 bg-amber-50/50 dark:bg-amber-900/10 rounded-2xl border border-amber-100/50 dark:border-amber-900/30 flex items-center gap-4 shadow-sm">
+                    <div className="bg-[#F39C12] dark:bg-amber-600 text-white p-3 rounded-xl shadow-lg shadow-amber-500/20">
+                      <Utensils size={20} />
                     </div>
                     <div>
-                      <p className="text-[10px] text-amber-600 font-bold uppercase">{t('dashboard.food_tradition')}</p>
-                      <p className="text-sm font-medium text-gray-800 leading-tight">{selectedDay.lunar.foodSuggestion}</p>
+                      <p className="text-[10px] text-amber-600 dark:text-amber-400 font-black uppercase tracking-widest">{t('dashboard.food_tradition')}</p>
+                      <p className="text-sm font-bold text-gray-800 dark:text-zinc-200 leading-tight">{selectedDay.lunar.foodSuggestion}</p>
                     </div>
                   </div>
                 )}
 
-                <div className="space-y-3">
-                  <div className="p-3 border border-green-100 bg-green-50/50 rounded-xl">
-                    <p className="text-[10px] text-green-600 font-bold uppercase mb-1">{t('dashboard.auspicious')}</p>
-                    <p className="text-sm text-green-800 leading-relaxed">
-                      {selectedDay.lunar.auspicious.join(', ')}
+                <div className="space-y-4">
+                  <div className="p-4 border border-emerald-100/50 dark:border-emerald-900/20 bg-emerald-50/30 dark:bg-emerald-900/5 rounded-2xl">
+                    <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-black uppercase tracking-widest mb-2">{t('dashboard.auspicious')}</p>
+                    <p className="text-sm text-emerald-900 dark:text-emerald-400 font-medium leading-relaxed">
+                      {selectedDay.lunar.auspicious.join(' • ')}
                     </p>
                   </div>
-                  <div className="p-3 border border-red-100 bg-red-50/50 rounded-xl">
-                    <p className="text-[10px] text-red-600 font-bold uppercase mb-1">{t('dashboard.inauspicious')}</p>
-                    <p className="text-sm text-red-800 leading-relaxed">
-                      {selectedDay.lunar.inauspicious.join(', ')}
+                  <div className="p-4 border border-rose-100/50 dark:border-rose-900/20 bg-rose-50/30 dark:bg-rose-900/5 rounded-2xl">
+                    <p className="text-[10px] text-rose-600 dark:text-rose-400 font-black uppercase tracking-widest mb-2">{t('dashboard.inauspicious')}</p>
+                    <p className="text-sm text-rose-900 dark:text-rose-400 font-medium leading-relaxed">
+                      {selectedDay.lunar.inauspicious.join(' • ')}
                     </p>
                   </div>
                 </div>
