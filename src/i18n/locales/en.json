@@ -20,7 +20,8 @@
     "clash_explanation": "The zodiac animal that clashes with today's energy (avoid major activities if it matches your birth year)",
     "holiday": "Holiday",
     "no_holiday": "No Public Holiday",
-    "noSolarTerm": "None"
+    "noSolarTerm": "None",
+    "recommendation": "Today's Recommendation"
   },
   "calendar": {
     "prev": "Prev",

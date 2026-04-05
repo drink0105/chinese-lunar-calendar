@@ -274,6 +274,82 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "父亲节": { en: "Father's Day", th: "วันพ่อ", vi: "Ngày của Cha", "zh-CN": "父亲节", "zh-TW": "父親節" },
 };
 
+export const foodSuggestions: Record<string, Record<string, string>> = {
+  // Major festivals
+  "春节": { 
+    en: "Eat dumplings (饺子) for wealth and family reunion", 
+    th: "กินเกี๊ยวซ่าเพื่อความมั่งคั่งและครอบครัว", 
+    vi: "Ăn bánh chẻo (jiaozi) cầu tài lộc và sum họp gia đình",
+    "zh-CN": "吃饺子，寓意招财进宝、阖家团圆",
+    "zh-TW": "吃餃子，寓意招財進寶、闔家團圓"
+  },
+  "元宵节": { 
+    en: "Enjoy tangyuan (glutinous rice balls) for family reunion", 
+    th: "กินถังหยวนเพื่อการรวมตัวของครอบครัว", 
+    vi: "Ăn bánh trôi (tangyuan) tượng trưng cho sum họp",
+    "zh-CN": "吃汤圆，寓意团团圆圆",
+    "zh-TW": "吃湯圓，寓意團團圓圓"
+  },
+  "清明节": { 
+    en: "Traditional qingtuan (green rice balls) or cold foods", 
+    th: "กินชิงถ่วน (ข้าวเหนียวสีเขียว)", 
+    vi: "Ăn thanh đoàn (bánh xanh) hoặc thức ăn lạnh",
+    "zh-CN": "吃青团或寒食",
+    "zh-TW": "吃青團或寒食"
+  },
+  "端午节": { 
+    en: "Eat zongzi (sticky rice dumplings) to honor Qu Yuan", 
+    th: "กินจงจิ (บ dumplings ข้าวเหนียว)", 
+    vi: "Ăn bánh ú tro (zongzi)",
+    "zh-CN": "吃粽子，纪念屈原",
+    "zh-TW": "吃粽子，紀念屈原"
+  },
+  "中秋节": { 
+    en: "Eat mooncakes (月饼) and pomelo for reunion", 
+    th: "กินขนมไหว้พระจันทร์", 
+    vi: "Ăn bánh trung thu",
+    "zh-CN": "吃月饼和柚子，寓意团圆",
+    "zh-TW": "吃月餅和柚子，寓意團圓"
+  },
+  "冬至": { 
+    en: "Eat tangyuan or dumplings — yang energy returns", 
+    th: "กินถังหยวนหรือเกี๊ยวซ่า", 
+    vi: "Ăn bánh trôi hoặc bánh chẻo",
+    "zh-CN": "吃汤圆或饺子，阳气回升",
+    "zh-TW": "吃湯圓或餃子，陽氣回升"
+  },
+  "腊八节": { 
+    en: "Laba congee (eight-treasure porridge)", 
+    th: "กินโจ๊กแปดสมบัติ", 
+    vi: "Cháo Lạp Bát",
+    "zh-CN": "喝腊八粥",
+    "zh-TW": "喝臘八粥"
+  },
+
+  // Some solar terms (seasonal suggestions)
+  "立春": { 
+    en: "Eat spring pancakes (春饼) to welcome spring", 
+    th: "กินแป้งโรลฤดูใบไม้ผลิ", 
+    vi: "Ăn bánh xuân",
+    "zh-CN": "吃春饼，咬春迎新",
+    "zh-TW": "吃春餅，咬春迎新"
+  },
+  "夏至": { 
+    en: "Light cooling foods — noodles or fruit", 
+    th: "อาหารเย็น เช่น เส้นก๋วยเตี๋ยวหรือผลไม้", 
+    vi: "Thức ăn mát mẻ như mì hoặc trái cây",
+    "zh-CN": "吃凉面或清淡瓜果",
+    "zh-TW": "吃涼麵或清淡瓜果"
+  },
+  "立秋": { 
+    en: "Eat melons or light dishes to start autumn", 
+    th: "กินแตงโมหรืออาหารเบาๆ", 
+    vi: "Ăn dưa hấu hoặc món nhẹ",
+    "zh-CN": "吃西瓜或清淡饮食，贴秋膘",
+    "zh-TW": "吃西瓜或清淡飲食，貼秋膘"
+  },
+};
+
 export const translateLunarTerm = (term: string, lang: string): string => {
   const allMaps = [lunarTerms, zodiac, jieqiMap, festivalsMap];
   for (const map of allMaps) {
@@ -286,4 +362,11 @@ export const translateLunarTerm = (term: string, lang: string): string => {
     console.warn(`Missing lunar translation for: "${term}" in language ${lang}`);
   }
   return term; // fallback to original Chinese
+};
+
+export const translateLunarTermForFood = (term: string, lang: string): string => {
+  if (foodSuggestions[term]) {
+    return foodSuggestions[term][lang] || foodSuggestions[term]['en'] || "";
+  }
+  return "";
 };

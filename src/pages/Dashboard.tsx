@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getLunarData, getZodiacEmoji } from '@/utils/lunarUtils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar as CalendarIcon, Info } from 'lucide-react';
+import { Calendar as CalendarIcon, Info, Utensils } from 'lucide-react';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
 import {
@@ -92,6 +92,18 @@ const Dashboard = () => {
                 </p>
               </div>
             </div>
+
+            {data.foodSuggestion && (
+              <div className="mb-6 p-3 bg-amber-50 rounded-xl border border-amber-100 flex items-center gap-3">
+                <div className="bg-[#F39C12] text-white p-2 rounded-lg">
+                  <Utensils size={16} />
+                </div>
+                <div>
+                  <p className="text-[10px] text-amber-600 font-bold uppercase">{t('dashboard.recommendation')}</p>
+                  <p className="text-sm font-medium text-gray-800 leading-tight">{data.foodSuggestion}</p>
+                </div>
+              </div>
+            )}
 
             {data.isHoliday && (
               <div className="mb-6 p-3 bg-red-50 rounded-xl border border-red-100 flex items-center gap-3">

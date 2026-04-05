@@ -20,7 +20,8 @@
     "clash_explanation": "Con giáp xung khắc với năng lượng của ngày hôm nay theo lịch vạn niên",
     "holiday": "Ngày lễ",
     "no_holiday": "Không có ngày lễ",
-    "noSolarTerm": "Không có"
+    "noSolarTerm": "Không có",
+    "recommendation": "Gợi ý hôm nay"
   },
   "calendar": {
     "prev": "Tháng trước",

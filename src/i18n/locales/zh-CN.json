@@ -20,7 +20,8 @@
     "clash_explanation": "传统黄历中与今日能量相冲的生肖",
     "holiday": "节日",
     "no_holiday": "无公休日",
-    "noSolarTerm": "无"
+    "noSolarTerm": "无",
+    "recommendation": "今日推荐"
   },
   "calendar": {
     "prev": "上月",

@@ -20,7 +20,8 @@
     "clash_explanation": "สัตว์ปีที่ขัดแย้งกับพลังงานของวันนี้ตามปฏิทินจีนโบราณ",
     "holiday": "วันหยุด",
     "no_holiday": "ไม่มีวันหยุดราชการ",
-    "noSolarTerm": "ไม่มี"
+    "noSolarTerm": "ไม่มี",
+    "recommendation": "คำแนะนำวันนี้"
   },
   "calendar": {
     "prev": "ก่อนหน้า",

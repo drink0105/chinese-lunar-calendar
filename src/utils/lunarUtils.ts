@@ -1,5 +1,5 @@
 import { Solar, Lunar, HolidayUtil } from 'lunar-javascript';
-import { translateLunarTerm, lunarMonthNames, lunarDayNames, zodiac } from './lunarTranslations';
+import { translateLunarTerm, translateLunarTermForFood, lunarMonthNames, lunarDayNames, zodiac } from './lunarTranslations';
 import i18n from 'i18next';
 
 const getTranslatedLunarDate = (lunar: any, lang: string): string => {
@@ -56,40 +56,36 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
   
   const holiday = HolidayUtil.getHoliday(year, month, day);
   
-  let holidayNames: string[] = [
+  let rawFestivals: string[] = [
     ...(solar.getFestivals() || []),
     ...(lunar.getFestivals() || []),
     ...(lunar.getOtherFestivals() || [])
   ];
   
-  if (holiday) holidayNames.push(holiday.getName());
+  if (holiday) rawFestivals.push(holiday.getName());
 
   // === ENHANCED DETECTION FOR MAJOR HOLIDAYS ===
-  // 1. Explicit solar term check (fixes Qingming and similar)
   const jieqi = lunar.getJieQi();
-  if (jieqi === "清明") holidayNames.push("清明节");
+  if (jieqi === "清明") rawFestivals.push("清明节");
 
-  // 2. Major holiday override map (safety net for future years)
   const majorHolidaysOverride: Record<string, string> = {
-    "0101": "元旦节",     // New Year's Day
-    "0501": "劳动节",     // Labor Day
-    "1001": "国庆节",     // National Day
-    "0308": "妇女节",     // Women's Day
-    "0504": "青年节",     // Youth Day
-    "0601": "儿童节",     // Children's Day
-    "0619": "父亲节",     // Father's Day fallback
-    "0620": "父亲节",     // Father's Day fallback
-    "1225": "圣诞节",     // Christmas
-    "1224": "平安夜",     // Christmas Eve
+    "0101": "元旦节",
+    "0501": "劳动节",
+    "1001": "国庆节",
+    "0308": "妇女节",
+    "0504": "青年节",
+    "0601": "儿童节",
+    "1225": "圣诞节",
+    "1224": "平安夜",
   };
 
   const dateKey = `${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`;
   if (majorHolidaysOverride[dateKey]) {
-    holidayNames.push(majorHolidaysOverride[dateKey]);
+    rawFestivals.push(majorHolidaysOverride[dateKey]);
   }
 
-  // Unique and translate
-  const translatedHolidays = Array.from(new Set(holidayNames))
+  const uniqueRawFestivals = Array.from(new Set(rawFestivals));
+  const translatedHolidays = uniqueRawFestivals
     .map(h => translateLunarTerm(h, lang))
     .filter(Boolean);
 
@@ -102,6 +98,9 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
   const solarTermStr = rawSolarTerm 
     ? translateLunarTerm(rawSolarTerm, lang) 
     : i18n.t('dashboard.noSolarTerm', { lng: lang });
+
+  // Food Suggestion Logic
+  const foodSuggestion = translateLunarTermForFood(uniqueRawFestivals[0] || rawSolarTerm || "", lang);
 
   return {
     solarDate: solar.toFullString(),
@@ -120,7 +119,8 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
     ganZhiYear: lunar.getYearInGanZhi(),
     ganZhiMonth: lunar.getMonthInGanZhi(),
     ganZhiDay: lunar.getDayInGanZhi(),
-    rawZodiac: rawZodiac
+    rawZodiac: rawZodiac,
+    foodSuggestion: foodSuggestion
   };
 };
 
