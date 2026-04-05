@@ -34,6 +34,7 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "诸事不宜": { en: "Avoid All Activities", th: "ไม่เป็นมงคล", vi: "Tránh mọi việc", "zh-CN": "诸事不宜", "zh-TW": "诸事不宜" },
   "上梁": { en: "Roof Installation", th: "ติดตั้งหลังคา", vi: "Đặt đòn nóc", "zh-CN": "上梁", "zh-TW": "上梁" },
   "开光": { en: "Consecration", th: "พิธีเปิด", vi: "Khai quang", "zh-CN": "开光", "zh-TW": "开光" },
+  "zh-TW": "開光" },
   "造车器": { en: "Make Vehicles/Tools", th: "ทำยานพาหนะเครื่องมือ", vi: "Chế tạo xe cộ dụng cụ", "zh-CN": "造车器", "zh-TW": "造車器" },
   "理发": { en: "Haircut", th: "ตัดผม", vi: "Cắt tóc", "zh-CN": "理发", "zh-TW": "理发" },
   "合寿木": { en: "Make Coffin", th: "ทำโลงศพ", vi: "Làm áo quan", "zh-CN": "合寿木", "zh-TW": "合寿木" },
@@ -90,11 +91,11 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "捕捉": { en: "Capture/Hunting", th: "จับสัตว์", vi: "Bắt", "zh-CN": "捕捉", "zh-TW": "捕捉" },
   "斋醮": { en: "Taoist Ritual/Fasting", th: "พิธี斋醮", vi: "Trai giới", "zh-CN": "斋醮", "zh-TW": "齋醮" },
   "合脊": { en: "Join Roof Ridge", th: "ต่อสันหลังคา", vi: "Hợp cốt", "zh-CN": "合脊", "zh-TW": "合脊" },
-  "立柱": { en: "Erect Pillars", th: "ตั้งเสา", vi: "Lập trụ", "zh-CN": "立柱", "zh-TW": "立柱" },
+  "立柱": { en: "Erect Pillars", th: "ตั้งเส柱": { en: "Erect Pillars", th: "ตั้งเสา", vi: "Lập trụ", "zh-CN": "立柱", "zh-TW": "立柱" },
   "普渡": { en: "Universal Salvation / Ghost Festival Offering", th: "พิธีไหว้พระ/อุลลัมบะ", vi: "Phổ Độ", "zh-CN": "普渡", "zh-TW": "普渡" },
   "安香": { en: "Offer Incense", th: "จุดธูป", vi: "An Hương", "zh-CN": "安香", "zh-TW": "安香" },
   "探病": { en: "Visit the Sick", th: "เยี่ยมคนป่วย", vi: "Thăm bệnh", "zh-CN": "探病", "zh-TW": "探病" },
-  "修饰垣墙": { en: "Repair Walls", th: "ซ่อมกำแพง", vi: "Sửa tường rào", "zh-CN": "修饰垣墙", "zh-TW": "修飾垣牆" },
+  "修饰垣墙": { en: "Repair Walls", th: "ซửa tường rào", vi: "Sửa tường rào", "zh-CN": "修饰垣墙", "zh-TW": "修飾垣牆" },
   "牧养": { en: "Livestock Raising", th: "เลี้ยงสัตว์", vi: "Chăn nuôi", "zh-CN": "牧养", "zh-TW": "牧養" },
   "架马": { en: "Harness Horses", th: "ใส่เครื่องมือม้า", vi: "Thăng ngựa", "zh-CN": "架马", "zh-TW": "架馬" },
   "整手足甲": { en: "Trim Nails / Manicure & Pedicure", th: "ตัดเล็บ", vi: "Cắt móng tay chân", "zh-CN": "整手足甲", "zh-TW": "整手足甲" },
@@ -111,6 +112,7 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "赴任": { en: "Take Office / Assume Post", th: "เข้ารับตำแหน่ง", vi: "Phó nhiệm", "zh-CN": "赴任", "zh-TW": "赴任" },
   "筑堤": { en: "Build Embankment / Construct Dike", th: "สร้างเขื่อน", vi: "Xây đê", "zh-CN": "筑堤", "zh-TW": "築堤" },
   "开生坟": { en: "Dig New Grave", th: "ขุดหลุมศพใหม่", vi: "Mở mộ mới", "zh-CN": "开生坟", "zh-TW": "開生墳" },
+  "破土安葬": { en: "Break Ground for Tomb", th: "ขุดหลุมฝังศพ", vi: "Đào mộ", "zh-CN": "破土安葬", "zh-TW": "破土安葬" },
   "无": { en: "None", th: "ไม่มี", vi: "Không có", "zh-CN": "无", "zh-TW": "無" },
 };
 
@@ -346,7 +348,7 @@ export const foodSuggestions: Record<string, Record<string, string>> = {
     th: "กินแตงโมหรืออาหารเบาๆ", 
     vi: "Ăn dưa hấu hoặc món nhẹ",
     "zh-CN": "吃西瓜或清淡饮食，贴秋膘",
-    "zh-TW": "吃西瓜或清淡飲食，貼秋膘"
+    "zh-TW": "吃西瓜หรือ清淡飲食，貼秋膘"
   },
 };
 
