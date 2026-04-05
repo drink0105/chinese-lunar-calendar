@@ -17,13 +17,13 @@ const LuckyDatesPage = () => {
   const occasions = [
     { id: 'wedding', label: t('lucky.occasions.wedding') },
     { id: 'moving', label: t('lucky.occasions.moving') },
-    { id: 'grandOpening', label: t('lucky.occasions.grandOpening') },
+    { id: 'opening', label: t('lucky.occasions.opening') },
     { id: 'business', label: t('lucky.occasions.business') },
     { id: 'travel', label: t('lucky.occasions.travel') },
-    { id: 'childBirth', label: t('lucky.occasions.childBirth') },
+    { id: 'birth', label: t('lucky.occasions.birth') },
     { id: 'renovation', label: t('lucky.occasions.renovation') },
-    { id: 'vehiclePurchase', label: t('lucky.occasions.vehiclePurchase') },
-    { id: 'signContract', label: t('lucky.occasions.signContract') },
+    { id: 'vehicle', label: t('lucky.occasions.vehicle') },
+    { id: 'contract', label: t('lucky.occasions.contract') },
   ];
 
   const handleFind = () => {

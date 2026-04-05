@@ -49,13 +49,13 @@
     "occasions": {
       "wedding": "Cưới hỏi",
       "moving": "Chuyển nhà",
-      "grandOpening": "Khai trương",
+      "opening": "Khai trương",
       "business": "Mở cửa hàng",
       "travel": "Xuất hành",
-      "childBirth": "Cầu tự",
+      "birth": "Cầu tự",
       "renovation": "Sửa chữa",
-      "vehiclePurchase": "Mua xe",
-      "signContract": "Ký hợp đồng"
+      "vehicle": "Mua xe",
+      "contract": "Ký hợp đồng"
     }
   },
   "consent": {

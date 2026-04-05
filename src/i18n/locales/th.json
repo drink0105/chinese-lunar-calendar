@@ -49,13 +49,13 @@
     "occasions": {
       "wedding": "แต่งงาน",
       "moving": "ย้ายบ้าน",
-      "grandOpening": "เปิดกิจการ",
+      "opening": "เปิดกิจการ",
       "business": "เริ่มธุรกิจ",
       "travel": "เดินทาง",
-      "childBirth": "คลอดบุตร",
+      "birth": "คลอดบุตร",
       "renovation": "ซ่อมแซมบ้าน",
-      "vehiclePurchase": "ซื้อรถ",
-      "signContract": "เซ็นสัญญา"
+      "vehicle": "ซื้อรถ",
+      "contract": "เซ็นสัญญา"
     }
   },
   "consent": {

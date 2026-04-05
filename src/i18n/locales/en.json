@@ -17,7 +17,7 @@
     "inauspicious": "Inauspicious (Ji)",
     "clash": "Clash Zodiac",
     "clashZodiac": "Clash Zodiac",
-    "clash_explanation": "the animal that conflicts with today's energy",
+    "clash_explanation": "The animal that conflicts with today's energy in traditional Chinese almanac",
     "holiday": "Holiday",
     "no_holiday": "No Public Holiday",
     "noSolarTerm": "None"
@@ -49,13 +49,13 @@
     "occasions": {
       "wedding": "Wedding",
       "moving": "Moving House",
-      "grandOpening": "Grand Opening",
+      "opening": "Grand Opening",
       "business": "Business Start",
       "travel": "Travel",
-      "childBirth": "Child Birth",
+      "birth": "Child Birth",
       "renovation": "House Renovation",
-      "vehiclePurchase": "Vehicle Purchase",
-      "signContract": "Sign Contract"
+      "vehicle": "Vehicle Purchase",
+      "contract": "Sign Contract"
     }
   },
   "consent": {
