@@ -41,7 +41,14 @@
     "title": "日期转换",
     "select_date": "选择公历日期",
     "convert": "转换",
-    "result": "农历结果"
+    "result": "农历结果",
+    "lunarResult": "农历结果",
+    "lunarDate": "农历日期",
+    "zodiacYear": "生肖年",
+    "solarTerm": "节气",
+    "foodTradition": "饮食传统",
+    "auspicious": "宜",
+    "inauspicious": "忌"
   },
   "lucky": {
     "title": "吉日查询",

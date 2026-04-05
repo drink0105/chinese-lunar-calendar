@@ -41,7 +41,14 @@
     "title": "Date Converter",
     "select_date": "Select Gregorian Date",
     "convert": "Convert",
-    "result": "Lunar Result"
+    "result": "Lunar Result",
+    "lunarResult": "Lunar Result",
+    "lunarDate": "Lunar Date",
+    "zodiacYear": "Zodiac Year",
+    "solarTerm": "Solar Term",
+    "foodTradition": "Food Tradition",
+    "auspicious": "Auspicious (Yi)",
+    "inauspicious": "Inauspicious (Ji)"
   },
   "lucky": {
     "title": "Lucky Date Finder",

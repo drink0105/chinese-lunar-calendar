@@ -41,7 +41,14 @@
     "title": "Chuyển đổi ngày",
     "select_date": "Chọn ngày dương lịch",
     "convert": "Chuyển đổi",
-    "result": "Kết quả âm lịch"
+    "result": "Kết quả âm lịch",
+    "lunarResult": "Kết quả âm lịch",
+    "lunarDate": "Ngày âm lịch",
+    "zodiacYear": "Năm con giáp",
+    "solarTerm": "Tiết khí",
+    "foodTradition": "Ẩm thực truyền thống",
+    "auspicious": "Nên làm (Nghi)",
+    "inauspicious": "Kiêng kỵ (Kỵ)"
   },
   "lucky": {
     "title": "Tìm ngày tốt",

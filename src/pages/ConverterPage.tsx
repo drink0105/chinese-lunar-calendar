@@ -54,19 +54,19 @@ const ConverterPage = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h2 className="text-xs font-bold text-gray-400 uppercase mb-3 px-2">{t('converter.result')}</h2>
+            <h2 className="text-xs font-bold text-gray-400 uppercase mb-3 px-2">{t('converter.lunarResult')}</h2>
             <Card className="border-none shadow-lg bg-gradient-to-br from-white to-gray-50">
               <CardContent className="p-6 space-y-4">
                 <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                  <span className="text-gray-500 text-sm">{t('dashboard.lunar_date')}</span>
+                  <span className="text-gray-500 text-sm">{t('converter.lunarDate')}</span>
                   <span className="font-bold text-gray-800">{result.lunarDate}</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                  <span className="text-gray-500 text-sm">{t('dashboard.zodiac')}</span>
+                  <span className="text-gray-500 text-sm">{t('converter.zodiacYear')}</span>
                   <span className="font-bold text-[#F39C12]">{result.zodiac}</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-gray-100 pb-3">
-                  <span className="text-gray-500 text-sm">{t('dashboard.solar_term')}</span>
+                  <span className="text-gray-500 text-sm">{t('converter.solarTerm')}</span>
                   <span className="font-bold text-[#C0392B]">{result.solarTerm || '-'}</span>
                 </div>
 
@@ -76,15 +76,21 @@ const ConverterPage = () => {
                       <Utensils size={16} />
                     </div>
                     <div>
-                      <p className="text-[10px] text-amber-600 font-bold uppercase">{t('dashboard.food_tradition')}</p>
+                      <p className="text-[10px] text-amber-600 font-bold uppercase">{t('converter.foodTradition')}</p>
                       <p className="text-sm font-medium text-gray-800 leading-tight">{result.foodSuggestion}</p>
                     </div>
                   </div>
                 )}
 
-                <div className="pt-2">
-                  <p className="text-xs font-bold text-green-600 uppercase mb-1">{t('dashboard.auspicious')}</p>
-                  <p className="text-sm text-gray-700">{result.auspicious.join(', ')}</p>
+                <div className="pt-2 space-y-4">
+                  <div>
+                    <p className="text-xs font-bold text-green-600 uppercase mb-1">{t('converter.auspicious')}</p>
+                    <p className="text-sm text-gray-700 leading-relaxed">{result.auspicious.join(', ')}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-red-600 uppercase mb-1">{t('converter.inauspicious')}</p>
+                    <p className="text-sm text-gray-700 leading-relaxed">{result.inauspicious.join(', ')}</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>

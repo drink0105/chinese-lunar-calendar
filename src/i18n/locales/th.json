@@ -41,7 +41,14 @@
     "title": "แปลงวันที่",
     "select_date": "เลือกวันที่สากล",
     "convert": "แปลง",
-    "result": "ผลลัพธ์จันทรคติ"
+    "result": "ผลลัพธ์จันทรคติ",
+    "lunarResult": "ผลลัพธ์จันทรคติ",
+    "lunarDate": "วันที่จันทรคติ",
+    "zodiacYear": "ปีนักษัตร",
+    "solarTerm": "ฤดูกาล",
+    "foodTradition": "ประเพณีอาหาร",
+    "auspicious": "ควรทำ (อี้)",
+    "inauspicious": "ไม่ควรทำ (จี้)"
   },
   "lucky": {
     "title": "ค้นหาวันมงคล",

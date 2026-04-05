@@ -41,7 +41,14 @@
     "title": "日期轉換",
     "select_date": "選擇公曆日期",
     "convert": "轉換",
-    "result": "農曆結果"
+    "result": "農曆結果",
+    "lunarResult": "農曆結果",
+    "lunarDate": "農曆日期",
+    "zodiacYear": "生肖年",
+    "solarTerm": "節氣",
+    "foodTradition": "飲食傳統",
+    "auspicious": "宜",
+    "inauspicious": "忌"
   },
   "lucky": {
     "title": "吉日查詢",
