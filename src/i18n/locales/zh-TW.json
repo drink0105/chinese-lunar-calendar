@@ -49,13 +49,13 @@
     "occasions": {
       "wedding": "嫁娶",
       "moving": "移徙",
-      "opening": "開市",
+      "grandOpening": "開市",
       "business": "開業",
       "travel": "出行",
-      "birth": "求嗣",
+      "childBirth": "求嗣",
       "renovation": "修造",
-      "vehicle": "置產",
-      "contract": "訂盟"
+      "vehiclePurchase": "置產",
+      "signContract": "訂盟"
     }
   },
   "consent": {

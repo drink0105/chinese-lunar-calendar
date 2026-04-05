@@ -155,15 +155,15 @@ export const getMonthDays = (year: number, month: number, lang: string) => {
 };
 
 const occasionToYiTerms: Record<string, string[]> = {
-  wedding: ["嫁娶", "纳采", "问名", "纳婿"],
+  wedding: ["嫁娶", "纳采", "订盟"],
   moving: ["移徙", "入宅", "安床"],
-  opening: ["开市", "开光", "挂匾"],
-  business: ["交易", "立券", "订盟", "开市", "求财"],
-  travel: ["出行", "乘船", "渡水"],
-  birth: ["祈福", "祭祀", "祈嗣"],
-  renovation: ["修造", "动土", "上梁", "起基", "定磉", "竖柱"],
-  vehicle: ["交易", "纳畜", "安機械"],
-  contract: ["订盟", "立券", "交易", "纳采"],
+  grandOpening: ["开市", "开光"],
+  business: ["交易", "立券", "订盟", "求财"],
+  travel: ["出行"],
+  childBirth: ["祈福", "祭祀", "求嗣", "安床", "冠笄"],
+  renovation: ["修造", "动土", "上梁", "盖屋", "造庙"],
+  vehiclePurchase: ["出行", "安机械", "造车器", "纳畜"],
+  signContract: ["订盟", "立券", "交易"],
 };
 
 export const findLuckyDates = (occasionKey: string, year: number, month: number, lang: string = 'en') => {
