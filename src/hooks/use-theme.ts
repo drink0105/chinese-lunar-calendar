@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export type ThemeType = 'classic' | 'spring' | 'dragonboat' | 'midautumn' | 'dark';
+export type ThemeType = 'classic' | 'spring' | 'dragonboat' | 'midautumn';
 
 export function useTheme() {
   const [theme, setTheme] = useState<ThemeType>(() => {
@@ -10,20 +10,33 @@ export function useTheme() {
     return 'classic';
   });
 
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('lunar-dark-mode') === 'true';
+    }
+    return false;
+  });
+
   useEffect(() => {
     const root = window.document.documentElement;
-    // Remove all possible theme classes/attributes
-    root.removeAttribute('data-theme');
-    root.classList.remove('dark');
     
-    // Apply new theme
+    // Apply theme
     root.setAttribute('data-theme', theme);
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    }
-    
     localStorage.setItem('lunar-theme', theme);
-  }, [theme]);
 
-  return { theme, setTheme };
+    // Apply dark mode
+    if (isDarkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('lunar-dark-mode', String(isDarkMode));
+  }, [theme, isDarkMode]);
+
+  return { 
+    theme, 
+    setTheme, 
+    isDarkMode, 
+    toggleDarkMode: () => setIsDarkMode(!isDarkMode) 
+  };
 }

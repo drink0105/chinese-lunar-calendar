@@ -7,7 +7,8 @@
     "today": "Hôm nay",
     "calendar": "Lịch",
     "converter": "Chuyển đổi",
-    "lucky": "Ngày tốt"
+    "lucky": "Ngày tốt",
+    "settings": "Cài đặt"
   },
   "dashboard": {
     "lunar_date": "Ngày âm lịch",
@@ -74,5 +75,20 @@
   "common": {
     "loading": "Đang tải...",
     "close": "Đóng"
+  },
+  "theme": {
+    "classic": "Cổ điển",
+    "spring": "Tết Nguyên Đán",
+    "dragonboat": "Tết Đoan Ngọ",
+    "midautumn": "Tết Trung Thu",
+    "light": "Sáng",
+    "dark": "Tối",
+    "appearance": "Giao diện",
+    "select_theme": "Chọn chủ đề"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "about": "Về LunarDays",
+    "about_desc": "LunarDays là ứng dụng Lịch Âm cao cấp được thiết kế cho người dùng hiện đại coi trọng truyền thống và thẩm mỹ."
   }
 }

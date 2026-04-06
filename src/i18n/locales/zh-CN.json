@@ -7,7 +7,8 @@
     "today": "今日",
     "calendar": "日历",
     "converter": "转换",
-    "lucky": "吉日"
+    "lucky": "吉日",
+    "settings": "设置"
   },
   "dashboard": {
     "lunar_date": "农历日期",
@@ -74,5 +75,20 @@
   "common": {
     "loading": "加载中...",
     "close": "关闭"
+  },
+  "theme": {
+    "classic": "经典",
+    "spring": "春节",
+    "dragonboat": "端午",
+    "midautumn": "中秋",
+    "light": "浅色",
+    "dark": "深色",
+    "appearance": "外观",
+    "select_theme": "选择主题"
+  },
+  "settings": {
+    "title": "设置",
+    "about": "关于农历通",
+    "about_desc": "农历通是一款为注重传统与美学的现代用户设计的优质中国农历应用。"
   }
 }

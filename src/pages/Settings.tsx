@@ -2,19 +2,20 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme, ThemeType } from '@/hooks/use-theme';
 import { Card, CardContent } from '@/components/ui/card';
-import { Palette, Info, ShieldCheck, Check } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
+import { Palette, Info, ShieldCheck, Check, Moon, Sun } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Settings = () => {
   const { t } = useTranslation();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, isDarkMode, toggleDarkMode } = useTheme();
 
-  const themes: { id: ThemeType; name: string; colors: string[] }[] = [
-    { id: 'classic', name: 'Classic', colors: ['bg-[#C0392B]', 'bg-[#F39C12]'] },
-    { id: 'spring', name: 'Spring Festival', colors: ['bg-[#E74C3C]', 'bg-[#F1C40F]'] },
-    { id: 'dragonboat', name: 'Dragon Boat', colors: ['bg-[#27AE60]', 'bg-[#C0392B]'] },
-    { id: 'midautumn', name: 'Mid-Autumn', colors: ['bg-[#F39C12]', 'bg-[#922B21]'] },
-    { id: 'dark', name: 'Dark Night', colors: ['bg-[#1A1A1A]', 'bg-[#C0392B]'] },
+  const themes: { id: ThemeType; nameKey: string; colors: string[]; symbol: string }[] = [
+    { id: 'classic', nameKey: 'theme.classic', colors: ['bg-[#C0392B]', 'bg-[#F39C12]'], symbol: '' },
+    { id: 'spring', nameKey: 'theme.spring', colors: ['bg-[#9F1239]', 'bg-[#F39C12]'], symbol: '🏮' },
+    { id: 'dragonboat', nameKey: 'theme.dragonboat', colors: ['bg-[#0F766E]', 'bg-[#C0392B]'], symbol: '🛶' },
+    { id: 'midautumn', nameKey: 'theme.midautumn', colors: ['bg-[#B45309]', 'bg-[#C0392B]'], symbol: '🌕' },
   ];
 
   return (
@@ -25,41 +26,58 @@ const Settings = () => {
         className="space-y-8"
       >
         <h1 className="text-3xl font-black text-primary mb-8 text-center tracking-tight">
-          {t('nav.settings', 'Settings')}
+          {t('settings.title')}
         </h1>
 
         <section className="space-y-4">
           <h2 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] px-2 flex items-center gap-2">
-            <Palette size={14} /> {t('settings.theme', 'App Theme')}
+            <Palette size={14} /> {t('theme.appearance')}
           </h2>
-          <div className="grid grid-cols-1 gap-3">
-            {themes.map((t) => (
+          
+          <Card className="glass-card rounded-[2rem] overflow-hidden">
+            <CardContent className="p-6 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-primary/10 rounded-xl text-primary">
+                  {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
+                </div>
+                <Label htmlFor="dark-mode" className="font-bold text-foreground">
+                  {isDarkMode ? t('theme.dark') : t('theme.light')}
+                </Label>
+              </div>
+              <Switch 
+                id="dark-mode" 
+                checked={isDarkMode} 
+                onCheckedChange={toggleDarkMode}
+                className="data-[state=checked]:bg-primary"
+              />
+            </CardContent>
+          </Card>
+
+          <div className="grid grid-cols-2 gap-3">
+            {themes.map((t_item) => (
               <button
-                key={t.id}
-                onClick={() => setTheme(t.id)}
-                className={`relative group overflow-hidden rounded-2xl border-2 transition-all duration-300 ${
-                  theme === t.id 
-                    ? 'border-primary shadow-lg shadow-primary/10 scale-[1.02]' 
+                key={t_item.id}
+                onClick={() => setTheme(t_item.id)}
+                className={`relative group overflow-hidden rounded-3xl border-2 transition-all duration-300 aspect-square flex flex-col items-center justify-center gap-2 ${
+                  theme === t_item.id 
+                    ? 'border-primary shadow-xl shadow-primary/20 scale-[1.02] bg-card' 
                     : 'border-border hover:border-primary/30 bg-card/50'
                 }`}
               >
-                <div className="p-4 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="flex -space-x-2">
-                      {t.colors.map((c, i) => (
-                        <div key={i} className={`w-8 h-8 rounded-full border-2 border-background ${c}`} />
-                      ))}
-                    </div>
-                    <span className={`font-bold ${theme === t.id ? 'text-primary' : 'text-foreground/70'}`}>
-                      {t.name}
-                    </span>
-                  </div>
-                  {theme === t.id && (
-                    <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20">
-                      <Check size={14} strokeWidth={3} />
-                    </div>
-                  )}
+                <div className="flex -space-x-2">
+                  {t_item.colors.map((c, i) => (
+                    <div key={i} className={`w-8 h-8 rounded-full border-2 border-background ${c}`} />
+                  ))}
                 </div>
+                <span className={`text-xs font-black ${theme === t_item.id ? 'text-primary' : 'text-foreground/70'}`}>
+                  {t(t_item.nameKey)}
+                </span>
+                {t_item.symbol && <span className="text-xl">{t_item.symbol}</span>}
+                {theme === t_item.id && (
+                  <div className="absolute top-2 right-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-lg">
+                    <Check size={12} strokeWidth={4} />
+                  </div>
+                )}
               </button>
             ))}
           </div>
@@ -67,9 +85,9 @@ const Settings = () => {
 
         <section className="space-y-4">
           <h2 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] px-2 flex items-center gap-2">
-            <Info size={14} /> {t('settings.about', 'About')}
+            <Info size={14} /> {t('settings.about')}
           </h2>
-          <Card className="bg-card/50 backdrop-blur-xl border-border/50 shadow-xl rounded-[2rem]">
+          <Card className="glass-card rounded-[2rem]">
             <CardContent className="p-6 space-y-4">
               <div className="flex items-center gap-3">
                 <div className="p-3 bg-primary/10 rounded-2xl text-primary">
@@ -81,7 +99,7 @@ const Settings = () => {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed font-medium">
-                LunarDays is a premium Chinese Lunar Calendar application designed for modern users who value tradition and aesthetics.
+                {t('settings.about_desc')}
               </p>
             </CardContent>
           </Card>

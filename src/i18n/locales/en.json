@@ -7,7 +7,8 @@
     "today": "Today",
     "calendar": "Calendar",
     "converter": "Converter",
-    "lucky": "Lucky Dates"
+    "lucky": "Lucky Dates",
+    "settings": "Settings"
   },
   "dashboard": {
     "lunar_date": "Lunar Date",
@@ -74,5 +75,20 @@
   "common": {
     "loading": "Loading...",
     "close": "Close"
+  },
+  "theme": {
+    "classic": "Classic",
+    "spring": "Spring Festival",
+    "dragonboat": "Dragon Boat",
+    "midautumn": "Mid-Autumn",
+    "light": "Light",
+    "dark": "Dark",
+    "appearance": "Appearance",
+    "select_theme": "Select Theme"
+  },
+  "settings": {
+    "title": "Settings",
+    "about": "About LunarDays",
+    "about_desc": "LunarDays is a premium Chinese Lunar Calendar application designed for modern users who value tradition and aesthetics."
   }
 }

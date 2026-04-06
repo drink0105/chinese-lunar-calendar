@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Calendar as CalendarIcon, Info, Utensils, Sparkles } from 'lucide-react';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
+import { useTheme } from '@/hooks/use-theme';
 import {
   Tooltip,
   TooltipContent,
@@ -15,6 +16,7 @@ import {
 
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
+  const { theme } = useTheme();
   const today = new Date();
   const data = getLunarData(today, i18n.language);
 
@@ -32,6 +34,17 @@ const Dashboard = () => {
     return found ? getZodiacEmoji(found) : '';
   };
 
+  const getFestivalSymbol = () => {
+    switch(theme) {
+      case 'spring': return '🏮';
+      case 'dragonboat': return '🛶';
+      case 'midautumn': return '🌕';
+      default: return null;
+    }
+  };
+
+  const symbol = getFestivalSymbol();
+
   return (
     <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
       <motion.div
@@ -40,10 +53,29 @@ const Dashboard = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         <div className="text-center mb-10 relative">
+          {symbol && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="absolute -top-8 left-0 text-4xl drop-shadow-lg"
+            >
+              {symbol}
+            </motion.div>
+          )}
+          {symbol && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="absolute -top-8 right-0 text-4xl drop-shadow-lg"
+            >
+              {symbol}
+            </motion.div>
+          )}
+          
           <motion.div 
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-24 bg-primary/10 blur-3xl rounded-full -z-10"
+            className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-24 bg-primary/20 blur-3xl rounded-full -z-10"
           />
           <h1 className="text-6xl font-black text-primary mb-2 drop-shadow-sm">
             {today.getDate()}
@@ -53,7 +85,7 @@ const Dashboard = () => {
           </p>
         </div>
 
-        <Card className="mb-8 border-none shadow-2xl bg-card/70 backdrop-blur-xl border border-border/50 overflow-hidden group rounded-[2.5rem]">
+        <Card className="mb-8 border-none shadow-2xl bg-card/80 dark:bg-card/40 backdrop-blur-xl border border-white/20 dark:border-white/10 overflow-hidden group rounded-[2.5rem] festive-glow">
           <div className="h-1.5 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-[gradient_3s_linear_infinite]" />
           <CardContent className="p-8">
             <div className="flex justify-between items-start mb-8">
