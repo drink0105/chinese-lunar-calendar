@@ -7,6 +7,7 @@ import { Calendar as CalendarIcon, Info, Utensils, Sparkles } from 'lucide-react
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/use-theme';
+import { cn } from '@/lib/utils';
 import {
   Tooltip,
   TooltipContent,
@@ -16,7 +17,7 @@ import {
 
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
-  const { theme } = useTheme();
+  const { theme, isDarkMode } = useTheme();
   const today = new Date();
   const data = getLunarData(today, i18n.language);
 
@@ -44,9 +45,11 @@ const Dashboard = () => {
   };
 
   const symbol = getFestivalSymbol();
+  const isFestiveTheme = theme === 'spring' || theme === 'dragonboat' || theme === 'midautumn';
+  const showWhiteSection = !isDarkMode && isFestiveTheme;
 
   return (
-    <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
+    <div className="pb-32 pt-10 px-4 max-w-md mx-auto">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -57,7 +60,7 @@ const Dashboard = () => {
             <motion.div 
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute -top-8 left-0 text-4xl drop-shadow-lg"
+              className="absolute -top-4 left-0 text-4xl drop-shadow-lg z-10"
             >
               {symbol}
             </motion.div>
@@ -66,7 +69,7 @@ const Dashboard = () => {
             <motion.div 
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute -top-8 right-0 text-4xl drop-shadow-lg"
+              className="absolute -top-4 right-0 text-4xl drop-shadow-lg z-10"
             >
               {symbol}
             </motion.div>
@@ -172,8 +175,16 @@ const Dashboard = () => {
                     {t('dashboard.auspicious')}
                   </Badge>
                 </div>
-                <div className="bg-emerald-500/5 p-4 rounded-2xl border border-emerald-500/20">
-                  <p className="text-sm text-emerald-700 dark:text-emerald-400 font-medium leading-relaxed">
+                <div className={cn(
+                  "p-4 rounded-2xl border transition-all duration-300",
+                  showWhiteSection 
+                    ? "bg-white border-gray-200 shadow-sm" 
+                    : "bg-emerald-500/5 border-emerald-500/20"
+                )}>
+                  <p className={cn(
+                    "text-sm font-medium leading-relaxed",
+                    showWhiteSection ? "text-emerald-800" : "text-emerald-700 dark:text-emerald-400"
+                  )}>
                     {data.auspicious.join(' • ')}
                   </p>
                 </div>
@@ -185,8 +196,16 @@ const Dashboard = () => {
                     {t('dashboard.inauspicious')}
                   </Badge>
                 </div>
-                <div className="bg-rose-500/5 p-4 rounded-2xl border border-rose-500/20">
-                  <p className="text-sm text-rose-700 dark:text-rose-400 font-medium leading-relaxed">
+                <div className={cn(
+                  "p-4 rounded-2xl border transition-all duration-300",
+                  showWhiteSection 
+                    ? "bg-white border-gray-200 shadow-sm" 
+                    : "bg-rose-500/5 border-rose-500/20"
+                )}>
+                  <p className={cn(
+                    "text-sm font-medium leading-relaxed",
+                    showWhiteSection ? "text-rose-800" : "text-rose-700 dark:text-rose-400"
+                  )}>
                     {data.inauspicious.join(' • ')}
                   </p>
                 </div>
