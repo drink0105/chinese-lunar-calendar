@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getLunarData, getZodiacEmoji } from '@/utils/lunarUtils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Calendar as CalendarIcon, Info, Utensils, Sparkles } from 'lucide-react';
+import { Calendar as CalendarIcon, Info, Utensils, Sparkles, X } from 'lucide-react';
 import AdSlot from '@/components/AdSlot';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/use-theme';
@@ -14,11 +14,20 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerClose,
+} from "@/components/ui/drawer";
+import { Button } from '@/components/ui/button';
 
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
   const { theme, isDarkMode } = useTheme();
   const [data, setData] = useState<any>(null);
+  const [isClashInfoOpen, setIsClashInfoOpen] = useState(false);
   const today = new Date();
 
   useEffect(() => {
@@ -143,25 +152,30 @@ const Dashboard = () => {
                 <p className="text-[10px] text-muted-foreground font-black uppercase tracking-wider mb-1">{t('dashboard.solar_term')}</p>
                 <p className="font-black text-xl text-primary">{data.solarTerm || '-'}</p>
               </div>
-              <div className="bg-muted/30 p-4 rounded-2xl border border-border/30 shadow-sm group-hover:shadow-md transition-all relative">
+              <div className="bg-muted/30 p-4 rounded-2xl border border-border/30 shadow-sm group-hover:shadow-md transition-all relative flex flex-col">
                 <div className="flex items-center gap-1 mb-1">
                   <p className="text-[10px] text-muted-foreground font-black uppercase tracking-wider">{t('dashboard.clashZodiac')}</p>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <Info size={12} className="text-muted-foreground/50 cursor-help" />
+                        <button 
+                          onClick={() => setIsClashInfoOpen(true)}
+                          className="p-1 -m-1 hover:text-primary transition-colors"
+                        >
+                          <Info size={12} className="text-muted-foreground/50 cursor-help" />
+                        </button>
                       </TooltipTrigger>
-                      <TooltipContent className="bg-foreground text-background text-[10px] max-w-[180px] p-3 rounded-xl border-none shadow-2xl">
+                      <TooltipContent className="hidden md:block bg-foreground text-background text-[10px] max-w-[180px] p-3 rounded-xl border-none shadow-2xl">
                         {t('dashboard.clash_explanation')}
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                 </div>
-                <div className="flex items-center gap-2">
-                  <p className="font-black text-lg text-foreground/80">
+                <div className="flex flex-col items-center justify-center flex-1 pt-1">
+                  <p className="font-black text-sm text-foreground/80 text-center leading-tight mb-1">
                     {data.clash}
                   </p>
-                  <span className="text-2xl drop-shadow-[0_0_10px_rgba(0,0,0,0.1)]">{getClashEmoji(data.clash)}</span>
+                  <span className="text-3xl drop-shadow-[0_0_10px_rgba(0,0,0,0.1)]">{getClashEmoji(data.clash)}</span>
                 </div>
               </div>
             </div>
@@ -241,6 +255,46 @@ const Dashboard = () => {
 
         <AdSlot type="banner" className="mb-8 opacity-80 hover:opacity-100 transition-opacity" />
       </motion.div>
+
+      <Drawer open={isClashInfoOpen} onOpenChange={setIsClashInfoOpen}>
+        <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl rounded-t-[2.5rem] border-none shadow-2xl">
+          <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 dark:bg-zinc-700 mt-4 mb-2" />
+          
+          <div className="absolute top-6 right-6 z-50">
+            <DrawerClose asChild>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="rounded-full border border-gray-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm shadow-sm hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all"
+              >
+                <X size={20} />
+              </Button>
+            </DrawerClose>
+          </div>
+
+          <div className="px-8 pb-12 pt-6">
+            <DrawerHeader className="px-0 pb-4">
+              <DrawerTitle className="text-primary text-2xl font-black flex items-center gap-3">
+                <Info className="text-primary" /> {t('dashboard.clashZodiac')}
+              </DrawerTitle>
+            </DrawerHeader>
+            <div className="space-y-6">
+              <div className="p-6 bg-muted/30 rounded-3xl border border-border/50">
+                <p className="text-lg font-bold text-foreground leading-relaxed">
+                  {t('dashboard.clash_explanation')}
+                </p>
+              </div>
+              <div className="flex items-center gap-4 p-4 bg-primary/5 rounded-2xl border border-primary/10">
+                <div className="text-4xl">{getClashEmoji(data.clash)}</div>
+                <div>
+                  <p className="text-xs font-black text-muted-foreground uppercase tracking-widest">{t('dashboard.clashZodiac')}</p>
+                  <p className="text-xl font-black text-primary">{data.clash}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </DrawerContent>
+      </Drawer>
       
       <style>{`
         @keyframes gradient {

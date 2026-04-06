@@ -34,6 +34,8 @@ const getTranslatedZodiac = (shengxiao: string, lang: string) => {
 
 const getTranslatedClash = (chongDesc: string, lang: string): string => {
   if (!chongDesc) return '';
+  
+  // For Chinese, keep the full traditional format like "(甲辰) 龙"
   if (lang === 'zh-CN' || lang === 'zh-TW') return chongDesc;
 
   const baseLang = lang.split('-')[0];
@@ -44,8 +46,8 @@ const getTranslatedClash = (chongDesc: string, lang: string): string => {
     const animal = animalMatch[1];
     const translatedAnimal = zodiac[animal]?.[lang] || zodiac[animal]?.[baseLang] || animal;
 
-    // Replace only the animal part, keep the (GanZhi) prefix as-is
-    return chongDesc.replace(animal, translatedAnimal);
+    // For non-Chinese, return ONLY the translated animal name
+    return translatedAnimal;
   }
 
   // Fallback: try to translate the whole thing if it's just an animal
