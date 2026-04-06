@@ -11,6 +11,7 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import BottomNav from "./components/BottomNav";
 import ConsentBanner from "./components/ConsentBanner";
+import LanguageSelector from "./components/LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "./hooks/use-theme";
 import "./i18n/config";
@@ -19,7 +20,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const { t } = useTranslation();
-  useTheme(); // Initialize theme
+  useTheme(); // Initialize theme system
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -27,16 +28,19 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen bg-[#FDFCFB] dark:bg-zinc-950 text-gray-900 dark:text-zinc-100 font-sans selection:bg-[#C0392B]/10 transition-colors duration-500">
-            <header className="sticky top-0 z-40 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border-b border-white/20 dark:border-zinc-800/50 px-4 h-14 flex items-center justify-between shadow-sm">
+          <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/10">
+            <header className="sticky top-0 z-40 bg-background/70 backdrop-blur-xl border-b border-border/50 px-4 h-14 flex items-center justify-between shadow-sm">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#C0392B] dark:bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-red-900/20">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg shadow-primary/20">
                   L
                 </div>
-                <span className="font-bold text-gray-800 dark:text-zinc-100 tracking-tight">{t('app.name')}</span>
+                <span className="font-bold tracking-tight">{t('app.name')}</span>
               </div>
-              <div className="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-inner">
-                <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse shadow-[0_0_8px] shadow-amber-500" />
+              <div className="flex items-center gap-2">
+                <LanguageSelector />
+                <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary shadow-inner">
+                  <div className="w-2 h-2 bg-secondary rounded-full animate-pulse shadow-[0_0_8px] shadow-secondary" />
+                </div>
               </div>
             </header>
 

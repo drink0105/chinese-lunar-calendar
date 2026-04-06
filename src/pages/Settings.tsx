@@ -1,21 +1,20 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '@/hooks/use-theme';
+import { useTheme, ThemeType } from '@/hooks/use-theme';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Moon, Sun, Languages, Palette, Info, ShieldCheck } from 'lucide-react';
+import { Palette, Info, ShieldCheck, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Settings = () => {
-  const { t, i18n } = useTranslation();
-  const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
+  const { theme, setTheme } = useTheme();
 
-  const languages = [
-    { code: 'en', name: 'English' },
-    { code: 'zh-CN', name: '简体中文' },
-    { code: 'zh-TW', name: '繁體中文' },
-    { code: 'th', name: 'ไทย' },
-    { code: 'vi', name: 'Tiếng Việt' },
+  const themes: { id: ThemeType; name: string; colors: string[] }[] = [
+    { id: 'classic', name: 'Classic', colors: ['bg-[#C0392B]', 'bg-[#F39C12]'] },
+    { id: 'spring', name: 'Spring Festival', colors: ['bg-[#E74C3C]', 'bg-[#F1C40F]'] },
+    { id: 'dragonboat', name: 'Dragon Boat', colors: ['bg-[#27AE60]', 'bg-[#C0392B]'] },
+    { id: 'midautumn', name: 'Mid-Autumn', colors: ['bg-[#F39C12]', 'bg-[#922B21]'] },
+    { id: 'dark', name: 'Dark Night', colors: ['bg-[#1A1A1A]', 'bg-[#C0392B]'] },
   ];
 
   return (
@@ -23,76 +22,65 @@ const Settings = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="space-y-6"
+        className="space-y-8"
       >
-        <h1 className="text-3xl font-bold text-[#C0392B] dark:text-red-500 mb-8 text-center">
+        <h1 className="text-3xl font-black text-primary mb-8 text-center tracking-tight">
           {t('nav.settings', 'Settings')}
         </h1>
 
-        <section className="space-y-3">
-          <h2 className="text-xs font-bold text-gray-400 dark:text-zinc-500 uppercase tracking-widest px-2 flex items-center gap-2">
-            <Palette size={14} /> {t('settings.appearance', 'Appearance')}
+        <section className="space-y-4">
+          <h2 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] px-2 flex items-center gap-2">
+            <Palette size={14} /> {t('settings.theme', 'App Theme')}
           </h2>
-          <Card className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-white/20 dark:border-zinc-700/50 shadow-xl overflow-hidden">
-            <CardContent className="p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg text-amber-600 dark:text-amber-400">
-                  {theme === 'light' ? <Sun size={20} /> : <Moon size={20} />}
-                </div>
-                <div>
-                  <p className="font-bold text-gray-800 dark:text-zinc-200">{t('settings.theme', 'Theme Mode')}</p>
-                  <p className="text-xs text-gray-500 dark:text-zinc-500 capitalize">{theme}</p>
-                </div>
-              </div>
-              <Button 
-                onClick={toggleTheme}
-                variant="outline"
-                className="rounded-full w-12 h-12 p-0 border-gray-200 dark:border-zinc-700 hover:bg-gray-100 dark:hover:bg-zinc-800"
+          <div className="grid grid-cols-1 gap-3">
+            {themes.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => setTheme(t.id)}
+                className={`relative group overflow-hidden rounded-2xl border-2 transition-all duration-300 ${
+                  theme === t.id 
+                    ? 'border-primary shadow-lg shadow-primary/10 scale-[1.02]' 
+                    : 'border-border hover:border-primary/30 bg-card/50'
+                }`}
               >
-                {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-              </Button>
-            </CardContent>
-          </Card>
+                <div className="p-4 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="flex -space-x-2">
+                      {t.colors.map((c, i) => (
+                        <div key={i} className={`w-8 h-8 rounded-full border-2 border-background ${c}`} />
+                      ))}
+                    </div>
+                    <span className={`font-bold ${theme === t.id ? 'text-primary' : 'text-foreground/70'}`}>
+                      {t.name}
+                    </span>
+                  </div>
+                  {theme === t.id && (
+                    <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20">
+                      <Check size={14} strokeWidth={3} />
+                    </div>
+                  )}
+                </div>
+              </button>
+            ))}
+          </div>
         </section>
 
-        <section className="space-y-3">
-          <h2 className="text-xs font-bold text-gray-400 dark:text-zinc-500 uppercase tracking-widest px-2 flex items-center gap-2">
-            <Languages size={14} /> {t('settings.language', 'Language')}
-          </h2>
-          <Card className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-white/20 dark:border-zinc-700/50 shadow-xl">
-            <CardContent className="p-2 grid grid-cols-1 divide-y divide-gray-100 dark:divide-zinc-800">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => i18n.changeLanguage(lang.code)}
-                  className={`w-full text-left px-4 py-3 flex items-center justify-between transition-colors hover:bg-gray-50 dark:hover:bg-zinc-800/50 ${
-                    i18n.language === lang.code ? 'text-[#C0392B] dark:text-red-500 font-bold' : 'text-gray-700 dark:text-zinc-300'
-                  }`}
-                >
-                  <span>{lang.name}</span>
-                  {i18n.language === lang.code && <div className="w-2 h-2 bg-[#C0392B] dark:bg-red-500 rounded-full shadow-[0_0_8px] shadow-red-500" />}
-                </button>
-              ))}
-            </CardContent>
-          </Card>
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="text-xs font-bold text-gray-400 dark:text-zinc-500 uppercase tracking-widest px-2 flex items-center gap-2">
+        <section className="space-y-4">
+          <h2 className="text-xs font-black text-muted-foreground uppercase tracking-[0.2em] px-2 flex items-center gap-2">
             <Info size={14} /> {t('settings.about', 'About')}
           </h2>
-          <Card className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-white/20 dark:border-zinc-700/50 shadow-xl">
-            <CardContent className="p-4 space-y-4">
+          <Card className="bg-card/50 backdrop-blur-xl border-border/50 shadow-xl rounded-[2rem]">
+            <CardContent className="p-6 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
-                  <ShieldCheck size={20} />
+                <div className="p-3 bg-primary/10 rounded-2xl text-primary">
+                  <ShieldCheck size={24} />
                 </div>
                 <div>
-                  <p className="font-bold text-gray-800 dark:text-zinc-200">Version 1.2.0</p>
-                  <p className="text-xs text-gray-500 dark:text-zinc-500">Premium Edition</p>
+                  <p className="font-black text-foreground">Version 1.2.0</p>
+                  <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest">Premium Edition</p>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 dark:text-zinc-400 leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed font-medium">
                 LunarDays is a premium Chinese Lunar Calendar application designed for modern users who value tradition and aesthetics.
               </p>
             </CardContent>
