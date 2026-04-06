@@ -12,38 +12,44 @@ const getTranslatedLunarDate = (lunar: any, lang: string): string => {
     return `${leapStr}${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`;
   }
 
+  // Normalize language code (e.g. 'en-US' -> 'en')
+  const baseLang = lang.split('-')[0];
+
   // Automatic for en/th/vi
-  let monthStr = lunarMonthNames[monthNum]?.[lang] || `${monthNum}th Month`;
+  let monthStr = lunarMonthNames[monthNum]?.[lang] || lunarMonthNames[monthNum]?.[baseLang] || `${monthNum}th Month`;
   if (isLeap) monthStr = `Leap ${monthStr}`;
 
   const ordinal = (n: number) => n + (['th','st','nd','rd'][((n%100)-20)%10] || ['th','st','nd','rd'][n%10] || 'th');
-  const dayStr = lang === 'en' ? ordinal(dayNum) : (lunarDayNames[dayNum]?.[lang] || `${dayNum}`);
+  const dayStr = baseLang === 'en' ? ordinal(dayNum) : (lunarDayNames[dayNum]?.[lang] || lunarDayNames[dayNum]?.[baseLang] || `${dayNum}`);
 
-  if (lang === 'vi') return `${dayStr}, ${monthStr}`;
-  if (lang === 'th') return `${monthStr}, ${dayStr}`;
+  if (baseLang === 'vi') return `${dayStr}, ${monthStr}`;
+  if (baseLang === 'th') return `${monthStr}, ${dayStr}`;
   return `${monthStr}, ${dayStr}`;
 };
 
 const getTranslatedZodiac = (shengxiao: string, lang: string) => {
-  return zodiac[shengxiao]?.[lang] || shengxiao;
+  const baseLang = lang.split('-')[0];
+  return zodiac[shengxiao]?.[lang] || zodiac[shengxiao]?.[baseLang] || shengxiao;
 };
 
 const getTranslatedClash = (chongDesc: string, lang: string): string => {
   if (!chongDesc) return '';
   if (lang === 'zh-CN' || lang === 'zh-TW') return chongDesc;
 
+  const baseLang = lang.split('-')[0];
+
   // Extract the animal part (the last Chinese character)
   const animalMatch = chongDesc.match(/([鼠牛虎兔龙蛇马羊猴鸡狗猪])/);
   if (animalMatch && animalMatch[1]) {
     const animal = animalMatch[1];
-    const translatedAnimal = zodiac[animal]?.[lang] || animal;
+    const translatedAnimal = zodiac[animal]?.[lang] || zodiac[animal]?.[baseLang] || animal;
 
     // Replace only the animal part, keep the (GanZhi) prefix as-is
     return chongDesc.replace(animal, translatedAnimal);
   }
 
   // Fallback: try to translate the whole thing if it's just an animal
-  return zodiac[chongDesc]?.[lang] || chongDesc;
+  return zodiac[chongDesc]?.[lang] || zodiac[chongDesc]?.[baseLang] || chongDesc;
 };
 
 export const getLunarData = (date: Date, lang: string = 'en') => {

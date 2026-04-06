@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getLunarData, getZodiacEmoji } from '@/utils/lunarUtils';
 import { Card, CardContent } from '@/components/ui/card';
@@ -18,8 +18,33 @@ import {
 const Dashboard = () => {
   const { t, i18n } = useTranslation();
   const { theme, isDarkMode } = useTheme();
+  const [data, setData] = useState<any>(null);
   const today = new Date();
-  const data = getLunarData(today, i18n.language);
+
+  useEffect(() => {
+    const loadData = () => {
+      const lunarData = getLunarData(today, i18n.language || 'en');
+      setData(lunarData);
+    };
+
+    // Run immediately and also listen for language changes
+    loadData();
+
+    const handleLanguageChange = () => loadData();
+    i18n.on('languageChanged', handleLanguageChange);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [i18n]);
+
+  if (!data) {
+    return (
+      <div className="pb-32 pt-10 px-4 max-w-md mx-auto flex items-center justify-center min-h-[60vh]">
+        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   const formattedDate = today.toLocaleDateString(i18n.language, {
     weekday: 'long',
