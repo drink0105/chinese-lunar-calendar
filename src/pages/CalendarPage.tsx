@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getMonthDays } from '@/utils/lunarUtils';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Utensils } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Utensils, X } from 'lucide-react';
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerClose,
+} from "@/components/ui/drawer";
 import {
   Select,
   SelectContent,
@@ -138,16 +139,24 @@ const CalendarPage = () => {
         </div>
       </motion.div>
 
-      <Dialog open={!!selectedDay} onOpenChange={() => setSelectedDay(null)}>
-        <DialogContent className="bg-white/90 dark:bg-zinc-900/90 backdrop-blur-2xl max-w-[90vw] rounded-[2rem] border-white/20 dark:border-zinc-700/50 shadow-2xl">
+      <Drawer open={!!selectedDay} onOpenChange={(open) => !open && setSelectedDay(null)}>
+        <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl max-h-[90vh] rounded-t-[2.5rem] border-none shadow-2xl">
+          <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 dark:bg-zinc-700 mt-4 mb-2" />
+          
           {selectedDay && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-[#C0392B] dark:text-red-500 text-2xl font-black">
+            <div className="overflow-y-auto px-6 pb-12 pt-2">
+              <DrawerHeader className="px-0 flex justify-between items-start sticky top-0 bg-transparent z-10">
+                <DrawerTitle className="text-[#C0392B] dark:text-red-500 text-2xl font-black">
                   {selectedDay.date.toLocaleDateString(i18n.language, { month: 'long', day: 'numeric', year: 'numeric' })}
-                </DialogTitle>
-              </DialogHeader>
-              <div className="space-y-6 mt-6">
+                </DrawerTitle>
+                <DrawerClose asChild>
+                  <Button variant="ghost" size="icon" className="rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800">
+                    <X size={20} />
+                  </Button>
+                </DrawerClose>
+              </DrawerHeader>
+
+              <div className="space-y-6 mt-4">
                 {selectedDay.lunar.isHoliday && selectedDay.lunar.holidayNames.length > 0 && (
                   <div className="p-4 bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100/50 dark:border-red-900/30 shadow-sm">
                     <p className="text-[10px] text-red-400 dark:text-red-400 font-black uppercase tracking-widest mb-1">{t('dashboard.holiday')}</p>
@@ -193,10 +202,10 @@ const CalendarPage = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           )}
-        </DialogContent>
-      </Dialog>
+        </DrawerContent>
+      </Drawer>
     </div>
   );
 };
