@@ -141,19 +141,28 @@ const CalendarPage = () => {
 
       <Drawer open={!!selectedDay} onOpenChange={(open) => !open && setSelectedDay(null)}>
         <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl max-h-[90vh] rounded-t-[2.5rem] border-none shadow-2xl">
+          {/* Drag Handle */}
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 dark:bg-zinc-700 mt-4 mb-2" />
           
+          {/* Fixed Close Button */}
+          <div className="absolute top-6 right-6 z-50">
+            <DrawerClose asChild>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="rounded-full border border-gray-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm shadow-sm hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all"
+              >
+                <X size={20} />
+              </Button>
+            </DrawerClose>
+          </div>
+
           {selectedDay && (
-            <div className="overflow-y-auto px-6 pb-12 pt-2">
-              <DrawerHeader className="px-0 flex justify-between items-start sticky top-0 bg-transparent z-10">
-                <DrawerTitle className="text-[#C0392B] dark:text-red-500 text-2xl font-black">
+            <div className="overflow-y-auto px-6 pb-12 pt-2 h-full">
+              <DrawerHeader className="px-0 pt-4 pb-2">
+                <DrawerTitle className="text-[#C0392B] dark:text-red-500 text-2xl font-black pr-12">
                   {selectedDay.date.toLocaleDateString(i18n.language, { month: 'long', day: 'numeric', year: 'numeric' })}
                 </DrawerTitle>
-                <DrawerClose asChild>
-                  <Button variant="ghost" size="icon" className="rounded-full hover:bg-gray-100 dark:hover:bg-zinc-800">
-                    <X size={20} />
-                  </Button>
-                </DrawerClose>
               </DrawerHeader>
 
               <div className="space-y-6 mt-4">
