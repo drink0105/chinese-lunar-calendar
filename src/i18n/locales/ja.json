@@ -1,0 +1,94 @@
+{
+  "app": {
+    "name": "LunarDays 暦通",
+    "description": "中国の旧暦と吉日カレンダー"
+  },
+  "nav": {
+    "today": "今日",
+    "calendar": "カレンダー",
+    "converter": "変換",
+    "lucky": "吉日",
+    "settings": "設定"
+  },
+  "dashboard": {
+    "lunar_date": "旧暦の日付",
+    "zodiac": "干支",
+    "solar_term": "二十四節気",
+    "auspicious": "宜（よい）",
+    "inauspicious": "忌（避ける）",
+    "clash": "相克の干支",
+    "clashZodiac": "相克の干支",
+    "clash_explanation": "今日のエネルギーと衝突する干支です（自分の干支と一致する場合は、重要な活動を避けるのが一般的です）",
+    "holiday": "祝日",
+    "no_holiday": "公休日なし",
+    "noSolarTerm": "なし",
+    "recommendation": "今日の推奨事項",
+    "food_tradition": "食の伝統"
+  },
+  "calendar": {
+    "prev": "前月",
+    "next": "次月",
+    "sun": "日",
+    "mon": "月",
+    "tue": "火",
+    "wed": "水",
+    "thu": "木",
+    "fri": "金",
+    "sat": "土",
+    "select_month": "月を選択",
+    "select_year": "年を選択"
+  },
+  "converter": {
+    "title": "日付変換",
+    "select_date": "西暦を選択",
+    "convert": "変換",
+    "result": "旧暦の結果",
+    "lunarResult": "旧暦の結果",
+    "lunarDate": "旧暦の日付",
+    "zodiacYear": "干支",
+    "solarTerm": "二十四節気",
+    "foodTradition": "食の伝統",
+    "auspicious": "宜（よい）",
+    "inauspicious": "忌（避ける）"
+  },
+  "lucky": {
+    "title": "吉日検索",
+    "select_occasion": "行事を選択",
+    "select_month": "月を選択",
+    "find": "吉日を探す",
+    "occasions": {
+      "wedding": "結婚",
+      "moving": "引越し",
+      "opening": "開店",
+      "business": "事業開始",
+      "travel": "旅行",
+      "birth": "出産・子宝",
+      "renovation": "リフォーム",
+      "vehicle": "車両購入",
+      "contract": "契約締結"
+    }
+  },
+  "consent": {
+    "message": "このアプリは分析と広告のためにクッキーを使用します。続行することで同意したとみなされます。",
+    "accept": "同意する"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "close": "閉じる"
+  },
+  "theme": {
+    "classic": "クラシック",
+    "spring": "春節",
+    "dragonboat": "端午節",
+    "midautumn": "中秋節",
+    "light": "ライト",
+    "dark": "ダーク",
+    "appearance": "外観",
+    "select_theme": "テーマを選択"
+  },
+  "settings": {
+    "title": "設定",
+    "about": "LunarDaysについて",
+    "about_desc": "LunarDaysは、伝統と美学を大切にする現代のユーザーのために設計されたプレミアムな旧暦カレンダーアプリです。"
+  }
+}

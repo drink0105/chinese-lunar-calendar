@@ -1,0 +1,94 @@
+{
+  "app": {
+    "name": "LunarDays 만세력",
+    "description": "중국 음력 및 길일 달력"
+  },
+  "nav": {
+    "today": "오늘",
+    "calendar": "달력",
+    "converter": "변환",
+    "lucky": "길일",
+    "settings": "설정"
+  },
+  "dashboard": {
+    "lunar_date": "음력 날짜",
+    "zodiac": "띠",
+    "solar_term": "절기",
+    "auspicious": "길한 일 (宜)",
+    "inauspicious": "피해야 할 일 (忌)",
+    "clash": "충(沖)하는 띠",
+    "clashZodiac": "충(沖)하는 띠",
+    "clash_explanation": "오늘의 기운과 충돌하는 띠입니다 (본인의 띠와 일치할 경우 중요한 활동을 피하는 것이 좋습니다)",
+    "holiday": "공휴일",
+    "no_holiday": "공휴일 없음",
+    "noSolarTerm": "없음",
+    "recommendation": "오늘의 추천",
+    "food_tradition": "음식 전통"
+  },
+  "calendar": {
+    "prev": "이전달",
+    "next": "다음달",
+    "sun": "일",
+    "mon": "월",
+    "tue": "화",
+    "wed": "수",
+    "thu": "목",
+    "fri": "금",
+    "sat": "토",
+    "select_month": "월 선택",
+    "select_year": "년 선택"
+  },
+  "converter": {
+    "title": "날짜 변환",
+    "select_date": "양력 날짜 선택",
+    "convert": "변환",
+    "result": "음력 결과",
+    "lunarResult": "음력 결과",
+    "lunarDate": "음력 날짜",
+    "zodiacYear": "띠",
+    "solarTerm": "절기",
+    "foodTradition": "음식 전통",
+    "auspicious": "길한 일 (宜)",
+    "inauspicious": "피해야 할 일 (忌)"
+  },
+  "lucky": {
+    "title": "길일 찾기",
+    "select_occasion": "행사 선택",
+    "select_month": "월 선택",
+    "find": "길일 찾기",
+    "occasions": {
+      "wedding": "결혼",
+      "moving": "이사",
+      "opening": "개업",
+      "business": "사업 시작",
+      "travel": "여행",
+      "birth": "출산·기복",
+      "renovation": "수리·개축",
+      "vehicle": "차량 구입",
+      "contract": "계약 체결"
+    }
+  },
+  "consent": {
+    "message": "이 앱은 분석 및 광고를 위해 쿠키를 사용합니다. 계속 사용하시면 동의하는 것으로 간주됩니다.",
+    "accept": "수락"
+  },
+  "common": {
+    "loading": "로딩 중...",
+    "close": "닫기"
+  },
+  "theme": {
+    "classic": "클래식",
+    "spring": "설날",
+    "dragonboat": "단오",
+    "midautumn": "추석",
+    "light": "라이트",
+    "dark": "다크",
+    "appearance": "화면 설정",
+    "select_theme": "테마 선택"
+  },
+  "settings": {
+    "title": "설정",
+    "about": "LunarDays 정보",
+    "about_desc": "LunarDays는 전통과 미학을 중시하는 현대 사용자를 위해 설계된 프리미엄 음력 달력 애플리케이션입니다."
+  }
+}

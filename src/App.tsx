@@ -1,3 +1,5 @@
+"use client";
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,7 +17,7 @@ import LanguageSelector from "./components/LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "./hooks/use-theme";
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import "./i18n/config";
 
 const queryClient = new QueryClient();
@@ -25,59 +27,58 @@ const routes = ["/", "/calendar", "/converter", "/lucky", "/settings"];
 const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const touchStart = useRef<number | null>(null);
-  const touchEnd = useRef<number | null>(null);
-  const minSwipeDistance = 50;
+  const x = useMotionValue(0);
+  const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5]);
+  
+  const currentIndex = routes.indexOf(location.pathname);
+  const canSwipeLeft = currentIndex < routes.length - 1;
+  const canSwipeRight = currentIndex > 0;
 
-  const onTouchStart = (e: React.TouchEvent) => {
+  const onDragEnd = (_: any, info: any) => {
+    const threshold = window.innerWidth * 0.4;
+    const velocity = info.velocity.x;
+    const offset = info.offset.x;
+
+    if (offset < -threshold || velocity < -500) {
+      if (canSwipeLeft) {
+        navigate(routes[currentIndex + 1]);
+      }
+    } else if (offset > threshold || velocity > 500) {
+      if (canSwipeRight) {
+        navigate(routes[currentIndex - 1]);
+      }
+    }
+    x.set(0);
+  };
+
+  const onPointerDown = (e: React.PointerEvent) => {
     const target = e.target as HTMLElement;
     if (
       target.closest('input') || 
       target.closest('textarea') || 
+      target.closest('select') ||
       target.closest('[role="dialog"]') ||
-      target.closest('[data-vaul-drawer]')
+      target.closest('[data-vaul-drawer]') ||
+      location.pathname === '/settings' ||
+      location.pathname === '/converter'
     ) {
-      touchStart.current = null;
-      return;
+      // We don't stop propagation here because it might break the input focus
+      // Instead we rely on dragListener or checking in onDragStart
     }
-    touchStart.current = e.targetTouches[0].clientX;
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    touchEnd.current = e.targetTouches[0].clientX;
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart.current || !touchEnd.current) return;
-
-    const distance = touchStart.current - touchEnd.current;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe || isRightSwipe) {
-      const currentIndex = routes.indexOf(location.pathname);
-      if (currentIndex === -1) return;
-
-      if (isLeftSwipe && currentIndex < routes.length - 1) {
-        navigate(routes[currentIndex + 1]);
-      } else if (isRightSwipe && currentIndex > 0) {
-        navigate(routes[currentIndex - 1]);
-      }
-    }
-
-    touchStart.current = null;
-    touchEnd.current = null;
   };
 
   return (
-    <div 
-      className="min-h-screen flex flex-col overflow-x-hidden"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
+    <motion.div 
+      className="min-h-screen flex flex-col overflow-x-hidden touch-pan-y"
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.1}
+      onDragEnd={onDragEnd}
+      onPointerDownCapture={onPointerDown}
+      style={{ x, opacity }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 

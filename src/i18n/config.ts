@@ -7,6 +7,8 @@ import zhCN from './locales/zh-CN.json';
 import zhTW from './locales/zh-TW.json';
 import th from './locales/th.json';
 import vi from './locales/vi.json';
+import ja from './locales/ja.json';
+import ko from './locales/ko.json';
 
 i18n
   .use(LanguageDetector)
@@ -18,6 +20,8 @@ i18n
       'zh-TW': { translation: zhTW },
       th: { translation: th },
       vi: { translation: vi },
+      ja: { translation: ja },
+      ko: { translation: ko },
     },
     fallbackLng: 'en',
     interpolation: {

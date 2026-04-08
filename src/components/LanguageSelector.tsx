@@ -19,6 +19,8 @@ const LanguageSelector = () => {
     { code: 'zh-TW', name: '繁體中文' },
     { code: 'th', name: 'ไทย' },
     { code: 'vi', name: 'Tiếng Việt' },
+    { code: 'ja', name: '日本語' },
+    { code: 'ko', name: '한국어' },
   ];
 
   return (
@@ -28,7 +30,6 @@ const LanguageSelector = () => {
           <Languages size={20} />
         </Button>
       </DropdownMenuTrigger>
-      {/* Force white background and black text regardless of theme */}
       <DropdownMenuContent 
         align="end" 
         className="bg-white text-black border-gray-200 shadow-xl rounded-2xl min-w-[140px] z-[100]"

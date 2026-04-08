@@ -12,18 +12,18 @@ const getTranslatedLunarDate = (lunar: any, lang: string): string => {
     return `${leapStr}${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}`;
   }
 
-  // Normalize language code (e.g. 'en-US' -> 'en')
   const baseLang = lang.split('-')[0];
 
-  // Automatic for en/th/vi
   let monthStr = lunarMonthNames[monthNum]?.[lang] || lunarMonthNames[monthNum]?.[baseLang] || `${monthNum}th Month`;
-  if (isLeap) monthStr = `Leap ${monthStr}`;
+  if (isLeap) monthStr = baseLang === 'en' ? `Leap ${monthStr}` : `閏 ${monthStr}`;
 
   const ordinal = (n: number) => n + (['th','st','nd','rd'][((n%100)-20)%10] || ['th','st','nd','rd'][n%10] || 'th');
   const dayStr = baseLang === 'en' ? ordinal(dayNum) : (lunarDayNames[dayNum]?.[lang] || lunarDayNames[dayNum]?.[baseLang] || `${dayNum}`);
 
   if (baseLang === 'vi') return `${dayStr}, ${monthStr}`;
   if (baseLang === 'th') return `${monthStr}, ${dayStr}`;
+  if (baseLang === 'ja') return `${monthStr} ${dayStr}`;
+  if (baseLang === 'ko') return `${monthStr} ${dayStr}`;
   return `${monthStr}, ${dayStr}`;
 };
 
@@ -34,23 +34,15 @@ const getTranslatedZodiac = (shengxiao: string, lang: string) => {
 
 const getTranslatedClash = (chongDesc: string, lang: string): string => {
   if (!chongDesc) return '';
-  
-  // For Chinese, keep the full traditional format like "(甲辰) 龙"
   if (lang === 'zh-CN' || lang === 'zh-TW') return chongDesc;
 
   const baseLang = lang.split('-')[0];
-
-  // Extract the animal part (the last Chinese character)
   const animalMatch = chongDesc.match(/([鼠牛虎兔龙蛇马羊猴鸡狗猪])/);
   if (animalMatch && animalMatch[1]) {
     const animal = animalMatch[1];
     const translatedAnimal = zodiac[animal]?.[lang] || zodiac[animal]?.[baseLang] || animal;
-
-    // For non-Chinese, return ONLY the translated animal name
     return translatedAnimal;
   }
-
-  // Fallback: try to translate the whole thing if it's just an animal
   return zodiac[chongDesc]?.[lang] || zodiac[chongDesc]?.[baseLang] || chongDesc;
 };
 
@@ -61,7 +53,6 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
 
   const solar = Solar.fromYmd(year, month, day);
   const lunar = solar.getLunar();
-  
   const holiday = HolidayUtil.getHoliday(year, month, day);
   
   let rawFestivals: string[] = [
@@ -72,30 +63,19 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
   
   if (holiday) rawFestivals.push(holiday.getName());
 
-  // === ENHANCED DETECTION FOR MAJOR HOLIDAYS ===
   const jieqi = lunar.getJieQi();
   if (jieqi === "清明") rawFestivals.push("清明节");
 
   const majorHolidaysOverride: Record<string, string> = {
-    "0101": "元旦节",
-    "0501": "劳动节",
-    "1001": "国庆节",
-    "0308": "妇女节",
-    "0504": "青年节",
-    "0601": "儿童节",
-    "1225": "圣诞节",
-    "1224": "平安夜",
+    "0101": "元旦节", "0501": "劳动节", "1001": "国庆节", "0308": "妇女节",
+    "0504": "青年节", "0601": "儿童节", "1225": "圣诞节", "1224": "平安夜",
   };
 
   const dateKey = `${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}`;
-  if (majorHolidaysOverride[dateKey]) {
-    rawFestivals.push(majorHolidaysOverride[dateKey]);
-  }
+  if (majorHolidaysOverride[dateKey]) rawFestivals.push(majorHolidaysOverride[dateKey]);
 
   const uniqueRawFestivals = Array.from(new Set(rawFestivals));
-  const translatedHolidays = uniqueRawFestivals
-    .map(h => translateLunarTerm(h, lang))
-    .filter(Boolean);
+  const translatedHolidays = uniqueRawFestivals.map(h => translateLunarTerm(h, lang)).filter(Boolean);
 
   const rawZodiac = lunar.getYearShengXiao();
   const rawSolarTerm = lunar.getJieQi();
@@ -103,23 +83,14 @@ export const getLunarData = (date: Date, lang: string = 'en') => {
   const rawInauspicious = lunar.getDayJi();
 
   const translatedZodiac = getTranslatedZodiac(rawZodiac, lang);
-  const solarTermStr = rawSolarTerm 
-    ? translateLunarTerm(rawSolarTerm, lang) 
-    : i18n.t('dashboard.noSolarTerm', { lng: lang });
+  const solarTermStr = rawSolarTerm ? translateLunarTerm(rawSolarTerm, lang) : i18n.t('dashboard.noSolarTerm', { lng: lang });
 
-  // Food Suggestion Logic - Robust check
   let foodSuggestion = '';
   for (const f of uniqueRawFestivals) {
     const suggestion = translateLunarTermForFood(f, lang);
-    if (suggestion) {
-      foodSuggestion = suggestion;
-      break;
-    }
+    if (suggestion) { foodSuggestion = suggestion; break; }
   }
-
-  if (!foodSuggestion && rawSolarTerm) {
-    foodSuggestion = translateLunarTermForFood(rawSolarTerm, lang);
-  }
+  if (!foodSuggestion && rawSolarTerm) foodSuggestion = translateLunarTermForFood(rawSolarTerm, lang);
 
   return {
     solarDate: solar.toFullString(),
@@ -148,7 +119,11 @@ export const getZodiacEmoji = (zodiac: string) => {
     '鼠': '🐭', '牛': '🐮', '虎': '🐯', '兔': '🐰', '龙': '🐲', '蛇': '🐍',
     '马': '🐴', '羊': '🐑', '猴': '🐵', '鸡': '🐔', '狗': '🐶', '猪': '🐷',
     'Rat': '🐭', 'Ox': '🐮', 'Tiger': '🐯', 'Rabbit': '🐰', 'Dragon': '🐲', 'Snake': '🐍',
-    'Horse': '🐴', 'Goat': '🐑', 'Monkey': '🐵', 'Rooster': '🐔', 'Dog': '🐶', 'Pig': '🐷'
+    'Horse': '🐴', 'Goat': '🐑', 'Monkey': '🐵', 'Rooster': '🐔', 'Dog': '🐶', 'Pig': '🐷',
+    '子': '🐭', '丑': '🐮', '寅': '🐯', '卯': '🐰', '辰': '🐲', '巳': '🐍',
+    '午': '🐴', '未': '🐑', '申': '🐵', '酉': '🐔', '戌': '🐶', '亥': '🐷',
+    '쥐': '🐭', '소': '🐮', '호랑이': '🐯', '토끼': '🐰', '용': '🐲', '뱀': '🐍',
+    '말': '🐴', '양': '🐑', '원숭이': '🐵', '닭': '🐔', '개': '🐶', '돼지': '🐷'
   };
   return emojis[zodiac] || '🧧';
 };
@@ -157,19 +132,11 @@ export const getMonthDays = (year: number, month: number, lang: string) => {
   const days = [];
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
-  
-  for (let i = 0; i < firstDay.getDay(); i++) {
-    days.push(null);
-  }
-  
+  for (let i = 0; i < firstDay.getDay(); i++) days.push(null);
   for (let i = 1; i <= lastDay.getDate(); i++) {
     const date = new Date(year, month, i);
-    days.push({
-      date,
-      lunar: getLunarData(date, lang)
-    });
+    days.push({ date, lunar: getLunarData(date, lang) });
   }
-  
   return days;
 };
 
@@ -189,14 +156,10 @@ export const findLuckyDates = (occasionKey: string, year: number, month: number,
   const luckyDates = [];
   const lastDay = new Date(year, month + 1, 0).getDate();
   const targetTerms = occasionToYiTerms[occasionKey] || [];
-  
   for (let i = 1; i <= lastDay; i++) {
     const date = new Date(year, month, i);
     const data = getLunarData(date, lang);
-    
     if (data.auspicious.some(item => {
-      // We need to check against translated terms or original terms
-      // Since data.auspicious is already translated, we check if any of the target terms (translated) match
       const translatedTargets = targetTerms.map(t => translateLunarTerm(t, lang));
       return translatedTargets.includes(item);
     })) {
@@ -210,6 +173,5 @@ export const findLuckyDates = (occasionKey: string, year: number, month: number,
       });
     }
   }
-  
   return luckyDates;
 };
