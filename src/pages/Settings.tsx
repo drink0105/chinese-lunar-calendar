@@ -5,7 +5,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Palette, Info, ShieldCheck, Check, Moon, Sun } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const Settings = () => {
   const { t } = useTranslation();
@@ -20,11 +19,7 @@ const Settings = () => {
 
   return (
     <div className="pb-32 pt-6 px-4 max-w-md mx-auto min-h-screen">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="space-y-8"
-      >
+      <div className="space-y-8">
         <h1 className="text-3xl font-black text-primary mb-8 text-center tracking-tight">
           {t('settings.title')}
         </h1>
@@ -104,7 +99,7 @@ const Settings = () => {
             </CardContent>
           </Card>
         </section>
-      </motion.div>
+      </div>
     </div>
   );
 };

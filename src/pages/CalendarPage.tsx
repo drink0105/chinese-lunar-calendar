@@ -57,11 +57,7 @@ const CalendarPage = () => {
 
   return (
     <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 dark:border-zinc-700/50"
-      >
+      <div className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 dark:border-zinc-700/50">
         <div className="bg-gradient-to-br from-[#C0392B] to-[#A93226] p-6 flex flex-col gap-6 shadow-lg">
           <div className="flex justify-between items-center text-white">
             <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20 rounded-full">
@@ -108,9 +104,8 @@ const CalendarPage = () => {
 
         <div className="grid grid-cols-7 gap-px bg-gray-100 dark:bg-zinc-800/50">
           {days.map((day, i) => (
-            <motion.div
+            <div
               key={i}
-              whileTap={day ? { scale: 0.95 } : {}}
               onClick={() => day && setSelectedDay(day)}
               className={`min-h-[80px] bg-white dark:bg-zinc-900 p-2 flex flex-col items-center justify-start cursor-pointer hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all ${
                 !day ? 'bg-gray-50/50 dark:bg-zinc-900/50' : ''
@@ -134,17 +129,15 @@ const CalendarPage = () => {
                   )}
                 </>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       <Drawer open={!!selectedDay} onOpenChange={(open) => !open && setSelectedDay(null)}>
         <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl max-h-[90vh] rounded-t-[2.5rem] border-none shadow-2xl">
-          {/* Drag Handle */}
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 dark:bg-zinc-700 mt-4 mb-2" />
           
-          {/* Fixed Close Button */}
           <div className="absolute top-6 right-6 z-50">
             <DrawerClose asChild>
               <Button 
