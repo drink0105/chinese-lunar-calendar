@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import CalendarPage from "./pages/CalendarPage";
 import ConverterPage from "./pages/ConverterPage";
@@ -14,92 +14,29 @@ import ConsentBanner from "./components/ConsentBanner";
 import LanguageSelector from "./components/LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "./hooks/use-theme";
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./i18n/config";
 
 const queryClient = new QueryClient();
 
-const routes = ["/", "/calendar", "/converter", "/lucky", "/settings"];
-
-const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const x = useMotionValue(0);
-  const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5]);
-  const [isDragging, setIsDragging] = useState(false);
-
-  const onDragEnd = (_: any, info: any) => {
-    const threshold = window.innerWidth * 0.4;
-    const currentIndex = routes.indexOf(location.pathname);
-    
-    if (info.offset.x < -threshold && currentIndex < routes.length - 1) {
-      navigate(routes[currentIndex + 1]);
-    } else if (info.offset.x > threshold && currentIndex > 0) {
-      navigate(routes[currentIndex - 1]);
-    }
-    
-    animate(x, 0, { type: "spring", stiffness: 300, damping: 30 });
-    setIsDragging(false);
-  };
-
-  return (
-    <motion.div 
-      className="min-h-screen flex flex-col overflow-x-hidden touch-none"
-      style={{ x, opacity }}
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.2}
-      onDragStart={(e) => {
-        const target = e.target as HTMLElement;
-        if (
-          target.closest('input') || 
-          target.closest('textarea') || 
-          target.closest('[role="dialog"]') ||
-          target.closest('[data-vaul-drawer]') ||
-          location.pathname === '/settings'
-        ) {
-          return;
-        }
-        setIsDragging(true);
-      }}
-      onDragEnd={onDragEnd}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
 const AppContent = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const [direction, setDirection] = useState(0);
-  const prevPathname = useRef(location.pathname);
   useTheme();
 
-  useEffect(() => {
-    const currentIndex = routes.indexOf(location.pathname);
-    const prevIndex = routes.indexOf(prevPathname.current);
-    
-    if (currentIndex !== -1 && prevIndex !== -1 && currentIndex !== prevIndex) {
-      setDirection(currentIndex > prevIndex ? 1 : -1);
-    }
-    prevPathname.current = location.pathname;
-  }, [location.pathname]);
-
   const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
-      opacity: 0
-    }),
-    center: {
-      x: 0,
-      opacity: 1
+    initial: {
+      opacity: 0,
+      scale: 0.98
     },
-    exit: (direction: number) => ({
-      x: direction > 0 ? '-100%' : '100%',
-      opacity: 0
-    })
+    animate: {
+      opacity: 1,
+      scale: 1
+    },
+    exit: {
+      opacity: 0,
+      scale: 1.02
+    }
   };
 
   return (
@@ -119,34 +56,31 @@ const AppContent = () => {
         </div>
       </header>
 
-      <SwipeHandler>
-        <main className="relative flex-1 overflow-hidden">
-          <AnimatePresence mode="wait" initial={false} custom={direction}>
-            <motion.div
-              key={location.pathname}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              className="w-full h-full"
-            >
-              <Routes location={location}>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/calendar" element={<CalendarPage />} />
-                <Route path="/converter" element={<ConverterPage />} />
-                <Route path="/lucky" element={<LuckyDatesPage />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </motion.div>
-          </AnimatePresence>
-        </main>
-      </SwipeHandler>
+      <main className="relative flex-1 overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            variants={variants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{
+              duration: 0.2,
+              ease: "easeInOut"
+            }}
+            className="w-full h-full"
+          >
+            <Routes location={location}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/calendar" element={<CalendarPage />} />
+              <Route path="/converter" element={<ConverterPage />} />
+              <Route path="/lucky" element={<LuckyDatesPage />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
+      </main>
 
       <ConsentBanner />
       <BottomNav />
