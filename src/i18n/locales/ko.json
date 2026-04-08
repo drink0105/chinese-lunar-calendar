@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "LunarDays 만세력",
-    "description": "중국 음력 및 길일 달력"
+    "name": "LunarDays",
+    "description": "음력 달력 및 길일 안내"
   },
   "nav": {
     "today": "오늘",
@@ -12,13 +12,13 @@
   },
   "dashboard": {
     "lunar_date": "음력 날짜",
-    "zodiac": "띠",
-    "solar_term": "절기",
-    "auspicious": "길한 일 (宜)",
-    "inauspicious": "피해야 할 일 (忌)",
-    "clash": "충(沖)하는 띠",
-    "clashZodiac": "충(沖)하는 띠",
-    "clash_explanation": "오늘의 기운과 충돌하는 띠입니다 (본인의 띠와 일치할 경우 중요한 활동을 피하는 것이 좋습니다)",
+    "zodiac": "띠 (생초)",
+    "solar_term": "24절기",
+    "auspicious": "길한 일 (의)",
+    "inauspicious": "피할 일 (기)",
+    "clash": "상충살",
+    "clashZodiac": "충하는 띠",
+    "clash_explanation": "오늘의 기운과 충돌하는 띠입니다 (본인의 띠와 일치할 경우 중요한 활동은 피하는 것이 좋습니다)",
     "holiday": "공휴일",
     "no_holiday": "공휴일 없음",
     "noSolarTerm": "없음",
@@ -36,41 +36,41 @@
     "fri": "금",
     "sat": "토",
     "select_month": "월 선택",
-    "select_year": "년 선택"
+    "select_year": "연도 선택"
   },
   "converter": {
     "title": "날짜 변환",
     "select_date": "양력 날짜 선택",
-    "convert": "변환",
+    "convert": "변환하기",
     "result": "음력 결과",
     "lunarResult": "음력 결과",
     "lunarDate": "음력 날짜",
-    "zodiacYear": "띠",
-    "solarTerm": "절기",
+    "zodiacYear": "띠 (생초)",
+    "solarTerm": "24절기",
     "foodTradition": "음식 전통",
-    "auspicious": "길한 일 (宜)",
-    "inauspicious": "피해야 할 일 (忌)"
+    "auspicious": "길한 일 (의)",
+    "inauspicious": "피할 일 (기)"
   },
   "lucky": {
     "title": "길일 찾기",
-    "select_occasion": "행사 선택",
+    "select_occasion": "목적 선택",
     "select_month": "월 선택",
-    "find": "길일 찾기",
+    "find": "길일 검색",
     "occasions": {
       "wedding": "결혼",
       "moving": "이사",
       "opening": "개업",
       "business": "사업 시작",
       "travel": "여행",
-      "birth": "출산·기복",
-      "renovation": "수리·개축",
+      "birth": "출산 기원",
+      "renovation": "수리/착공",
       "vehicle": "차량 구입",
       "contract": "계약 체결"
     }
   },
   "consent": {
-    "message": "이 앱은 분석 및 광고를 위해 쿠키를 사용합니다. 계속 사용하시면 동의하는 것으로 간주됩니다.",
-    "accept": "수락"
+    "message": "이 앱은 분석 및 광고를 위해 쿠키를 사용합니다. 계속 사용하시면 이에 동의하는 것으로 간주됩니다.",
+    "accept": "동의함"
   },
   "common": {
     "loading": "로딩 중...",
@@ -78,9 +78,9 @@
   },
   "theme": {
     "classic": "클래식",
-    "spring": "설날",
+    "spring": "설날 (춘절)",
     "dragonboat": "단오",
-    "midautumn": "추석",
+    "midautumn": "추석 (중추절)",
     "light": "라이트",
     "dark": "다크",
     "appearance": "화면 설정",

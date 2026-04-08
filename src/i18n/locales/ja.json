@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "LunarDays 暦通",
-    "description": "中国の旧暦と吉日カレンダー"
+    "name": "LunarDays",
+    "description": "旧暦カレンダーと吉日"
   },
   "nav": {
     "today": "今日",
@@ -11,16 +11,16 @@
     "settings": "設定"
   },
   "dashboard": {
-    "lunar_date": "旧暦の日付",
+    "lunar_date": "旧暦日付",
     "zodiac": "干支",
     "solar_term": "二十四節気",
     "auspicious": "宜（よい）",
     "inauspicious": "忌（避ける）",
-    "clash": "相克の干支",
-    "clashZodiac": "相克の干支",
+    "clash": "相性（冲）",
+    "clashZodiac": "冲の干支",
     "clash_explanation": "今日のエネルギーと衝突する干支です（自分の干支と一致する場合は、重要な活動を避けるのが一般的です）",
     "holiday": "祝日",
-    "no_holiday": "公休日なし",
+    "no_holiday": "祝日なし",
     "noSolarTerm": "なし",
     "recommendation": "今日の推奨事項",
     "food_tradition": "食の伝統"
@@ -41,10 +41,10 @@
   "converter": {
     "title": "日付変換",
     "select_date": "西暦を選択",
-    "convert": "変換",
+    "convert": "変換する",
     "result": "旧暦の結果",
     "lunarResult": "旧暦の結果",
-    "lunarDate": "旧暦の日付",
+    "lunarDate": "旧暦日付",
     "zodiacYear": "干支",
     "solarTerm": "二十四節気",
     "foodTradition": "食の伝統",
@@ -53,18 +53,18 @@
   },
   "lucky": {
     "title": "吉日検索",
-    "select_occasion": "行事を選択",
+    "select_occasion": "目的を選択",
     "select_month": "月を選択",
     "find": "吉日を探す",
     "occasions": {
-      "wedding": "結婚",
+      "wedding": "結婚・入籍",
       "moving": "引越し",
-      "opening": "開店",
-      "business": "事業開始",
-      "travel": "旅行",
-      "birth": "出産・子宝",
-      "renovation": "リフォーム",
-      "vehicle": "車両購入",
+      "opening": "開店・開業",
+      "business": "ビジネス開始",
+      "travel": "旅行・出発",
+      "birth": "子宝・安産祈願",
+      "renovation": "リフォーム・着工",
+      "vehicle": "納車・購入",
       "contract": "契約締結"
     }
   },
@@ -78,17 +78,17 @@
   },
   "theme": {
     "classic": "クラシック",
-    "spring": "春節",
-    "dragonboat": "端午節",
-    "midautumn": "中秋節",
+    "spring": "春節（旧正月）",
+    "dragonboat": "端午の節句",
+    "midautumn": "中秋の名月",
     "light": "ライト",
     "dark": "ダーク",
-    "appearance": "外観",
+    "appearance": "外観設定",
     "select_theme": "テーマを選択"
   },
   "settings": {
     "title": "設定",
     "about": "LunarDaysについて",
-    "about_desc": "LunarDaysは、伝統と美学を大切にする現代のユーザーのために設計されたプレミアムな旧暦カレンダーアプリです。"
+    "about_desc": "LunarDaysは、伝統と美学を大切にする現代のユーザーのために設計された、プレミアムな旧暦カレンダーアプリです。"
   }
 }

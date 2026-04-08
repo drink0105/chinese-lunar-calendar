@@ -1,5 +1,3 @@
-"use client";
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -17,7 +15,7 @@ import LanguageSelector from "./components/LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "./hooks/use-theme";
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
 import "./i18n/config";
 
 const queryClient = new QueryClient();
@@ -29,53 +27,43 @@ const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const x = useMotionValue(0);
   const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5]);
-  
-  const currentIndex = routes.indexOf(location.pathname);
-  const canSwipeLeft = currentIndex < routes.length - 1;
-  const canSwipeRight = currentIndex > 0;
+  const [isDragging, setIsDragging] = useState(false);
 
   const onDragEnd = (_: any, info: any) => {
     const threshold = window.innerWidth * 0.4;
-    const velocity = info.velocity.x;
-    const offset = info.offset.x;
-
-    if (offset < -threshold || velocity < -500) {
-      if (canSwipeLeft) {
-        navigate(routes[currentIndex + 1]);
-      }
-    } else if (offset > threshold || velocity > 500) {
-      if (canSwipeRight) {
-        navigate(routes[currentIndex - 1]);
-      }
+    const currentIndex = routes.indexOf(location.pathname);
+    
+    if (info.offset.x < -threshold && currentIndex < routes.length - 1) {
+      navigate(routes[currentIndex + 1]);
+    } else if (info.offset.x > threshold && currentIndex > 0) {
+      navigate(routes[currentIndex - 1]);
     }
-    x.set(0);
-  };
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    const target = e.target as HTMLElement;
-    if (
-      target.closest('input') || 
-      target.closest('textarea') || 
-      target.closest('select') ||
-      target.closest('[role="dialog"]') ||
-      target.closest('[data-vaul-drawer]') ||
-      location.pathname === '/settings' ||
-      location.pathname === '/converter'
-    ) {
-      // We don't stop propagation here because it might break the input focus
-      // Instead we rely on dragListener or checking in onDragStart
-    }
+    
+    animate(x, 0, { type: "spring", stiffness: 300, damping: 30 });
+    setIsDragging(false);
   };
 
   return (
     <motion.div 
-      className="min-h-screen flex flex-col overflow-x-hidden touch-pan-y"
+      className="min-h-screen flex flex-col overflow-x-hidden touch-none"
+      style={{ x, opacity }}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.1}
+      dragElastic={0.2}
+      onDragStart={(e) => {
+        const target = e.target as HTMLElement;
+        if (
+          target.closest('input') || 
+          target.closest('textarea') || 
+          target.closest('[role="dialog"]') ||
+          target.closest('[data-vaul-drawer]') ||
+          location.pathname === '/settings'
+        ) {
+          return;
+        }
+        setIsDragging(true);
+      }}
       onDragEnd={onDragEnd}
-      onPointerDownCapture={onPointerDown}
-      style={{ x, opacity }}
     >
       {children}
     </motion.div>
