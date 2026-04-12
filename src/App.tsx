@@ -8,10 +8,13 @@ import CalendarPage from "./pages/CalendarPage";
 import ConverterPage from "./pages/ConverterPage";
 import LuckyDatesPage from "./pages/LuckyDatesPage";
 import Settings from "./pages/Settings";
+import BlogIndex from "./components/blog/BlogIndex";
+import ArticlePage from "./components/blog/ArticlePage";
 import NotFound from "./pages/NotFound";
 import BottomNav from "./components/BottomNav";
 import ConsentBanner from "./components/ConsentBanner";
 import LanguageSelector from "./components/LanguageSelector";
+import BlogNav from "./components/blog/BlogNav";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "./hooks/use-theme";
 import { motion, AnimatePresence } from "framer-motion";
@@ -30,7 +33,7 @@ const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
     const currentIndex = routes.indexOf(location.pathname);
 
     // Swipe Left (finger moves right to left) -> Next Tab
-    if (info.offset.x < -threshold && currentIndex < routes.length - 1) {
+    if (info.offset.x < -threshold && currentIndex < routes.length - 1 && currentIndex !== -1) {
       navigate(routes[currentIndex + 1]);
     } 
     // Swipe Right (finger moves left to right) -> Previous Tab
@@ -50,7 +53,8 @@ const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
           target.closest('textarea') || 
           target.closest('[role="dialog"]') ||
           target.closest('[data-vaul-drawer]') ||
-          location.pathname === '/settings'
+          location.pathname === '/settings' ||
+          location.pathname.startsWith('/blog')
         ) {
           return;
         }
@@ -90,6 +94,7 @@ const AppContent = () => {
             L
           </div>
           <span className="font-bold tracking-tight">{t('app.name')}</span>
+          <BlogNav />
         </div>
         <div className="flex items-center gap-2">
           <LanguageSelector />
@@ -112,7 +117,7 @@ const AppContent = () => {
                 duration: 0.2,
                 ease: "easeInOut"
               }}
-              className="w-full h-full"
+              className="w-full h-full overflow-y-auto"
             >
               <Routes location={location}>
                 <Route path="/" element={<Dashboard />} />
@@ -120,6 +125,8 @@ const AppContent = () => {
                 <Route path="/converter" element={<ConverterPage />} />
                 <Route path="/lucky" element={<LuckyDatesPage />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/blog" element={<BlogIndex />} />
+                <Route path="/blog/:slug" element={<ArticlePage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </motion.div>
