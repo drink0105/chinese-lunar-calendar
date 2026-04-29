@@ -151,7 +151,7 @@ const CalendarPage = () => {
           </div>
 
           {selectedDay && (
-            <div className="overflow-y-auto px-6 pb-12 pt-2 h-full">
+            <div className="overflow-y-auto px-6 pb-12 pt-2 h-full select-text">
               <DrawerHeader className="px-0 pt-4 pb-2">
                 <DrawerTitle className="text-[#C0392B] dark:text-red-500 text-2xl font-black pr-12">
                   {selectedDay.date.toLocaleDateString(i18n.language, { month: 'long', day: 'numeric', year: 'numeric' })}

@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { Utensils, RefreshCw } from 'lucide-react';
+import { Utensils, RefreshCw, Calendar as CalendarIcon } from 'lucide-react';
 
 const ConverterPage = () => {
   const { t, i18n } = useTranslation();
@@ -58,11 +58,23 @@ const ConverterPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="space-y-4"
+          className="space-y-4 select-text"
         >
           <h2 className="text-[10px] font-black text-gray-400 dark:text-zinc-500 uppercase tracking-[0.2em] px-4">{t('converter.lunarResult')}</h2>
           <Card className="border-none shadow-2xl bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-white/20 dark:border-zinc-700/50 rounded-[2rem] overflow-hidden">
             <CardContent className="p-8 space-y-6">
+              {result.isHoliday && (
+                <div className="p-4 bg-red-50/50 dark:bg-red-900/10 rounded-2xl border border-red-100/50 dark:border-red-900/30 flex items-center gap-4 shadow-sm mb-2">
+                  <div className="bg-[#C0392B] dark:bg-red-600 text-white p-3 rounded-xl shadow-lg shadow-red-500/20">
+                    <CalendarIcon size={20} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-red-600 dark:text-red-400 font-black uppercase tracking-widest">{t('dashboard.holiday')}</p>
+                    <p className="text-sm font-black text-[#C0392B] dark:text-red-500 leading-tight">{result.holidayNames.join(', ')}</p>
+                  </div>
+                </div>
+              )}
+
               <div className="flex justify-between items-center border-b border-gray-100 dark:border-zinc-800 pb-4">
                 <span className="text-gray-500 dark:text-zinc-400 font-bold">{t('converter.lunarDate')}</span>
                 <span className="font-black text-xl text-gray-800 dark:text-zinc-100">{result.lunarDate}</span>

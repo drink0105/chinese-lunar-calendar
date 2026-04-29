@@ -216,6 +216,16 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "除夕": { en: "Chinese New Year's Eve", th: "คืนส่งท้ายปีจีน", vi: "Giao Thừa", "zh-CN": "除夕", "zh-TW": "除夕", ja: "大晦日", ko: "섣달 그믐" },
   "腊八节": { en: "Laba Festival", th: "เทศกาลลาปา", vi: "Lễ Lạp Bát", "zh-CN": "腊八节", "zh-TW": "腊八节", ja: "臘八節", ko: "납팔절" },
   "小年": { en: "Minor New Year", th: "ปีใหม่เล็ก", vi: "Tết Táo Quân", "zh-CN": "小年", "zh-TW": "小年", ja: "小年", ko: "소년" },
+  "元旦节": { en: "New Year's Day", th: "วันขึ้นปีใหม่", vi: "Tết Dương Lịch", "zh-CN": "元旦", "zh-TW": "元旦", ja: "元旦", ko: "신정" },
+  "劳动节": { en: "Labor Day", th: "วันแรงงาน", vi: "Ngày Quốc tế Lao động", "zh-CN": "劳动节", "zh-TW": "勞動節", ja: "労働節", ko: "노동절" },
+  "国庆节": { en: "National Day", th: "วันชาติ", vi: "Ngày Quốc khánh", "zh-CN": "国庆节", "zh-TW": "國慶節", ja: "国慶節", ko: "국경절" },
+  "妇女节": { en: "Women's Day", th: "วันสตรีสากล", vi: "Ngày Quốc tế Phụ nữ", "zh-CN": "妇女节", "zh-TW": "婦女節", ja: "婦人節", ko: "부녀절" },
+  "青年节": { en: "Youth Day", th: "วันเยาวชน", vi: "Ngày Thanh niên", "zh-CN": "青年节", "zh-TW": "青年節", ja: "青年節", ko: "청년절" },
+  "儿童节": { en: "Children's Day", th: "วันเด็ก", vi: "Ngày Quốc tế Thiếu nhi", "zh-CN": "儿童节", "zh-TW": "兒童節", ja: "こどもの日", ko: "어린이날" },
+  "圣诞节": { en: "Christmas", th: "วันคริสต์มาส", vi: "Lễ Giáng sinh", "zh-CN": "圣诞节", "zh-TW": "聖誕節", ja: "クリスマス", ko: "크리스마스" },
+  "平安夜": { en: "Christmas Eve", th: "วันคริสต์มาสอีฟ", vi: "Đêm Giáng sinh", "zh-CN": "平安夜", "zh-TW": "平安夜", ja: "クリスマスイブ", ko: "크리스마스 이브" },
+  "母亲节": { en: "Mother's Day", th: "วันแม่", vi: "Ngày của Mẹ", "zh-CN": "母亲节", "zh-TW": "母親節", ja: "母の日", ko: "어머니날" },
+  "父亲节": { en: "Father's Day", th: "วันพ่อ", vi: "Ngày của Cha", "zh-CN": "父亲节", "zh-TW": "父親節", ja: "父の日", ko: "아버지날" },
 };
 
 export const foodSuggestions: Record<string, Record<string, string>> = {
@@ -260,7 +270,7 @@ export const foodSuggestions: Record<string, Record<string, string>> = {
     th: "กินถังหยวนหรือเกี๊ยวซ่า", 
     vi: "Ăn bánh trôi hoặc bánh chẻo",
     "zh-CN": "吃汤圆或饺子，阳气回升",
-    "zh-TW": "吃湯圓或餃子，陽氣回升",
+    "zh-TW": "吃湯圓หรือ餃子，陽氣回升",
     ja: "かぼちゃを食べたり、ゆず湯に入ったりします",
     ko: "팥죽을 먹으며 액운을 쫓고 양기를 보충합니다"
   },
