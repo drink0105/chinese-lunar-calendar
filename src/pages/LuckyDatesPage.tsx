@@ -84,7 +84,7 @@ const LuckyDatesPage = () => {
         </CardContent>
       </Card>
 
-      <AdSlot type="interstitial" className="mb-10 opacity-80 hover:opacity-100 transition-opacity" />
+      <AdSlot type="inpage" className="mb-10 opacity-80 hover:opacity-100 transition-opacity" />
 
       {results.length > 0 && (
         <div className="grid grid-cols-1 gap-4">

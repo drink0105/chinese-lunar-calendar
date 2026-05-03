@@ -249,7 +249,7 @@ const Dashboard = () => {
         </CardContent>
       </Card>
 
-      <AdSlot type="banner" className="mb-8 opacity-80 hover:opacity-100 transition-opacity" />
+      <AdSlot type="vignette" className="mb-8 opacity-80 hover:opacity-100 transition-opacity" />
 
       <Drawer open={isClashInfoOpen} onOpenChange={setIsClashInfoOpen}>
         <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl rounded-t-[2.5rem] border-none shadow-2xl">
