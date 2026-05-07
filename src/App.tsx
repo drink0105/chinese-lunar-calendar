@@ -29,38 +29,49 @@ const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleSwipe = (_: any, info: any) => {
-    const threshold = 50;
+  const handleSwipe = (info: any) => {
     const currentIndex = routes.indexOf(location.pathname);
+    if (currentIndex === -1) return;
 
-    // Swipe Left (finger moves right to left) -> Next Tab
-    if (info.offset.x < -threshold && currentIndex < routes.length - 1 && currentIndex !== -1) {
-      navigate(routes[currentIndex + 1]);
-    } 
-    // Swipe Right (finger moves left to right) -> Previous Tab
-    else if (info.offset.x > threshold && currentIndex > 0) {
-      navigate(routes[currentIndex - 1]);
+    const xOffset = info.offset.x;
+    const xVelocity = info.velocity.x;
+
+    // Thresholds for swipe detection
+    // We use a combination of distance (offset) and speed (velocity)
+    const distanceThreshold = 50;
+    const velocityThreshold = 500;
+
+    if (Math.abs(xOffset) > distanceThreshold || Math.abs(xVelocity) > velocityThreshold) {
+      if (xOffset < 0 && currentIndex < routes.length - 1) {
+        // Swipe Left -> Next Tab
+        navigate(routes[currentIndex + 1]);
+      } else if (xOffset > 0 && currentIndex > 0) {
+        // Swipe Right -> Previous Tab
+        navigate(routes[currentIndex - 1]);
+      }
     }
   };
 
   return (
     <motion.div
-      className="flex-1 flex flex-col overflow-hidden touch-pan-y"
+      className="flex-1 flex flex-col overflow-hidden"
+      style={{ touchAction: 'pan-y' }} // Allow vertical scrolling but capture horizontal pans
       onPanEnd={(e, info) => {
         const target = e.target as HTMLElement;
-        // Disable swipe on inputs, textareas, and specific interactive elements
+        // Ignore swipes on interactive elements to prevent accidental navigation
         if (
           target.closest('input') || 
           target.closest('textarea') || 
+          target.closest('button') ||
+          target.closest('a') ||
           target.closest('[role="dialog"]') ||
           target.closest('[data-vaul-drawer]') ||
-          location.pathname === '/settings' ||
           location.pathname === '/privacy' ||
           location.pathname.startsWith('/blog')
         ) {
           return;
         }
-        handleSwipe(e, info);
+        handleSwipe(info);
       }}
     >
       {children}
