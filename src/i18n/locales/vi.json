@@ -8,7 +8,8 @@
     "calendar": "Lịch",
     "converter": "Chuyển đổi",
     "lucky": "Ngày tốt",
-    "settings": "Cài đặt"
+    "settings": "Cài đặt",
+    "blog": "Blog"
   },
   "dashboard": {
     "lunar_date": "Ngày âm lịch",
@@ -74,7 +75,8 @@
   },
   "common": {
     "loading": "Đang tải...",
-    "close": "Đóng"
+    "close": "Đóng",
+    "back": "Quay lại"
   },
   "theme": {
     "classic": "Cổ điển",
@@ -89,6 +91,20 @@
   "settings": {
     "title": "Cài đặt",
     "about": "Về LunarDays",
-    "about_desc": "LunarDays là ứng dụng Lịch Âm cao cấp được thiết kế cho người dùng hiện đại coi trọng truyền thống và thẩm mỹ."
+    "about_desc": "LunarDays là ứng dụng Lịch Âm cao cấp được thiết kế cho người dùng hiện đại coi trọng truyền thống và thẩm mỹ.",
+    "privacy_policy": "Chính sách bảo mật"
+  },
+  "privacy": {
+    "title": "Chính sách bảo mật",
+    "last_updated": "Cập nhật lần cuối: Tháng 5 năm 2024",
+    "intro": "Tại LunarDays, chúng tôi cam kết bảo vệ quyền riêng tư của bạn. Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin của bạn khi bạn sử dụng ứng dụng của chúng tôi.",
+    "data_collection": "Thu thập và sử dụng dữ liệu",
+    "data_desc": "Chúng tôi không trực tiếp thu thập bất kỳ thông tin nhận dạng cá nhân nào. Tuy nhiên, chúng tôi sử dụng các dịch vụ của bên thứ ba để phân tích và quảng cáo có thể thu thập dữ liệu như địa chỉ IP, loại trình duyệt và kiểu sử dụng của bạn thông qua cookie.",
+    "ads": "Đối tác quảng cáo",
+    "ads_desc": "Chúng tôi làm việc với các đối tác quảng cáo như Monetag, Adsterra và Google AdSense. Các đối tác này sử dụng cookie để phân phát quảng cáo dựa trên các lần bạn truy cập trang web này và các trang web khác.",
+    "cookies": "Cookie",
+    "cookies_desc": "Cookie là các tệp nhỏ được lưu trữ trên thiết bị của bạn. Bạn có thể quản lý hoặc tắt cookie thông qua cài đặt trình duyệt của mình.",
+    "contact": "Liên hệ với chúng tôi",
+    "contact_desc": "Nếu bạn có bất kỳ câu hỏi nào về Chính sách bảo mật này, vui lòng liên hệ với chúng tôi qua các kênh chính thức của chúng tôi."
   }
 }

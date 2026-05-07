@@ -4,7 +4,8 @@ import { useTheme, ThemeType } from '@/hooks/use-theme';
 import { Card, CardContent } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Palette, Info, ShieldCheck, Check, Moon, Sun } from 'lucide-react';
+import { Palette, Info, ShieldCheck, Check, Moon, Sun, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Settings = () => {
   const { t } = useTranslation();
@@ -96,6 +97,16 @@ const Settings = () => {
               <p className="text-sm text-muted-foreground leading-relaxed font-medium">
                 {t('settings.about_desc')}
               </p>
+              
+              <div className="pt-4 border-t border-border/50">
+                <Link 
+                  to="/privacy" 
+                  className="flex items-center justify-between p-4 bg-primary/5 hover:bg-primary/10 rounded-2xl transition-colors group"
+                >
+                  <span className="font-bold text-primary">{t('settings.privacy_policy')}</span>
+                  <ExternalLink size={18} className="text-primary group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </CardContent>
           </Card>
         </section>

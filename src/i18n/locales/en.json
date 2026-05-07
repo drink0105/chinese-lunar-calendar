@@ -8,7 +8,8 @@
     "calendar": "Calendar",
     "converter": "Converter",
     "lucky": "Lucky Dates",
-    "settings": "Settings"
+    "settings": "Settings",
+    "blog": "Blog"
   },
   "dashboard": {
     "lunar_date": "Lunar Date",
@@ -74,7 +75,8 @@
   },
   "common": {
     "loading": "Loading...",
-    "close": "Close"
+    "close": "Close",
+    "back": "Back"
   },
   "theme": {
     "classic": "Classic",
@@ -89,6 +91,20 @@
   "settings": {
     "title": "Settings",
     "about": "About LunarDays",
-    "about_desc": "LunarDays is a premium Chinese Lunar Calendar application designed for modern users who value tradition and aesthetics."
+    "about_desc": "LunarDays is a premium Chinese Lunar Calendar application designed for modern users who value tradition and aesthetics.",
+    "privacy_policy": "Privacy Policy"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "last_updated": "Last Updated: May 2024",
+    "intro": "At LunarDays, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our application.",
+    "data_collection": "Data Collection & Usage",
+    "data_desc": "We do not collect any personal identification information directly. However, we use third-party services for analytics and advertising that may collect data such as your IP address, browser type, and usage patterns through cookies.",
+    "ads": "Advertising Partners",
+    "ads_desc": "We work with advertising partners like Monetag, Adsterra, and Google AdSense. These partners use cookies to serve ads based on your visits to this and other websites.",
+    "cookies": "Cookies",
+    "cookies_desc": "Cookies are small files stored on your device. You can manage or disable cookies through your browser settings.",
+    "contact": "Contact Us",
+    "contact_desc": "If you have any questions about this Privacy Policy, please contact us through our official channels."
   }
 }

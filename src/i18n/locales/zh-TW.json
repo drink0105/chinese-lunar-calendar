@@ -8,7 +8,8 @@
     "calendar": "日曆",
     "converter": "轉換",
     "lucky": "吉日",
-    "settings": "設置"
+    "settings": "設置",
+    "blog": "博客"
   },
   "dashboard": {
     "lunar_date": "農曆日期",
@@ -74,7 +75,8 @@
   },
   "common": {
     "loading": "載入中...",
-    "close": "關閉"
+    "close": "關閉",
+    "back": "返回"
   },
   "theme": {
     "classic": "經典",
@@ -89,6 +91,20 @@
   "settings": {
     "title": "設置",
     "about": "關於農曆通",
-    "about_desc": "農曆通是一款為注重傳統與美學的現代用戶設計的優質中國農曆應用。"
+    "about_desc": "農曆通是一款為注重傳統與美學的現代用戶設計的優質中國農曆應用。",
+    "privacy_policy": "隱私政策"
+  },
+  "privacy": {
+    "title": "隱私政策",
+    "last_updated": "最後更新：2024年5月",
+    "intro": "在農曆通，我們致力於保護您的隱私。本隱私政策解釋了我們在您使用我們的應用程序時如何收集、使用和保護您的信息。",
+    "data_collection": "數據收集與使用",
+    "data_desc": "我們不直接收集任何個人身份信息。但是，我們使用第三方服務進行分析和廣告，這些服務可能會通過 Cookie 收集您的 IP 地址、瀏覽器類型和使用模式等數據。",
+    "ads": "廣告合作夥伴",
+    "ads_desc": "我們與 Monetag、Adsterra 和 Google AdSense 等廣告合作夥伴合作。這些合作伙伴使用 Cookie 根據您對本網站和其他網站的訪問情況投放廣告。",
+    "cookies": "Cookie",
+    "cookies_desc": "Cookie 是存儲在您設備上的小文件。您可以通過瀏覽器設置管理或禁用 Cookie。",
+    "contact": "聯繫我們",
+    "contact_desc": "如果您對本隱私政策有任何疑問，請通過我們的官方渠道與我們聯繫。"
   }
 }

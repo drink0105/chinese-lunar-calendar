@@ -8,6 +8,7 @@ import CalendarPage from "./pages/CalendarPage";
 import ConverterPage from "./pages/ConverterPage";
 import LuckyDatesPage from "./pages/LuckyDatesPage";
 import Settings from "./pages/Settings";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import BlogIndex from "./components/blog/BlogIndex";
 import ArticlePage from "./components/blog/ArticlePage";
 import NotFound from "./pages/NotFound";
@@ -54,6 +55,7 @@ const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
           target.closest('[role="dialog"]') ||
           target.closest('[data-vaul-drawer]') ||
           location.pathname === '/settings' ||
+          location.pathname === '/privacy' ||
           location.pathname.startsWith('/blog')
         ) {
           return;
@@ -125,6 +127,7 @@ const AppContent = () => {
                 <Route path="/converter" element={<ConverterPage />} />
                 <Route path="/lucky" element={<LuckyDatesPage />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/blog" element={<BlogIndex />} />
                 <Route path="/blog/:slug" element={<ArticlePage />} />
                 <Route path="*" element={<NotFound />} />

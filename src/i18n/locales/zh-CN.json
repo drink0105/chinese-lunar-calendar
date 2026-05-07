@@ -8,7 +8,8 @@
     "calendar": "日历",
     "converter": "转换",
     "lucky": "吉日",
-    "settings": "设置"
+    "settings": "设置",
+    "blog": "博客"
   },
   "dashboard": {
     "lunar_date": "农历日期",
@@ -74,7 +75,8 @@
   },
   "common": {
     "loading": "加载中...",
-    "close": "关闭"
+    "close": "关闭",
+    "back": "返回"
   },
   "theme": {
     "classic": "经典",
@@ -89,6 +91,20 @@
   "settings": {
     "title": "设置",
     "about": "关于农历通",
-    "about_desc": "农历通是一款为注重传统与美学的现代用户设计的优质中国农历应用。"
+    "about_desc": "农历通是一款为注重传统与美学的现代用户设计的优质中国农历应用。",
+    "privacy_policy": "隐私政策"
+  },
+  "privacy": {
+    "title": "隐私政策",
+    "last_updated": "最后更新：2024年5月",
+    "intro": "在农历通，我们致力于保护您的隐私。本隐私政策解释了我们在您使用我们的应用程序时如何收集、使用和保护您的信息。",
+    "data_collection": "数据收集与使用",
+    "data_desc": "我们不直接收集任何个人身份信息。但是，我们使用第三方服务进行分析和广告，这些服务可能会通过 Cookie 收集您的 IP 地址、浏览器类型和使用模式等数据。",
+    "ads": "广告合作伙伴",
+    "ads_desc": "我们与 Monetag、Adsterra 和 Google AdSense 等广告合作伙伴合作。这些合作伙伴使用 Cookie 根据您对本网站和其他网站的访问情况投放广告。",
+    "cookies": "Cookie",
+    "cookies_desc": "Cookie 是存储在您设备上的小文件。您可以通过浏览器设置管理或禁用 Cookie。",
+    "contact": "联系我们",
+    "contact_desc": "如果您对本隐私政策有任何疑问，请通过我们的官方渠道与我们联系。"
   }
 }
