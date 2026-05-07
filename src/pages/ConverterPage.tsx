@@ -4,6 +4,7 @@ import { getLunarData } from '@/utils/lunarUtils';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import BannerAd from '../components/BannerAd';
 import { motion } from 'framer-motion';
 import { Utensils, RefreshCw, Calendar as CalendarIcon } from 'lucide-react';
 
@@ -114,6 +115,8 @@ const ConverterPage = () => {
           </Card>
         </motion.div>
       )}
+
+      <BannerAd />
     </div>
   );
 };

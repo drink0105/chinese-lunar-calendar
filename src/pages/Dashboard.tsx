@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar as CalendarIcon, Info, Utensils, Sparkles, X } from 'lucide-react';
 import AdSlot from '@/components/AdSlot';
+import BannerAd from '../components/BannerAd';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/use-theme';
 import { cn } from '@/lib/utils';
@@ -250,6 +251,8 @@ const Dashboard = () => {
       </Card>
 
       <AdSlot type="vignette" className="mb-8 opacity-80 hover:opacity-100 transition-opacity" />
+
+      <BannerAd />
 
       <Drawer open={isClashInfoOpen} onOpenChange={setIsClashInfoOpen}>
         <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl rounded-t-[2.5rem] border-none shadow-2xl">

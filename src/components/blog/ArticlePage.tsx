@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { articles } from '@/data/articles';
+import BannerAd from '../BannerAd';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
 
@@ -71,6 +72,8 @@ const ArticlePage = () => {
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+
+        <BannerAd />
       </motion.article>
     </div>
   );

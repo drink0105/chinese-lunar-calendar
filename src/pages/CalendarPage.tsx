@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getMonthDays } from '@/utils/lunarUtils';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Utensils, X } from 'lucide-react';
+import BannerAd from '../components/BannerAd';
 import {
   Drawer,
   DrawerContent,
@@ -133,6 +134,8 @@ const CalendarPage = () => {
           ))}
         </div>
       </div>
+
+      <BannerAd />
 
       <Drawer open={!!selectedDay} onOpenChange={(open) => !open && setSelectedDay(null)}>
         <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl max-h-[90vh] rounded-t-[2.5rem] border-none shadow-2xl">
