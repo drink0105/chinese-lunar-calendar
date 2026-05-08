@@ -63,6 +63,10 @@ const ArticlePage = () => {
           </div>
         </header>
 
+        <div style={{ margin: '16px 0' }}>
+          <BannerAd />
+        </div>
+
         <div 
           className="prose prose-lg dark:prose-invert max-w-none 
             prose-headings:text-primary prose-headings:font-black prose-headings:tracking-tight
@@ -72,8 +76,6 @@ const ArticlePage = () => {
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
-
-        <BannerAd />
       </motion.article>
     </div>
   );
