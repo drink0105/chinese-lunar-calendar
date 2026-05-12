@@ -63,9 +63,7 @@ const ArticlePage = () => {
           </div>
         </header>
 
-        <div style={{ margin: '16px 0' }}>
-          <BannerAd />
-        </div>
+        <BannerAd />
 
         <div 
           className="prose prose-lg dark:prose-invert max-w-none 
