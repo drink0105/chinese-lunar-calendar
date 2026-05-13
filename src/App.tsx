@@ -24,7 +24,7 @@ import "./i18n/config";
 
 const queryClient = new QueryClient();
 
-const tabOrder = ["/", "/calendar", "/converter", "/lucky"];
+const tabOrder = ["/", "/calendar", "/converter", "/lucky", "/settings"];
 
 const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
