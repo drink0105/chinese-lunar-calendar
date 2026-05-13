@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getMonthDays } from '@/utils/lunarUtils';
 import { Button } from '@/components/ui/button';
@@ -25,12 +25,38 @@ const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDay, setSelectedDay] = useState<any>(null);
 
+  const touchStartX = useRef<number>(0);
+  const touchStartY = useRef<number>(0);
+
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
   const days = getMonthDays(year, month, i18n.language);
 
   const nextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
   const prevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
+    if (Math.abs(deltaX) < 50 || deltaY > 30) return;
+    if (deltaX < 0) {
+      nextMonth();
+    } else {
+      prevMonth();
+    }
+  };
+
+  const isToday = (date: Date): boolean => {
+    const now = new Date();
+    return date.getDate() === now.getDate() &&
+      date.getMonth() === now.getMonth() &&
+      date.getFullYear() === now.getFullYear();
+  };
 
   const handleMonthChange = (val: string) => {
     setCurrentDate(new Date(year, parseInt(val), 1));
@@ -57,7 +83,11 @@ const CalendarPage = () => {
   }));
 
   return (
-    <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
+    <div 
+      className="pb-32 pt-6 px-4 max-w-md mx-auto"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 dark:border-zinc-700/50">
         <div className="bg-gradient-to-br from-[#C0392B] to-[#A93226] p-6 flex flex-col gap-6 shadow-lg">
           <div className="flex justify-between items-center text-white">
@@ -114,9 +144,23 @@ const CalendarPage = () => {
             >
               {day && (
                 <>
-                  <span className={`text-base font-black ${day.lunar.isPublicHoliday || day.lunar.isHoliday ? 'text-[#C0392B] dark:text-red-500' : 'text-gray-700 dark:text-zinc-300'}`}>
+                  <div 
+                    className={`text-base font-black ${!isToday(day.date) && (day.lunar.isPublicHoliday || day.lunar.isHoliday) ? 'text-[#C0392B] dark:text-red-500' : 'text-gray-700 dark:text-zinc-300'}`}
+                    style={isToday(day.date) ? {
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '50%',
+                      border: '2px solid #C0392B',
+                      boxShadow: '0 0 6px rgba(192, 57, 43, 0.4)',
+                      fontWeight: 'bold',
+                      color: '#C0392B',
+                    } : {}}
+                  >
                     {day.date.getDate()}
-                  </span>
+                  </div>
                   <span className="text-[9px] text-gray-400 dark:text-zinc-500 font-bold truncate w-full text-center mt-0.5">
                     {day.lunar.lunarDay}
                   </span>

@@ -226,6 +226,51 @@ export const festivalsMap: Record<string, Record<string, string>> = {
   "平安夜": { en: "Christmas Eve", th: "วันคริสต์มาสอีฟ", vi: "Đêm Giáng sinh", "zh-CN": "平安夜", "zh-TW": "平安夜", ja: "クリスマスイブ", ko: "크리스마스 이브" },
   "母亲节": { en: "Mother's Day", th: "วันแม่", vi: "Ngày của Mẹ", "zh-CN": "母亲节", "zh-TW": "母親節", ja: "母の日", ko: "어머니날" },
   "父亲节": { en: "Father's Day", th: "วันพ่อ", vi: "Ngày của Cha", "zh-CN": "父亲节", "zh-TW": "父親節", ja: "父の日", ko: "아버지날" },
+  "全国助残日": {
+    en: "National Day for Helping the Disabled",
+    "zh-CN": "全国助残日",
+    "zh-TW": "全國助殘日",
+    th: "วันช่วยเหลือผู้พิการแห่งชาติ",
+    vi: "Ngày Người Khuyết Tật Toàn Quốc",
+    ja: "全国障害者支援の日",
+    ko: "전국 장애인 지원의 날"
+  },
+  "建党节": {
+    en: "CPC Founding Day",
+    "zh-CN": "建党节",
+    "zh-TW": "建黨節",
+    th: "วันก่อตั้งพรรคคอมมิวนิสต์จีน",
+    vi: "Ngày Thành Lập Đảng Cộng Sản",
+    ja: "中国共産党創立記念日",
+    ko: "중국 공산당 창당 기념일"
+  },
+  "分龙节": {
+    en: "Dragon Parting Festival",
+    "zh-CN": "分龙节",
+    "zh-TW": "分龍節",
+    th: "เทศกาลแยกมังกร",
+    vi: "Lễ Phân Long",
+    ja: "竜分かれの祭り",
+    ko: "용 분리 축제"
+  },
+  "会龙节": {
+    en: "Dragon Meeting Festival",
+    "zh-CN": "会龙节",
+    "zh-TW": "會龍節",
+    th: "เทศกาลรวมมังกร",
+    vi: "Lễ Hội Long",
+    ja: "竜集いの祭り",
+    ko: "용 만남 축제"
+  },
+  "天贶节": {
+    en: "Heavenly Gifts Festival",
+    "zh-CN": "天贶节",
+    "zh-TW": "天貺節",
+    th: "เทศกาลของขวัญสวรรค์",
+    vi: "Lễ Thiên Tứ",
+    ja: "天の贈り物の祭り",
+    ko: "하늘의 선물 축제"
+  },
 };
 
 export const foodSuggestions: Record<string, Record<string, string>> = {
