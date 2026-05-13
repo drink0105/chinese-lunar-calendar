@@ -19,63 +19,54 @@ import BlogNav from "./components/blog/BlogNav";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "./hooks/use-theme";
 import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef } from "react";
 import "./i18n/config";
 
 const queryClient = new QueryClient();
 
-const routes = ["/", "/calendar", "/converter", "/lucky", "/settings"];
+const tabOrder = ["/", "/calendar", "/converter", "/lucky"];
 
 const SwipeHandler = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const touchStartX = useRef<number>(0);
+  const touchStartY = useRef<number>(0);
 
-  const handleSwipe = (info: any) => {
-    const currentIndex = routes.indexOf(location.pathname);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
+
+    // Thresholds: 30px horizontal, 60px vertical tolerance
+    if (Math.abs(deltaX) < 30 || deltaY > 60) return;
+
+    const currentIndex = tabOrder.indexOf(location.pathname);
     if (currentIndex === -1) return;
 
-    const xOffset = info.offset.x;
-    const xVelocity = info.velocity.x;
-
-    // Thresholds for swipe detection
-    // We use a combination of distance (offset) and speed (velocity)
-    const distanceThreshold = 50;
-    const velocityThreshold = 500;
-
-    if (Math.abs(xOffset) > distanceThreshold || Math.abs(xVelocity) > velocityThreshold) {
-      if (xOffset < 0 && currentIndex < routes.length - 1) {
-        // Swipe Left -> Next Tab
-        navigate(routes[currentIndex + 1]);
-      } else if (xOffset > 0 && currentIndex > 0) {
-        // Swipe Right -> Previous Tab
-        navigate(routes[currentIndex - 1]);
-      }
+    if (deltaX < 0) {
+      // Swiped left — go to next tab
+      const nextIndex = (currentIndex + 1) % tabOrder.length;
+      navigate(tabOrder[nextIndex]);
+    } else {
+      // Swiped right — go to previous tab
+      const prevIndex = (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+      navigate(tabOrder[prevIndex]);
     }
   };
 
   return (
-    <motion.div
+    <div
       className="flex-1 flex flex-col overflow-hidden"
-      style={{ touchAction: 'pan-y' }} // Allow vertical scrolling but capture horizontal pans
-      onPanEnd={(e, info) => {
-        const target = e.target as HTMLElement;
-        // Ignore swipes on interactive elements to prevent accidental navigation
-        if (
-          target.closest('input') || 
-          target.closest('textarea') || 
-          target.closest('button') ||
-          target.closest('a') ||
-          target.closest('[role="dialog"]') ||
-          target.closest('[data-vaul-drawer]') ||
-          location.pathname === '/privacy' ||
-          location.pathname.startsWith('/blog')
-        ) {
-          return;
-        }
-        handleSwipe(info);
-      }}
+      style={{ touchAction: 'pan-y' }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
