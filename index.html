@@ -6,6 +6,19 @@
     <meta name="monetag" content="dd85267e4b2f985eda33829e55b4fb14">
     <title>LunarDays - Chinese Lunar Calendar</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4014613680442567" crossorigin="anonymous"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js')
+            .then(function(reg) {
+              console.log('SW registered:', reg.scope);
+            })
+            .catch(function(err) {
+              console.log('SW registration failed:', err);
+            });
+        });
+      }
+    </script>
   </head>
 
   <body>
