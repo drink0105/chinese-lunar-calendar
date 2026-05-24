@@ -13,7 +13,7 @@ import BlogIndex from "./components/blog/BlogIndex";
 import ArticlePage from "./components/blog/ArticlePage";
 import NotFound from "./pages/NotFound";
 import BottomNav from "./components/BottomNav";
-import ConsentBanner from "./components/ConsentBanner";
+import PrivacyConsentPopup from "./components/PrivacyConsentPopup";
 import LanguageSelector from "./components/LanguageSelector";
 import BlogNav from "./components/blog/BlogNav";
 import { useTranslation } from "react-i18next";
@@ -139,7 +139,7 @@ const AppContent = () => {
         </main>
       </SwipeHandler>
 
-      <ConsentBanner />
+      <PrivacyConsentPopup />
       <BottomNav />
     </div>
   );
