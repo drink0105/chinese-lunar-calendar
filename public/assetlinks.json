@@ -3,6 +3,6 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.lunardays.calendar",
-    "sha256_cert_fingerprints": ["PLACEHOLDER"]
+    "sha256_cert_fingerprints": ["73:CF:3A:3B:ED:F9:98:01:5C:7F:84:AC:0F:B1:EC:99:5A:75:79:BB:D6:94:1C:FD:20:14:DC:D4:A8:11:24:A1"]
   }
 }]
