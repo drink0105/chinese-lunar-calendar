@@ -1,23 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import { copyFileSync, mkdirSync, existsSync } from 'fs'
+import { copyFileSync, mkdirSync, existsSync, readdirSync } from 'fs'
 import { resolve } from 'path'
 import dyadComponentTagger from "@dyad-sh/react-vite-component-tagger"
 
 const copyWellKnown = {
   name: 'copy-well-known',
   closeBundle() {
-    const src = resolve(__dirname, 'public/.well-known/assetlinks.json')
+    const srcDir = resolve(__dirname, 'public/.well-known')
     const destDir = resolve(__dirname, 'dist/.well-known')
-    const dest = resolve(destDir, 'assetlinks.json')
-    if (existsSync(src)) {
-      if (!existsSync(destDir)) {
-        mkdirSync(destDir, { recursive: true })
-      }
-      copyFileSync(src, dest)
-      console.log('✓ Copied .well-known/assetlinks.json to dist')
-    } else {
-      console.warn('⚠ public/.well-known/assetlinks.json not found')
+    if (existsSync(srcDir)) {
+      if (!existsSync(destDir)) mkdirSync(destDir, { recursive: true })
+      const files = readdirSync(srcDir)
+      files.forEach(file => {
+        copyFileSync(resolve(srcDir, file), resolve(destDir, file))
+        console.log(`✓ Copied .well-known/${file} to dist`)
+      })
     }
   }
 }
