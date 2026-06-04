@@ -1,10 +1,11 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getLunarData, getZodiacEmoji } from '@/utils/lunarUtils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar as CalendarIcon, Info, Utensils, Sparkles, X } from 'lucide-react';
-import AdSlot from '@/components/AdSlot';
 import BannerAd from '../components/BannerAd';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/use-theme';
@@ -249,8 +250,6 @@ const Dashboard = () => {
           </div>
         </CardContent>
       </Card>
-
-      <AdSlot type="vignette" className="mb-8 opacity-80 hover:opacity-100 transition-opacity" />
 
       <BannerAd />
 

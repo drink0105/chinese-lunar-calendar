@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { findLuckyDates } from '@/utils/lunarUtils';
@@ -5,7 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Badge from '@/components/Badge';
-import AdSlot from '@/components/AdSlot';
 import BannerAd from '../components/BannerAd';
 import { motion } from 'framer-motion';
 import { Utensils, Search, Sparkles } from 'lucide-react';
@@ -84,8 +85,6 @@ const LuckyDatesPage = () => {
           </Button>
         </CardContent>
       </Card>
-
-      <AdSlot type="inpage" className="mb-10 opacity-80 hover:opacity-100 transition-opacity" />
 
       {results.length > 0 && (
         <div className="grid grid-cols-1 gap-4">
