@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Badge from '@/components/Badge';
-import BannerAd from '../components/BannerAd';
+import HilltopIframeAd from '../components/HilltopIframeAd';
 import { motion } from 'framer-motion';
 import { Utensils, Search, Sparkles } from 'lucide-react';
 
@@ -40,6 +40,8 @@ const LuckyDatesPage = () => {
       <h1 className="text-3xl font-black text-[#C0392B] dark:text-red-500 mb-8 text-center tracking-tight">
         {t('lucky.title')}
       </h1>
+
+      <HilltopIframeAd />
 
       <Card className="mb-10 border-none shadow-2xl bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl border border-white/20 dark:border-zinc-700/50 rounded-[2rem] overflow-hidden">
         <CardContent className="p-8 space-y-6">
@@ -131,8 +133,6 @@ const LuckyDatesPage = () => {
           ))}
         </div>
       )}
-
-      <BannerAd />
     </div>
   );
 };

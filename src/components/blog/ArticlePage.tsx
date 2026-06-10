@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { articles } from '@/data/articles';
-import BannerAd from '../BannerAd';
+import HilltopIframeAd from '../HilltopIframeAd';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
 
@@ -63,7 +63,7 @@ const ArticlePage = () => {
           </div>
         </header>
 
-        <BannerAd />
+        <HilltopIframeAd />
 
         <div 
           className="prose prose-lg dark:prose-invert max-w-none 

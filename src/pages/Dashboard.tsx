@@ -6,7 +6,7 @@ import { getLunarData, getZodiacEmoji } from '@/utils/lunarUtils';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Calendar as CalendarIcon, Info, Utensils, Sparkles, X } from 'lucide-react';
-import BannerAd from '../components/BannerAd';
+import HilltopIframeAd from '../components/HilltopIframeAd';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/hooks/use-theme';
 import { cn } from '@/lib/utils';
@@ -119,6 +119,8 @@ const Dashboard = () => {
           {formattedDate}
         </p>
       </div>
+
+      <HilltopIframeAd />
 
       <Card className="mb-8 border-none shadow-2xl bg-card/80 dark:bg-card/40 backdrop-blur-xl border border-white/20 dark:border-white/10 overflow-hidden group rounded-[2.5rem] festive-glow">
         <div className="h-1.5 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-[gradient_3s_linear_infinite]" />
@@ -250,8 +252,6 @@ const Dashboard = () => {
           </div>
         </CardContent>
       </Card>
-
-      <BannerAd />
 
       <Drawer open={isClashInfoOpen} onOpenChange={setIsClashInfoOpen}>
         <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl rounded-t-[2.5rem] border-none shadow-2xl">

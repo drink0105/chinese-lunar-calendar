@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getMonthDays } from '@/utils/lunarUtils';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Utensils, X } from 'lucide-react';
-import BannerAd from '../components/BannerAd';
+import HilltopIframeAd from '../components/HilltopIframeAd';
 import {
   Drawer,
   DrawerContent,
@@ -65,7 +65,7 @@ const CalendarPage = () => {
 
   return (
     <div className="pb-32 pt-6 px-4 max-w-md mx-auto">
-      <div className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 dark:border-zinc-700/50">
+      <div className="bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 dark:border-zinc-700/50 mb-6">
         <div className="bg-gradient-to-br from-[#C0392B] to-[#A93226] p-6 flex flex-col gap-6 shadow-lg">
           <div className="flex justify-between items-center text-white">
             <Button variant="ghost" size="icon" onClick={prevMonth} className="text-white hover:bg-white/20 rounded-full">
@@ -156,7 +156,7 @@ const CalendarPage = () => {
         </div>
       </div>
 
-      <BannerAd />
+      <HilltopIframeAd />
 
       <Drawer open={!!selectedDay} onOpenChange={(open) => !open && setSelectedDay(null)}>
         <DrawerContent className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-2xl max-h-[90vh] rounded-t-[2.5rem] border-none shadow-2xl">
