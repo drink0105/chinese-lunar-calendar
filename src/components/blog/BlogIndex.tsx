@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { articles } from '@/data/articles';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import BannerAd from '../BannerAd';
 
 const BlogIndex = () => {
   return (
@@ -16,7 +17,7 @@ const BlogIndex = () => {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {articles.map((article, index) => (
           <motion.div
             key={article.slug}
@@ -48,6 +49,8 @@ const BlogIndex = () => {
           </motion.div>
         ))}
       </div>
+
+      <BannerAd />
     </div>
   );
 };
