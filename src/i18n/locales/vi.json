@@ -70,8 +70,11 @@
     }
   },
   "consent": {
-    "message": "Ứng dụng này sử dụng cookie để phân tích và quảng cáo. Bằng cách tiếp tục, bạn đồng ý.",
-    "accept": "Chấp nhận"
+    "message": "Chào mừng đến với LunarDays. Trước khi tiếp tục, vui lòng đọc",
+    "privacyLink": "Chính Sách Bảo Mật",
+    "cookieNote": "Ứng dụng này sử dụng cookie và quảng cáo. Bạn có thể từ chối cookie không cần thiết nhưng quảng cáo vẫn sẽ hiển thị.",
+    "accept": "Chấp Nhận Tất Cả",
+    "decline": "Từ Chối"
   },
   "common": {
     "loading": "Đang tải...",

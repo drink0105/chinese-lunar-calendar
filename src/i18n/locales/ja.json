@@ -70,8 +70,11 @@
     }
   },
   "consent": {
-    "message": "このアプリは分析と広告のためにクッキーを使用します。続行することで同意したとみなされます。",
-    "accept": "同意する"
+    "message": "LunarDaysへようこそ。続行する前に、",
+    "privacyLink": "プライバシーポリシー",
+    "cookieNote": "このアプリはCookieと広告を使用しています。不要なCookieを拒否できますが、広告は引き続き表示されます。",
+    "accept": "すべて承認",
+    "decline": "拒否"
   },
   "common": {
     "loading": "読み込み中...",

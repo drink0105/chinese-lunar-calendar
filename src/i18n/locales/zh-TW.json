@@ -70,8 +70,11 @@
     }
   },
   "consent": {
-    "message": "本應用使用 Cookie 進行分析和廣告。繼續使用即表示您同意。",
-    "accept": "接受"
+    "message": "歡迎使用LunarDays。繼續之前，請閱讀我們的",
+    "privacyLink": "隱私權政策",
+    "cookieNote": "本應用程式使用Cookie和廣告。您可以拒絕非必要Cookie，但廣告仍會顯示。",
+    "accept": "全部接受",
+    "decline": "拒絕"
   },
   "common": {
     "loading": "載入中...",

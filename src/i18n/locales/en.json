@@ -70,8 +70,11 @@
     }
   },
   "consent": {
-    "message": "This app uses cookies for analytics and advertising. By continuing you agree.",
-    "accept": "Accept"
+    "message": "Welcome to LunarDays. Before continuing, please read our",
+    "privacyLink": "Privacy Policy",
+    "cookieNote": "This app uses cookies and advertising. You may decline non-essential cookies however ads will still be displayed.",
+    "accept": "Accept All",
+    "decline": "Decline"
   },
   "common": {
     "loading": "Loading...",

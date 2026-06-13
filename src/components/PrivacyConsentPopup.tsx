@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useConsent } from '../hooks/useConsent';
 
 const PrivacyConsentPopup: React.FC = () => {
-  const [visible, setVisible] = useState(false);
+  const { consent, accept, decline } = useConsent();
+  const { t } = useTranslation();
 
-  useEffect(() => {
-    // Check for both the new key and the old key to avoid re-prompting existing users
-    const accepted = localStorage.getItem('privacy_accepted') || localStorage.getItem('lunar-days-consent');
-    if (!accepted) setVisible(true);
-  }, []);
-
-  const handleAccept = () => {
-    localStorage.setItem('privacy_accepted', 'true');
-    setVisible(false);
-  };
-
-  if (!visible) return null;
+  if (consent !== 'pending') return null;
 
   return (
     <div style={{
@@ -33,36 +25,54 @@ const PrivacyConsentPopup: React.FC = () => {
       <p style={{
         margin: '0 0 12px 0',
         fontSize: '13px',
-        lineHeight: '1.5',
+        lineHeight: '1.6',
         color: '#333',
       }}>
-        Welcome to <strong>LunarDays - Chinese Calendar</strong>. Before continuing, please read our{' '}
+        {t('consent.message')}{' '}
         <a
           href="/privacy"
           style={{ color: '#C0392B', textDecoration: 'underline' }}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Privacy Policy
+          {t('consent.privacyLink')}
         </a>
-        . This app uses cookies and third-party advertising. By tapping Accept you agree to our Privacy Policy and use of cookies.
+        {'. '}{t('consent.cookieNote')}
       </p>
-      <button
-        onClick={handleAccept}
-        style={{
-          background: '#C0392B',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '6px',
-          padding: '10px 32px',
-          fontSize: '14px',
-          fontWeight: 'bold',
-          cursor: 'pointer',
-          width: '100%',
-        }}
-      >
-        Accept & Continue
-      </button>
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <button
+          onClick={accept}
+          style={{
+            flex: 1,
+            background: '#C0392B',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '6px',
+            padding: '10px',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+          }}
+        >
+          {t('consent.accept')}
+        </button>
+        <button
+          onClick={decline}
+          style={{
+            flex: 1,
+            background: '#fff',
+            color: '#C0392B',
+            border: '2px solid #C0392B',
+            borderRadius: '6px',
+            padding: '10px',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+          }}
+        >
+          {t('consent.decline')}
+        </button>
+      </div>
     </div>
   );
 };
