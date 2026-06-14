@@ -111,6 +111,7 @@ export const lunarTerms: Record<string, Record<string, string>> = {
   "筑堤": { en: "Build Embankment", th: "สร้างเขื่อน", vi: "Xây đê", "zh-CN": "筑堤", "zh-TW": "築堤", ja: "堤防建設", ko: "축제" },
   "开生坟": { en: "Dig New Grave", th: "ขุดหลุมศพใหม่", vi: "Mở mộ mới", "zh-CN": "开生坟", "zh-TW": "開生墳", ja: "生前墓製作", ko: "개생분" },
   "破土安葬": { en: "Break Ground for Tomb", th: "ขุดหลุมฝังศพ", vi: "Đào mộ", "zh-CN": "破土安葬", "zh-TW": "破土安葬", ja: "埋葬着工", ko: "파토안장" },
+  "断蚁": { en: "Eliminate Ants/Pests", "zh-CN": "断蚁", "zh-TW": "斷蟻", th: "กำจัดมดและแมลงศัตรู", vi: "Diệt Kiến và Sâu Bọ", ja: "アリ・害虫の駆除", ko: "개미 및 해충 제거" },
   "无": { en: "None", th: "ไม่มี", vi: "Không có", "zh-CN": "无", "zh-TW": "無", ja: "なし", ko: "없음" },
 };
 
@@ -270,6 +271,33 @@ export const festivalsMap: Record<string, Record<string, string>> = {
     vi: "Lễ Thiên Tứ",
     ja: "天の贈り物の祭り",
     ko: "하늘의 선물 축제"
+  },
+  "建军节": {
+    en: "Army Day",
+    "zh-CN": "建军节",
+    "zh-TW": "建軍節",
+    th: "วันกองทัพปลดแอกประชาชนจีน",
+    vi: "Ngày Thành Lập Quân Đội",
+    ja: "建軍記念日",
+    ko: "중국 인민해방군 창군 기념일"
+  },
+  "观莲节": {
+    en: "Lotus Viewing Festival",
+    "zh-CN": "观莲节",
+    "zh-TW": "觀蓮節",
+    th: "เทศกาลชมดอกบัว",
+    vi: "Lễ Ngắm Sen",
+    ja: "観蓮祭",
+    ko: "연꽃 감상 축제"
+  },
+  "五谷母节": {
+    en: "Five Grains Mother Festival",
+    "zh-CN": "五谷母节",
+    "zh-TW": "五穀母節",
+    th: "เทศกาลแม่ธัญพืชทั้งห้า",
+    vi: "Lễ Mẫu Ngũ Cốc",
+    ja: "五穀母祭",
+    ko: "오곡 어머니 축제"
   },
 };
 
